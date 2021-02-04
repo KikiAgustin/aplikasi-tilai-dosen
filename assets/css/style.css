@@ -1,0 +1,496 @@
+  .navbar {
+    background-color: #32CD32;
+    border-bottom: 1px solid #fff;
+    font-family: 'Montserrat';
+    font-size: 32px;
+  }
+
+  .nav-item {
+    margin-right: 24px;
+    font-weight: 200;
+  }
+
+  .nav-link {
+    margin-top: 15px;
+  }
+
+
+  .nav-link span {
+    color: rgb(141, 98, 241);
+    font-weight: 600;
+  }
+
+  /* Carousel */
+  .banner {
+    background-color: #32CD32;
+    color: white;
+    padding-bottom: 30px;
+  }
+
+  .carousel h1 {
+    font-family: 'Lora';
+  }
+
+  .carousel p {
+    font-weight: 200;
+  }
+
+
+  .features h3,
+  .designer h3,
+  .similar-product h3,
+  .cart-header h3,
+  .checkout-modal-success h3 {
+    font-family: 'Lora';
+    color: #1B2690;
+    font-weight: bold;
+  }
+
+  .features p,
+  .designer p,
+  footer p,
+  .similar-product p,
+  .cart-header p,
+  .checkout-modal-success p {
+    font-weight: 200;
+    color: #B7B7B7;
+  }
+
+  .figure h5 {
+    color: #171717;
+  }
+
+  .figure-img {
+    position: relative;
+  }
+
+  .figure-img a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 8px;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .figure-img:hover a {
+    opacity: 1;
+  }
+
+  /* about */
+
+  .logoMaestro img {
+    width: 400px;
+    margin-top: 30px;
+  }
+
+  /* Tim pelatih */
+  .caption ul li {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin: 0px 3px;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+  }
+
+  .caption ul li:hover {
+    opacity: .8;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+  }
+
+  .caption ul li span {
+    color: #fff;
+    font-size: 12px;
+    line-height: 30px;
+  }
+
+  .caption ul li.f1 {
+    background: #3b5998;
+  }
+
+  .caption ul li.f2 {
+    background: #00aced;
+  }
+
+  .caption ul li.f3 {
+    background: #F44336;
+  }
+
+  .clients-wthree-grids {
+    padding-top: 7em;
+  }
+
+  /*Akhir tim pelatih*/
+
+  /* Program */
+  .program {
+    margin-bottom: 20px;
+    border: 2px dotted transparent;
+    padding: 20px 0;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    background: #eee;
+  }
+
+  .program:hover {
+    border: 2px dotted #1c1d22;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    background: #fff;
+  }
+
+  /* Akhir Program */
+
+  /* Benefit */
+
+  .services {
+    margin-top: -110px;
+  }
+
+  .btn-wthree-service {
+    border: 1px solid #000;
+    color: #000;
+  }
+
+  .w3pvt-serv-left h4,
+  .w3pvt-service-middle h4,
+  h3.main-title-w3pvt {
+    font-weight: 400;
+    text-transform: capitalize;
+
+  }
+
+  span.wthree-line {
+    width: 46%;
+    height: 2px;
+    background: #02c;
+    display: inline-block;
+  }
+
+
+  .wthree-inner-sec.services-bg {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .services-box {
+    margin-bottom: 20px;
+    border: 2px dotted transparent;
+    padding: 20px 0;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    background: #eee;
+  }
+
+  .services-box:hover {
+    border: 2px dotted #1c1d22;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    background: #fff;
+  }
+
+  .services-box:hover span {
+    background: transparent;
+    border-radius: 100px;
+    color: #02c;
+  }
+
+  .icon span {
+    width: 70px;
+    height: 70px;
+    color: #db35b6;
+    border-radius: 50%;
+    line-height: 70px;
+    text-align: center;
+    font-size: 26px;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+  }
+
+  .service-content {
+    margin-left: 1em;
+  }
+
+  .service-content h4,
+  .service-content h2 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 35px;
+    margin-bottom: 0.5em;
+  }
+
+  .service-txt h5 {
+    text-transform: capitalize;
+    font-size: 2.5em;
+    color: #000;
+    letter-spacing: 1px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .service-txt h5 span {
+    background: #db35b6;
+    font-weight: 600;
+    color: #fff;
+    padding: 0 4px;
+  }
+
+  .jreview {
+    height: 67px;
+  }
+
+  /* Benefit */
+
+  /* review */
+  .preview img {
+    border: 7px solid #a6a7aa;
+    width: 70px;
+  }
+
+  .preview {
+    width: 230px;
+    height: 330px;
+    border-radius: 10px;
+    background-color: #eee;
+  }
+
+  .preview,
+  .isireview {
+    margin-top: 15px;
+    font-size: 15px;
+    padding: 5px;
+  }
+
+
+  /* Akhir review */
+
+  /* faq */
+
+  .faq {
+    background-image: url(../img/faq.png);
+    background-repeat: no-repeat;
+    background-size: 800px;
+    background-position-y: 80px;
+  }
+
+  a {
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+  }
+
+  .card-header {
+    background-color: #80ff8a;
+  }
+
+
+  a:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  .bfaq {
+    background-color: #80ff8a;
+  }
+
+  .card-body {
+    background-color: #eee;
+    color: black;
+  }
+
+  /* Akhir faq */
+
+  /* gabung */
+
+  .jgabung {
+    height: 85px;
+  }
+
+  .bg-services {
+    background: url(../img/gabung2.png) no-repeat;
+    background-size: cover;
+  }
+
+  .w3pvt-title {
+    color: white;
+  }
+
+  .services-bg-color {
+    padding: 2em;
+  }
+
+  h4.home-title {
+    text-transform: capitalize;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: #000;
+  }
+
+  .isi-gabung {
+    background-color: #80ff8a;
+  }
+
+  /* kintan */
+  .perhatian {
+    margin-top: -30px;
+    background-color: #32CD32;
+  }
+
+  .jantung {
+    border: 7px solid #32CD32;
+  }
+
+  .img-jantung {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .isi-jantung {
+    margin-top: 30px;
+  }
+
+  .img-diabetes {
+    text-align: center;
+  }
+
+  .isi-diabetes {
+    margin-top: 30px;
+  }
+
+  .img-kanker {
+    text-align: center;
+  }
+
+  .isi-kanker {
+    margin-top: 30px;
+  }
+
+  .yakin {
+    background-color: #32CD32;
+    margin-top: -50px;
+  }
+
+  .isi-obat {
+    margin-top: 90px;
+  }
+
+  .image-cina {
+    text-align: center;
+  }
+
+  .dauncina {
+    margin-top: 30px;
+  }
+
+  .penjelasan p {
+    font-weight: bold;
+  }
+
+  .penjelasan {
+    margin-top: 20px;
+  }
+
+  .alasan {
+    background-color: #32CD32;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .faq {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .isi-faq {
+    margin-top: 20px;
+  }
+
+  .testimoni {
+    background-color: #80ff8a;
+    color: black;
+  }
+
+  /* kintan */
+
+
+
+  /* Tampilan Desktop */
+  @media only screen and (min-width: 992px) {
+    .nav-link {
+      margin-top: 0px;
+    }
+
+    .penjelasan {
+      padding: 120px 50px 50px 50px;
+    }
+
+    .judul-peringatan {
+      margin-top: 25px;
+    }
+
+    .isi-jantung {
+      margin-top: 70px;
+    }
+
+    .img-jantung {
+      text-align: center;
+      margin-top: 0px;
+    }
+
+    .isi-diabetes {
+      margin-top: 70px;
+    }
+
+    .isi-kanker {
+      margin-top: 70px;
+    }
+
+    .yakin {
+      background-color: #32CD32;
+      margin-top: -100px;
+    }
+
+    .jbenefit {
+      padding-top: 15px;
+    }
+
+    .dauncina {
+      margin-top: 60px;
+    }
+
+    .daun-cina2 {
+      margin-top: 20px;
+    }
+
+    .faq {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+
+  }

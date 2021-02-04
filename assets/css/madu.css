@@ -1,0 +1,106 @@
+
+.bg-navbar {
+    background-color: #DDCABA;
+}
+
+.boton {
+    border-radius: 20px;
+}
+
+
+.judul {
+    font-family: Anton;
+}
+
+.indikator {
+    margin-bottom: -5px;
+}
+
+
+.testimoni {
+    margin-top: -15px;
+}
+
+.mengajak {
+    background-image: url(../img/madul/bg1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.diskon {
+    background-image: url(../img/madul/bg2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.warna-bawah {
+    background-image: url(../img/madul/bg3.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.formulir {
+    background-image: url(../img/madul/bg1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-lagi {
+    background-image: url(../img/madul/bg1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.berhasil {
+    background-image: url(../img/madul/bg2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.berhasil-akupuntur {
+    background-image: url(../img/akupuntur/bg-isi.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.kotak-berhasil {
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+
+@media only screen and (min-width: 992px) {
+    .indikator {
+        margin-bottom: 0px;
+    }
+
+
+    .tulisan-bawah {
+        font-size: 25px;
+    }
+
+    .promo-bawah1 {
+        padding-bottom: 40px;
+    }
+
+    .promo-bawah {
+        padding-top: 40px;
+    }
+
+    .form-isi {
+        text-align: center;
+    }
+
+   .isi-form {
+       margin-left: 90px;
+   }
+
+   .isi-form-1 {
+    margin-left: 100px;
+}
+
+
+
+}

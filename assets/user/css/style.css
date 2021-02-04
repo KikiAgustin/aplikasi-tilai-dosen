@@ -1,0 +1,384 @@
+/* Halaman Index */
+*{
+    outline: none;
+}
+
+.halaman-utama {
+    background: linear-gradient(to right, #8F9C9C, #ffffff);  
+    font-family: "Open sans";
+  }
+
+
+.judul-awal{
+    font-size: 50px;
+    font-weight: 800;
+    margin-top: 15%;
+}
+
+.sub-judul-awal {
+    font-size: 23px;
+    font-weight: 400;
+}
+
+.sub-awal {
+    display: none;
+}
+
+.btn-home {
+    font-size: 25px;
+    font-weight: 500;
+    color: black;
+    border: 1px solid black;
+    margin-top: 50px;
+    width: 230px;
+}
+
+.btn-remove {
+    display: none;
+}
+
+/* Halaman Home */
+
+/* Navbar */
+.navbar {
+    background-color: #8f9aff;
+}
+
+/* Home */
+.img-about {
+    margin-top: 17px;
+}
+
+.tex-home {
+    margin-top: 170px;
+    font-size: 34px;
+    font-weight: 900;
+}
+
+.active {
+    font-weight: bold;
+}
+
+
+
+/* About */
+.about {
+    margin-top: 90px;
+    padding-top: 70px;
+}
+
+.judul-about {
+    font-size: 40px;
+    font-weight: 600;
+    margin-left: 40px;
+    color: white;
+}
+
+.bg-about-judul {
+    background: linear-gradient(to right, #8f9aff, #ffffff);  
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.isi-about {
+    font-size: 20px;
+    font-weight: 650;
+    text-align: justify;
+    margin-top: 80px;
+}
+
+/* Daftar Dosen */
+
+.daftar-dosen {
+    margin-top: 60px;
+    padding-top: 70px;
+}
+
+.isi-daftar-dosen {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.bg-daftar-dosen {
+    background: linear-gradient(to right, #8f9aff, #ffffff);  
+    border-radius: 10px;
+}
+
+.nama-dosen {
+    font-weight: 600;
+}
+
+.dosen-lainnya {
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.hapus-daftar {
+    display: none;
+}
+
+
+/* Contact */
+
+.contact {
+    padding-top: 70px;
+    margin-top: 25px;
+    margin-bottom: 100px;
+}
+
+.google-maps {
+    align-items: center;
+    width: 550px;
+    height: 300px ;
+}
+
+.isi-contact {
+    margin-top: 5%;
+    font-weight: 600;
+}
+
+/* Footer */
+
+.footer {
+    background-color: #8f9aff ;
+}
+
+/* Halaman Nilai */
+.halaman-nilai {
+    margin-top: 90px;
+}
+
+.nama-dosen {
+    font-size: 28px;
+    font-weight: 600;
+
+}
+
+.box-nilai {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box-nilai-n {
+    padding: 40px;
+}
+
+/* Halaman berhasil */
+.img-berhasil {
+    width: 330px;
+    height: 330px;
+}
+
+.text-berhasil {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* display none */
+
+.hapus-home {
+    display: none;
+}
+
+.hapus-about {
+    display: none;
+}
+
+.hapus-daftar-dosen {
+    display: none;
+}
+
+.hapus-contact {
+    display: none;
+}
+
+.hapus-footer {
+    display: none;
+}
+
+.hapus-rating{
+    display: none;
+}
+
+.hapus-berhasil {
+    display: none;
+}
+
+
+/*  Ukuran Mobile */
+@media (max-width: 575.98px) { 
+
+/* Halaman Index */
+    .judul-awal{
+        font-size: 23px;
+        font-weight: 800;
+        margin-top: 35%;
+    }
+
+    .sub-judul-awal {
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .sub-awal {
+        display: none;
+    }
+
+    .btn-home {
+        font-size: 20px;
+        font-weight: 400;
+        color: black;
+        border: 1px solid black;
+        margin-top: 20px;
+    }
+
+    .btn-remove {
+        display: none;
+    }
+
+    /* Halaman Home */
+    .navbar {
+        background-color: #8f9aff;
+    }
+
+    /* About */
+.img-about {
+    margin-top:120px;
+}
+
+.tex-home {
+    margin-top: -500px;
+    font-size: 23px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* About */
+.about {
+    margin-top: 70px;
+}
+
+.judul-about {
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 40px;
+    color: white;
+}
+
+.bg-about-judul {
+    background: linear-gradient(to right, #8f9aff, #ffffff);  
+    border-radius: 40px;
+    padding: 8px;
+}
+
+.isi-about {
+    font-size: 20px;
+    font-weight: 550;
+    text-align: justify;
+    margin-top: 38px;
+}
+
+/* Contact */
+
+.contact {
+    margin-top: 0px;
+    margin-bottom: 15px;
+    padding-top: 70px;
+}
+
+.google-maps {
+    align-items: center;
+    width: 400px;
+    height: 200px ;
+}
+
+.isi-contact {
+    margin-top: 0%;
+}
+
+/* Halaman Nilai */
+
+.box-nilai {
+    width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box-nilai-n {
+    padding: 5px;
+}
+
+/* Halaman berhasil */
+.img-berhasil {
+    width: 200px;
+    height: 200px;
+}
+
+.text-berhasil {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+ }
+
+
+
+ /* Inspek */
+ @media (max-width: 360px) { 
+        /* Home */
+.img-about {
+    margin-top:70%;
+}
+
+.tex-home {
+    margin-top: -370px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+/* About */
+.about {
+    margin-top: 70px;
+}
+
+.judul-about {
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 40px;
+    color: white;
+}
+
+.bg-about-judul {
+    background: linear-gradient(to right, #8f9aff, #ffffff);  
+    border-radius: 40px;
+    padding: 8px;
+}
+
+.isi-about {
+    font-size: 20px;
+    font-weight: 550;
+    text-align: justify;
+    margin-top: 38px;
+}
+/* Contact */
+.google-maps {
+    align-items: center;
+    width: 250px;
+    height: 200px ;
+}
+
+.isi-contact {
+    margin-top: 0%;
+}
+
+.box-nilai {
+    width: 270px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ }
