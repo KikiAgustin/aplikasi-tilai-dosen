@@ -18,7 +18,7 @@
                         <div class="card mb-3" style="max-width: 540px;">
                             <div class="row g-0 ">
                                 <div class="col-md-4 p-3 ">
-                                    <img src="<?= base_url("assets/user/") . $df["image"]; ?>" class="img-fluid rounded-circle border border-4 " alt="Dosen-1">
+                                    <img src="<?= base_url("assets/user/img/dosen/") . $df["image"]; ?>" class="img-fluid rounded-circle border border-4 " alt="Dosen-1">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
@@ -26,7 +26,7 @@
                                         <p class="card-text">
                                             <?= $df["quotes"]; ?>
                                         </p>
-                                        <a href="rating.html" class="btn btn-primary"> Riview Sekarang</a>
+                                        <a href="<?= base_url('User/riviewDosen/') . $df["id_daftar_dosen"]; ?>" class="btn btn-primary"> Riview Sekarang</a>
                                         </p>
                                     </div>
                                 </div>
@@ -34,86 +34,8 @@
                         </div>
                     </div>
                 <?php endforeach; ?>
-
-                <div class="col-sm-12 col-md-6">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0 ">
-                            <div class="col-md-4 p-3 ">
-                                <img src="<?= base_url("assets/user/"); ?>img/dosen-1.jpg" class="img-fluid rounded-circle border border-4 " alt="Dosen-1">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title nama-dosen">Kiki Agustin</h5>
-                                    <p class="card-text">
-                                        Belajar dari hal kecil sebelum menghadapi hal yang besar
-                                    </p>
-                                    <button class="btn btn-primary"> Riview Sekarang</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0 ">
-                            <div class="col-md-4 p-3 ">
-                                <img src="<?= base_url("assets/user/"); ?>img/dosen-1.jpg" class="img-fluid rounded-circle border border-4 " alt="Dosen-1">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title nama-dosen">Kiki Agustin</h5>
-                                    <p class="card-text">
-                                        Belajar dari hal kecil sebelum menghadapi hal yang besar
-                                    </p>
-                                    <button class="btn btn-primary"> Riview Sekarang</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0 ">
-                            <div class="col-md-4 p-3 ">
-                                <img src="<?= base_url("assets/user/"); ?>img/dosen-1.jpg" class="img-fluid rounded-circle border border-4 " alt="Dosen-1">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title nama-dosen">Kiki Agustin</h5>
-                                    <p class="card-text">
-                                        Belajar dari hal kecil sebelum menghadapi hal yang besar
-                                    </p>
-                                    <button class="btn btn-primary"> Riview Sekarang</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0 ">
-                            <div class="col-md-4 p-3 ">
-                                <img src="<?= base_url("assets/user/"); ?>img/dosen-1.jpg" class="img-fluid rounded-circle border border-4 " alt="Dosen-1">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title nama-dosen">Kiki Agustin</h5>
-                                    <p class="card-text">
-                                        Belajar dari hal kecil sebelum menghadapi hal yang besar
-                                    </p>
-                                    <button class="btn btn-primary"> Riview Sekarang</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
+        <!-- Footer -->
     </section>
-
-    <!-- Footer -->
-    <footer class="text-center footer text-white p-3 ">Copiright&copy; Kiki Agustin 2021</footer>
+    <footer class="text-center fixed-bottom text-white p-3 mb-0 ">Copiright&copy; Kiki Agustin 2021</footer>

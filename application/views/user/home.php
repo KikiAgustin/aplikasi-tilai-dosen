@@ -72,82 +72,27 @@
                 </div>
             </div>
             <div class="row isi-daftar-dosen">
-                <div class="col-sm-12 col-md-6">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0 ">
-                            <div class="col-md-4 p-3 ">
-                                <img src="<?= base_url("assets/user/"); ?>img/dosen-1.jpg" class="img-fluid rounded-circle border border-4 " alt="Dosen-1">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title nama-dosen">Kiki Agustin</h5>
-                                    <p class="card-text">
-                                        Belajar dari hal kecil sebelum menghadapi hal yang besar
-                                    </p>
-                                    <a href="rating.html" class="btn btn-primary"> Riview Sekarang</a>
-                                    </p>
+                <?php foreach ($daftar_dosen as $df) : ?>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0 ">
+                                <div class="col-md-4 p-3 ">
+                                    <img src="<?= base_url("assets/user/img/dosen/") . $df["image"]; ?>" class="img-fluid rounded-circle border border-4 " alt="<?= $df["nama"]; ?>">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <p class=" nama-dosen"><?= $df["nama"]; ?></p>
+                                        <p class="card-text">
+                                            <?= $df["quotes"]; ?>
+                                        </p>
+                                        <a href="<?= base_url('User/riviewDosen/') . $df["id_daftar_dosen"]; ?>" class="btn btn-primary"> Riview Sekarang</a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-12 col-md-6">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0 ">
-                            <div class="col-md-4 p-3 ">
-                                <img src="<?= base_url("assets/user/"); ?>img/dosen-1.jpg" class="img-fluid rounded-circle border border-4 " alt="Dosen-1">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title nama-dosen">Kiki Agustin</h5>
-                                    <p class="card-text">
-                                        Belajar dari hal kecil sebelum menghadapi hal yang besar
-                                    </p>
-                                    <button class="btn btn-primary"> Riview Sekarang</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0 ">
-                            <div class="col-md-4 p-3 ">
-                                <img src="<?= base_url("assets/user/"); ?>img/dosen-1.jpg" class="img-fluid rounded-circle border border-4 " alt="Dosen-1">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title nama-dosen">Kiki Agustin</h5>
-                                    <p class="card-text">
-                                        Belajar dari hal kecil sebelum menghadapi hal yang besar
-                                    </p>
-                                    <button class="btn btn-primary"> Riview Sekarang</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0 ">
-                            <div class="col-md-4 p-3 ">
-                                <img src="<?= base_url("assets/user/"); ?>img/dosen-1.jpg" class="img-fluid rounded-circle border border-4 " alt="Dosen-1">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title nama-dosen">Kiki Agustin</h5>
-                                    <p class="card-text">
-                                        Belajar dari hal kecil sebelum menghadapi hal yang besar
-                                    </p>
-                                    <button class="btn btn-primary"> Riview Sekarang</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
                 <a class="text-center dosen-lainnya" href="<?= base_url('User/daftarDosen'); ?>">Lainnya</a>
             </div>
         </div>

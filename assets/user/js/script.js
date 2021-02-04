@@ -163,7 +163,7 @@ function animasiBerhasil() {
     $("#halaman-berhasil").velocity("transition.flipBounceYOut", {
         stagger: 300,
         complete: function () {
-            location.href = base_url;
+            location.href = base_url + "user/home";
         }
     });
 }
