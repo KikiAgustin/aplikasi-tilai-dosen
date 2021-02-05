@@ -29,11 +29,11 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Pesanan Hari Ini</div>
+                                Jumlah Dosen</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahHariIni; ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <i class="fas fa-user-tie fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -47,11 +47,11 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Jumlah Pesanan Akupuntur</div>
+                                Jumlah User</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahAkupuntur; ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <i class="fas fa-fw fa-user fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -66,11 +66,11 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Jumlah Pesanan Madu</div>
+                                Jumlah Reviewer</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahMadu; ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <i class="fas fa-star-half-alt fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -84,11 +84,11 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah Penjualan</div>
+                                Jumlah Admin</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $totalJumlah; ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <i class="fas fa-users-cog fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>

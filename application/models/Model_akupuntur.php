@@ -28,6 +28,8 @@ class Model_akupuntur extends CI_Model
         $this->db->insert('akupuntur', $data);
     }
 
+
+
     public function pembelianAkupuntur()
     {
         $this->db->order_by('id_akupuntur', 'DESC');

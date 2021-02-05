@@ -3,16 +3,16 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data Penjualan Madu</h1>
+        <h1 class="h3 mb-0 text-gray-800">Daftar Dosen</h1>
     </div>
 
     <!-- Content Row -->
     <div class="row">
         <div class="col-12">
-
+            <a class="btn btn-primary mb-3" href="<?= base_url('Admin/tambahDosen'); ?>"><i class="fas fa-user-plus"></i> Tambah Dosen</a>
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Data Penjualan</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">daftar Dosen</h6>
                 </div>
                 <?= $this->session->flashdata('message'); ?>
                 <div class="card-body">
@@ -21,40 +21,23 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Tanggal Pesan</th>
-                                    <th>Nama Lengkap</th>
-                                    <th>Jenis penyakit</th>
-                                    <th>Nomor</th>
-                                    <th>Alamat</th>
-                                    <th>Jumlah</th>
-                                    <th>Status</th>
+                                    <th>Foto</th>
+                                    <th>Nama Dosen</th>
+                                    <th>Dosen Prodi</th>
+                                    <th>Quotes</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $i = 1; ?>
-                                <?php foreach ($pembelian as $pen) : ?>
-
-                                    <?php
-
-                                    $status = $pen['status'];
-
-                                    if ($status == 0) $status = '<span class="badge badge-light">Belum diProses</span>';
-                                    elseif ($status == 1) $status = '<span class="badge badge-primary">Sedang diproses</span>';
-                                    elseif ($status == 2) $status = '<span class="badge badge-success">Selesai</span>';
-                                    elseif ($status == 3) $status = '<span class="badge badge-danger">Failed</span>';
-
-                                    ?>
+                                <?php foreach ($daftar_dosen as $dd) : ?>
 
                                     <tr>
                                         <td><?= $i; ?></td>
-                                        <td><?= $pen['tanggal_pemesanan']; ?></td>
-                                        <td><?= $pen['nama']; ?></td>
-                                        <td><?= $pen['penyakit']; ?></td>
-                                        <td><?= $pen['nomor']; ?></td>
-                                        <td><?= $pen['alamat']; ?></td>
-                                        <td><?= $pen['jumlah']; ?></td>
-                                        <td><?= $status; ?></td>
+                                        <td><img src="<?= base_url('assets/user/img/dosen/') . $dd['image']; ?>" class="img-thumbnail" width="100" height="100" alt="<?= $dd['nama']; ?>"></td>
+                                        <td><?= $dd['nama']; ?></td>
+                                        <td><?= $dd['mengajar']; ?></td>
+                                        <td><?= $dd['quotes']; ?></td>
                                         <td>
                                             <!-- Example split danger button -->
                                             <div class="btn-group">
@@ -63,8 +46,8 @@
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="<?= base_url('Admin/editDataMadu/') . $pen['id_madu']; ?>">Ubah</a>
-                                                    <a onclick="return confirm('Apakah anda yakin ingin menghapus data ini!!')" class="dropdown-item" href="<?= base_url('Admin/hapusDataMadu/') . $pen['id_madu']; ?>">Hapus</a>
+                                                    <a class="dropdown-item" href="<?= base_url('Admin/editDataAkupuntur/') . $dd['id_daftar_dosen']; ?>">Edit</a>
+                                                    <a onclick="return confirm('Apakah anda yakin ingin menghapus data ini!!')" class="dropdown-item" href="<?= base_url('Admin/hapusDosen/') . $dd['id_daftar_dosen']; ?>">Hapus</a>
                                                 </div>
                                             </div>
                                         </td>

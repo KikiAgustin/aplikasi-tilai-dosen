@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2021 at 10:00 AM
+-- Generation Time: Feb 04, 2021 at 09:56 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -72,10 +72,7 @@ INSERT INTO `daftar_dosen` (`id_daftar_dosen`, `nama`, `mengajar`, `image`, `quo
 (1, 'Kiki Agustin', 'Teknik Informatika', 'dosen-1.png', 'Belajar menghadapi hal kecil, sebelum menghadapii hal besar'),
 (2, 'Mega Kusmayati', 'Teknik Informatika', 'dosen-2.png', 'Membiasakan mandiri sejak diusia dini, tuk bekal besar nanti'),
 (3, 'David Abdul Aziz', 'Teknik Informatika', 'dosen-3.png', 'Kerja keras dahulu, lalu nikmati hasilnya kemuadian hari'),
-(4, 'Ismayanti', 'Teknik Informatika', 'dosen-4.png', 'Belajar ikhtiar dan berdoa untuk kesuksesan'),
-(6, 'Dea', 'Komputerarisasi Akuntansi', 'dosen-default.png', 'Belajar dari kesalahan'),
-(8, 'Jajang Maulana', 'Teknik Industri', 'kesedihan2.png', 'belajar dari hari kemarin untuk melangkah kehari esok'),
-(9, 'Dea Aja', 'Komputerarisasi Akuntansi', 'default.jpg', 'Belajar belajar');
+(4, 'Ismayanti', 'Teknik Informatika', 'dosen-4.png', 'Belajar ikhtiar dan berdoa untuk kesuksesan');
 
 -- --------------------------------------------------------
 
@@ -235,7 +232,7 @@ ALTER TABLE `akupuntur`
 -- AUTO_INCREMENT for table `daftar_dosen`
 --
 ALTER TABLE `daftar_dosen`
-  MODIFY `id_daftar_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_daftar_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `hasil_penilaian`

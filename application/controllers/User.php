@@ -17,7 +17,7 @@ class User extends CI_Controller
 
     public function home()
     {
-        $daftarDosen = $this->db->get('daftar_dosen')->result_array();
+        $daftarDosen = $this->Model_dosen->dosenHome();
         $data = [
             'judul'         => "Aplikasi Review Dosen | Home",
             'daftar_dosen'  => $daftarDosen

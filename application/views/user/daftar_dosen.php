@@ -38,4 +38,4 @@
         </div>
         <!-- Footer -->
     </section>
-    <footer class="text-center fixed-bottom text-white p-3 mb-0 ">Copiright&copy; Kiki Agustin 2021</footer>
+    <footer class="text-center  text-white p-3 mb-0 ">Copiright&copy; Kiki Agustin 2021</footer>

@@ -21,8 +21,8 @@
 
     <li class="nav-item active">
         <a class="nav-link" href="<?= base_url('Admin/user'); ?>">
-            <i class="fas fa-fw fa-user"></i>
-            <span>User</span></a>
+            <i class="fas fa-users-cog"></i>
+            <span>Admin</span></a>
     </li>
 
     <!-- Divider -->
@@ -30,24 +30,32 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Penjualan
+        Seputar Aplikasi
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-cart-arrow-down"></i>
-            <span>Data Penjualan</span>
+            <i class="fas fa-user-tie"></i>
+            <span>Dosen</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Sumber:</h6>
-                <a class="collapse-item" href="<?= base_url('Admin/dataAkupuntur'); ?>">Akupuntur</a>
-                <a class="collapse-item" href="<?= base_url('Admin/dataMadu'); ?>">Madu</a>
+                <!-- <h6 class="collapse-header">Su:</h6> -->
+                <a class="collapse-item" href="<?= base_url('Admin/daftarDosen'); ?>">Daftar Dosen</a>
+                <a class="collapse-item" href="<?= base_url('Admin/dataMadu'); ?>">Hasil Penilaian</a>
             </div>
         </div>
     </li>
 
+    <li class="nav-item active">
+        <a class="nav-link" href="<?= base_url('Admin/user'); ?>">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Daftar User</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
 
     <li class="nav-item active">
         <a class="nav-link" href="" data-toggle="modal" data-target="#logoutModal">

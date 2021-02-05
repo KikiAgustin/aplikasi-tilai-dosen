@@ -29,22 +29,66 @@ class Admin extends CI_Controller
     $this->load->view('templates/footer');
   }
 
-  // Akupuntur
+  // Daftar Dosen
 
-  public function dataAkupuntur()
+  public function daftarDosen()
   {
+    $this->load->model('Model_dosen');
+    $daftar_dosen = $this->Model_dosen->dataDosen();
+    $getUser = $this->Model_user->getUser();
 
-    $this->load->model('Model_akupuntur');
-    $data['pembelian'] =  $this->Model_akupuntur->pembelianAkupuntur();
+    $data = [
+      'daftar_dosen' => $daftar_dosen,
+      'getUser'      => $getUser
+    ];
 
-    $data['getUser'] = $this->Model_user->getUser();
-
-    $this->load->view('templates/header');
+    $this->load->view('templates/header', $data);
     $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar', $data);
-    $this->load->view('admin/data_akupuntur', $data);
+    $this->load->view('templates/topbar');
+    $this->load->view('admin/daftar_dosen');
     $this->load->view('templates/footer');
   }
+
+  public function hapusDosen($id_dosen)
+  {
+    $this->load->model('Model_dosen');
+    $this->Model_dosen->hapusDosen($id_dosen);
+    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Dosen Berhasil dihapus</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+    redirect('Admin/daftarDosen');
+  }
+
+  public function tambahDosen()
+  {
+    $data['getUser'] = $this->Model_user->getUser();
+
+    $this->form_validation->set_rules('nama', 'Nama Dosen', 'required|trim');
+    $this->form_validation->set_rules('prodi', 'Dosen Dari Prodi', 'required|trim');
+    $this->form_validation->set_rules('quotes', 'Quotes', 'required|trim');
+
+    if ($this->form_validation->run() == false) {
+      $this->load->view('templates/header', $data);
+      $this->load->view('templates/sidebar');
+      $this->load->view('templates/topbar');
+      $this->load->view('admin/tambah_dosen');
+      $this->load->view('templates/footer');
+    } else {
+      $this->load->model('Model_dosen');
+      $this->Model_dosen->tambahDataDosen();
+      $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Dosen Berhasil ditambah</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+      redirect('Admin/daftarDosen');
+    }
+  }
+
 
   public function editDataAkupuntur($id_akupuntur)
   {
@@ -74,78 +118,7 @@ class Admin extends CI_Controller
     }
   }
 
-  public function hapusDataAkupuntur($id_akupuntur)
-  {
-    $this->load->model('Model_akupuntur');
-    $this->Model_akupuntur->hapusPesananAkupuntur($id_akupuntur);
-    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Pesanan Berhasil dihapus</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>');
-    redirect('Admin/dataAkupuntur');
-  }
-
   // Akhir Akupuntur
-
-  // Madu
-  public function dataMadu()
-  {
-
-    $this->load->model('Model_madu');
-    $data['pembelian'] =  $this->Model_madu->pembelianMadu();
-    $data['getUser'] = $this->Model_user->getUser();
-
-    $this->load->view('templates/header');
-    $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar', $data);
-    $this->load->view('admin/data_madu', $data);
-    $this->load->view('templates/footer');
-  }
-
-  public function editDataMadu($id_madu)
-  {
-    $this->load->model('Model_madu');
-    $data['edit_madu'] =  $this->Model_madu->getIdMadu($id_madu);
-    $data['getUser'] = $this->Model_user->getUser();
-
-    $this->form_validation->set_rules('status', 'Status', 'required');
-
-    if ($this->form_validation->run() == false) {
-      $this->load->view('templates/header');
-      $this->load->view('templates/sidebar');
-      $this->load->view('templates/topbar', $data);
-      $this->load->view('admin/edit_madu', $data);
-      $this->load->view('templates/footer');
-    } else {
-      $this->load->model('Model_madu');
-      $this->Model_madu->editPesananMadu();
-      $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Pesanan Berhasil diedit</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>');
-      redirect('Admin/dataMadu');
-    }
-  }
-
-  public function hapusDataMadu($id_madu)
-  {
-    $this->load->model('Model_madu');
-    $this->Model_madu->hapusPesananMadu($id_madu);
-    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Pesanan Berhasil dihapus</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>');
-    redirect('Admin/dataMadu');
-  }
-
-  // Akhir Madu
-
 
 
   public function user()
