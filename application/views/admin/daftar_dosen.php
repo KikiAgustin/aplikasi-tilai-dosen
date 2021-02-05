@@ -46,7 +46,7 @@
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="<?= base_url('Admin/editDataAkupuntur/') . $dd['id_daftar_dosen']; ?>">Edit</a>
+                                                    <a class="dropdown-item" href="<?= base_url('Admin/editDosen/') . $dd['id_daftar_dosen']; ?>">Edit</a>
                                                     <a onclick="return confirm('Apakah anda yakin ingin menghapus data ini!!')" class="dropdown-item" href="<?= base_url('Admin/hapusDosen/') . $dd['id_daftar_dosen']; ?>">Hapus</a>
                                                 </div>
                                             </div>

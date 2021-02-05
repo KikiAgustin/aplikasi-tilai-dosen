@@ -57,6 +57,11 @@ class Model_dosen extends CI_Model
         $this->db->insert('daftar_dosen', $data);
     }
 
+    public function getIdDosen($id_dosen)
+    {
+        return $this->db->get_where('daftar_dosen', ['id_daftar_dosen' => $id_dosen])->row_array();
+    }
+
     // Untuk halaman user
     public function dosenHome()
     {

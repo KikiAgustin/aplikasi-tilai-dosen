@@ -89,6 +89,21 @@ class Admin extends CI_Controller
     }
   }
 
+  public function editDosen($id_dosen)
+  {
+    $this->load->model('Model_dosen');
+    $data = [
+      'getUser' => $this->Model_user->getUser(),
+      'edit_dosen' => $this->Model_dosen->getIdDosen($id_dosen)
+    ];
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar');
+    $this->load->view('templates/topbar');
+    $this->load->view('admin/edit_dosen');
+    $this->load->view('templates/footer');
+  }
+
 
   public function editDataAkupuntur($id_akupuntur)
   {
