@@ -62,36 +62,82 @@ class Model_dosen extends CI_Model
         return $this->db->get_where('daftar_dosen', ['id_daftar_dosen' => $id_dosen])->row_array();
     }
 
+    public function editDosen()
+    {
+        $id_dosen = $this->input->post('id_dosen');
+        $namaDosen = htmlspecialchars($this->input->post('nama'));
+        $prodi = htmlspecialchars($this->input->post('prodi'));
+        $quotes = htmlspecialchars($this->input->post('quotes'));
+        $dosen = $this->db->get_where('daftar_dosen', ['id_daftar_dosen' => $id_dosen])->row_array();
+        $gambar_dosen = $dosen['image'];
+
+        $gambar = $_FILES['foto']['name'];
+
+        if ($gambar) {
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']     = '3000';
+            $config['upload_path'] = './assets/user/img/dosen/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) {
+
+                if ($gambar_dosen != 'dosen-default.png') {
+                    unlink(FCPATH . 'assets/user/img/dosen/' . $gambar_dosen);
+                }
+                $foto_baru = $this->upload->data('file_name');
+            } else {
+                $error =  $this->upload->display_errors();
+                $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>' . $error . '</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>');
+                redirect('Admin/editDosen/' . $id_dosen);
+            }
+        }
+
+        if (empty($foto_baru)) $foto_baru = $gambar_dosen;
+
+        $data = [
+            'nama' => $namaDosen,
+            'mengajar' => $prodi,
+            'quotes' => $quotes,
+            'image' => $foto_baru
+        ];
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->update('daftar_dosen', $data);
+    }
+
     // Untuk halaman user
     public function dosenHome()
     {
         return  $this->db->get('daftar_dosen', 4)->result_array();
     }
 
-
-    public function getIdAkupuntur($id_akupuntur)
+    public function jumlahDosen()
     {
-        return $this->db->get_where('akupuntur', ['id_akupuntur' => $id_akupuntur])->row_array();
+        return $this->db->get('daftar_dosen')->num_rows();
     }
 
-    public function editPesananAkupuntur()
+    // Halama Penilaian
+
+    public function daftarNilaiDosen()
     {
+        $this->db->join('daftar_dosen', 'daftar_dosen.id_daftar_dosen = hasil_penilaian.id_daftar_dosen ', 'left');
 
-        $status = $this->input->post('status', true);
-
-        $data = [
-
-            'status' => $status
-        ];
-
-        $this->db->where('id_akupuntur', $this->input->post('id_akupuntur'));
-        $this->db->update('akupuntur', $data);
+        return $this->db->get('hasil_penilaian')->result_array();
     }
 
-
-
-    public function jumlahAkupuntur()
+    public function hasilNilai($id_dosen)
     {
-        return $this->db->get('akupuntur')->num_rows();
+        for ($i = 1; $i < 10; $i++) {
+            $sql = "SELECT SUM(rating1) AS rating1 FROM hasil_penilaian WHERE id_daftar_dosen='$id_dosen' AND rating1='$i' ";
+            $result = $this->db->query($sql);
+            // $sql = "SELECT rating1,rating2 FROM hasil_penilaian WHERE id_daftar_dosen='$id_dosen' ";
+            // return $this->db->query($sql)->result_array();
+        }
+        return $result->row()->rating1;
     }
 }

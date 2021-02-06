@@ -17,6 +17,7 @@ $(document).ready(function () {
         let rating1 = $("#hasilRatingPertama").val();
         let rating2 = $("#hasilRatingKedua").val();
         let saran = $("#saran").val();
+        let id_dosen = $("#idDosen").val();
 
         if ($.trim(rating1).length < 1) {
             Swal.fire({
@@ -49,7 +50,7 @@ $(document).ready(function () {
                 }
             })
         } else {
-            let dataString = "rating1=" + rating1 + "&rating2=" + rating2 + "&saran=" + saran;
+            let dataString = "rating1=" + rating1 + "&rating2=" + rating2 + "&saran=" + saran + "&id_dosen=" + id_dosen;
 
             if ($.trim(rating1).length > 0) {
                 $.ajax({

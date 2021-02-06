@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2021 at 10:00 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Feb 06, 2021 at 02:18 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,35 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `aplikasi_penilaian`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `akupuntur`
---
-
-CREATE TABLE `akupuntur` (
-  `id_akupuntur` int(11) NOT NULL,
-  `tanggal_pemesanan` varchar(20) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `penyakit` varchar(30) NOT NULL,
-  `nomor` varchar(20) NOT NULL,
-  `alamat` varchar(100) NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `akupuntur`
---
-
-INSERT INTO `akupuntur` (`id_akupuntur`, `tanggal_pemesanan`, `nama`, `penyakit`, `nomor`, `alamat`, `jumlah`, `status`) VALUES
-(1, '20-09-2020', 'Kiki Agustin', 'Lainnya', '085794203570', 'Bandung', 1, 1),
-(3, '20-09-2020', 'Jajang', 'Lainnya', '1212', 'Bandung', 2, 2),
-(6, '21-09-2020', 'Dea Hasanah', 'Nyeri Sendi dan Otot', '0898897760', 'Bandung', 1, 0),
-(7, '21-09-2020', 'asasa', 'Nyeri Sendi dan Otot', '121212', 'asasasa', 1, 0),
-(8, '21-09-2020', 'Raju', 'Nyeri Sendi dan Otot', '12121', 'asasas', 2, 0),
-(9, '21-09-2020', 'Kiki Agustin', 'Migrain', '098998776554', 'Majalaya', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -73,9 +44,7 @@ INSERT INTO `daftar_dosen` (`id_daftar_dosen`, `nama`, `mengajar`, `image`, `quo
 (2, 'Mega Kusmayati', 'Teknik Informatika', 'dosen-2.png', 'Membiasakan mandiri sejak diusia dini, tuk bekal besar nanti'),
 (3, 'David Abdul Aziz', 'Teknik Informatika', 'dosen-3.png', 'Kerja keras dahulu, lalu nikmati hasilnya kemuadian hari'),
 (4, 'Ismayanti', 'Teknik Informatika', 'dosen-4.png', 'Belajar ikhtiar dan berdoa untuk kesuksesan'),
-(6, 'Dea', 'Komputerarisasi Akuntansi', 'dosen-default.png', 'Belajar dari kesalahan'),
-(8, 'Jajang Maulana', 'Teknik Industri', 'kesedihan2.png', 'belajar dari hari kemarin untuk melangkah kehari esok'),
-(9, 'Dea Aja', 'Komputerarisasi Akuntansi', 'default.jpg', 'Belajar belajar');
+(9, 'Dea Hasanah Tsaniah', 'Komputerarisasi Akuntansi', 'kikiagustin.jpg', 'Belajar belajar');
 
 -- --------------------------------------------------------
 
@@ -87,76 +56,18 @@ CREATE TABLE `hasil_penilaian` (
   `id_penilaian` int(11) NOT NULL,
   `rating1` int(11) NOT NULL,
   `rating2` int(11) NOT NULL,
-  `saran` text NOT NULL
+  `saran` text NOT NULL,
+  `id_daftar_dosen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hasil_penilaian`
 --
 
-INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`) VALUES
-(1, 10, 10, 'asasasasasas'),
-(2, 10, 10, 'bismillah semoga berhasil'),
-(3, 10, 9, 'bismillah kembali karena sukses itu butuh proses'),
-(4, 8, 10, 'Pembalajaran menyenangkan dengan belajar '),
-(5, 10, 10, 'Selamat semoga sukses');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `jumlah_keseluruhan`
---
-
-CREATE TABLE `jumlah_keseluruhan` (
-  `id_keseluruhan` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
-  `pembelian` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `jumlah_keseluruhan`
---
-
-INSERT INTO `jumlah_keseluruhan` (`id_keseluruhan`, `tanggal`, `pembelian`) VALUES
-(1, '2020-09-01', 1),
-(2, '2020-09-09', 1),
-(3, '2020-09-14', 1),
-(4, '2020-09-20', 1),
-(5, '2020-09-20', 1),
-(6, '2020-09-20', 1),
-(7, '2020-09-20', 1),
-(8, '2020-09-20', 1),
-(9, '2020-09-20', 1),
-(10, '2020-09-20', 1),
-(11, '2020-09-20', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `madu`
---
-
-CREATE TABLE `madu` (
-  `id_madu` int(11) NOT NULL,
-  `tanggal_pemesanan` varchar(20) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `penyakit` varchar(20) NOT NULL,
-  `nomor` varchar(20) NOT NULL,
-  `alamat` varchar(100) NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `madu`
---
-
-INSERT INTO `madu` (`id_madu`, `tanggal_pemesanan`, `nama`, `penyakit`, `nomor`, `alamat`, `jumlah`, `status`) VALUES
-(1, '20-09-2020', 'Kiki Agustin', 'Lainnya', '085794203570', 'Kp. Salamungkal Rt.02 Rw.07 Desa. Karangtunggal Kecamatan. Paseh kabupaten. Bandung Provinsi. Jawa B', 2, 2),
-(3, '21-09-2020', 'Dea Juga', 'Lainnya', '099990009998', 'Cimahi', 2, 0),
-(4, '21-09-2020', 'asasa', 'Asam Lambung', '12121', 'asasasa', 2, 0),
-(5, '21-09-2020', 'yaya Maulana', 'Asam Lambung', '32323', 'asasaasa', 2, 0),
-(6, '21-09-2020', 'Dea Hasanatus ', 'Lainnya', '098887665454', 'Cimahi', 2, 0);
+INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`) VALUES
+(1, 10, 10, 'cara menyampaikan materi sangat enak dan mudah di mengerti', 1),
+(2, 10, 10, 'Dosenny sangat seru ketika mengajar', 3),
+(3, 8, 10, 'Cara mengajar saat enak dan mudah dimengerti', 1);
 
 -- --------------------------------------------------------
 
@@ -186,12 +97,6 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`, `is_active`, `role_id`) V
 --
 
 --
--- Indexes for table `akupuntur`
---
-ALTER TABLE `akupuntur`
-  ADD PRIMARY KEY (`id_akupuntur`);
-
---
 -- Indexes for table `daftar_dosen`
 --
 ALTER TABLE `daftar_dosen`
@@ -204,18 +109,6 @@ ALTER TABLE `hasil_penilaian`
   ADD PRIMARY KEY (`id_penilaian`);
 
 --
--- Indexes for table `jumlah_keseluruhan`
---
-ALTER TABLE `jumlah_keseluruhan`
-  ADD PRIMARY KEY (`id_keseluruhan`);
-
---
--- Indexes for table `madu`
---
-ALTER TABLE `madu`
-  ADD PRIMARY KEY (`id_madu`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -224,12 +117,6 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `akupuntur`
---
-ALTER TABLE `akupuntur`
-  MODIFY `id_akupuntur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `daftar_dosen`
@@ -241,19 +128,7 @@ ALTER TABLE `daftar_dosen`
 -- AUTO_INCREMENT for table `hasil_penilaian`
 --
 ALTER TABLE `hasil_penilaian`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `jumlah_keseluruhan`
---
-ALTER TABLE `jumlah_keseluruhan`
-  MODIFY `id_keseluruhan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `madu`
---
-ALTER TABLE `madu`
-  MODIFY `id_madu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`

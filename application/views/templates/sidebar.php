@@ -43,7 +43,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <!-- <h6 class="collapse-header">Su:</h6> -->
                 <a class="collapse-item" href="<?= base_url('Admin/daftarDosen'); ?>">Daftar Dosen</a>
-                <a class="collapse-item" href="<?= base_url('Admin/dataMadu'); ?>">Hasil Penilaian</a>
+                <a class="collapse-item" href="<?= base_url('HasilPenilaian'); ?>">Hasil Penilaian</a>
             </div>
         </div>
     </li>

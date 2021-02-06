@@ -9,9 +9,10 @@
     <div class="row">
 
         <div class="col-sm-12 col-lg-6">
+            <?= $this->session->flashdata('message'); ?>
             <form action="" method="POST" enctype="multipart/form-data">
 
-                <input type="hidden" name="id_akupuntur" value="<?= $edit_dosen['id_daftar_dosen']; ?>">
+                <input type="hidden" name="id_dosen" value="<?= $edit_dosen['id_daftar_dosen']; ?>">
 
                 <div class="form-group">
                     <label for="exampleInputEmail1" class="font-weight-bold">Nama Lengkap</label>
@@ -29,11 +30,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="foto" class="font-weight-bold">Foto Dosen</label>
-                    <input class="form-control" name="foto" type="file" id="foto">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3 ">
+                            <img src="<?= base_url('assets/user/img/dosen/') . $edit_dosen['image']; ?>" class="img-thumbnail" alt="<?= $edit_dosen['nama']; ?>">
+                        </div>
+                        <div class="col-sm-12 col-md-9 ">
+                            <label for="foto" class="font-weight-bold">Foto Dosen</label>
+                            <input class="form-control" name="foto" type="file" id="foto">
+                        </div>
+                    </div>
+
                 </div>
 
-                <button type="submit" name="submit" class="btn btn-primary">Edit Pesanan</button>
+                <button type="submit" name="submit" class="btn btn-primary">Edit Dosen</button>
 
             </form>
         </div>

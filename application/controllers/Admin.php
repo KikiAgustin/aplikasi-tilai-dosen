@@ -15,11 +15,7 @@ class Admin extends CI_Controller
   public function index()
   {
 
-    $data['jumlahAkupuntur'] =  $this->Model_akupuntur->jumlahAkupuntur();
-    $data['jumlahMadu'] = $this->Model_madu->jumlahMadu();
-    $data['jumlahHariIni'] = $this->Model_user->jumlahHariIni();
-    $data['totalJumlah'] = $this->Model_user->totalJumlah();
-
+    $data['jumlah_dosen'] =  $this->Model_dosen->jumlahDosen();
     $data['getUser'] = $this->Model_user->getUser();
 
     $this->load->view('templates/header');
@@ -51,6 +47,13 @@ class Admin extends CI_Controller
 
   public function hapusDosen($id_dosen)
   {
+    $daftar_dosen = $this->db->get_where('daftar_dosen', ['id_daftar_dosen' => $id_dosen])->row_array();
+    $id_gambar  = $daftar_dosen['image'];
+
+    if ($id_gambar != 'dosen-default.png') {
+      unlink(FCPATH . 'assets/user/img/dosen/' . $id_gambar);
+    }
+
     $this->load->model('Model_dosen');
     $this->Model_dosen->hapusDosen($id_dosen);
     $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -97,45 +100,31 @@ class Admin extends CI_Controller
       'edit_dosen' => $this->Model_dosen->getIdDosen($id_dosen)
     ];
 
-    $this->load->view('templates/header', $data);
-    $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar');
-    $this->load->view('admin/edit_dosen');
-    $this->load->view('templates/footer');
-  }
-
-
-  public function editDataAkupuntur($id_akupuntur)
-  {
-    $this->load->model('Model_akupuntur');
-    $data['edit_akupuntur'] =  $this->Model_akupuntur->getIdAkupuntur($id_akupuntur);
-
-    $data['getUser'] = $this->Model_user->getUser();
-
-    $this->form_validation->set_rules('status', 'Status', 'required');
+    $this->form_validation->set_rules('nama', 'Nama Dosen', 'required|trim');
+    $this->form_validation->set_rules('prodi', 'Dosen Dari Prodi', 'required|trim');
+    $this->form_validation->set_rules('quotes', 'Quotes', 'required|trim');
 
     if ($this->form_validation->run() == false) {
-      $this->load->view('templates/header');
+      $this->load->view('templates/header', $data);
       $this->load->view('templates/sidebar');
-      $this->load->view('templates/topbar', $data);
-      $this->load->view('admin/edit_akupuntur', $data);
+      $this->load->view('templates/topbar');
+      $this->load->view('admin/edit_dosen');
       $this->load->view('templates/footer');
     } else {
-      $this->load->model('Model_akupuntur');
-      $this->Model_akupuntur->editPesananAkupuntur();
+      $this->load->model('Model_dosen');
+      $this->Model_dosen->editDosen();
       $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Pesanan Berhasil diedit</strong>
+            <strong>Dosen Berhasil diedit</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>');
-      redirect('Admin/dataAkupuntur');
+      redirect('Admin/daftarDosen');
     }
   }
 
-  // Akhir Akupuntur
 
-
+  // Method User
   public function user()
   {
     $this->load->model('Model_user');

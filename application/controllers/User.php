@@ -59,11 +59,13 @@ class User extends CI_Controller
         $rating1 = $_POST['rating1'];
         $rating2 = $_POST['rating2'];
         $saran = $_POST['saran'];
+        $id_dosen = $_POST['id_dosen'];
 
         $data = [
             'rating1' => $rating1,
             'rating2' => $rating2,
-            'saran' => $saran
+            'saran' => $saran,
+            'id_daftar_dosen' => $id_dosen
         ];
 
         $this->db->insert('hasil_penilaian', $data);

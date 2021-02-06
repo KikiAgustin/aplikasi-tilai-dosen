@@ -175,6 +175,7 @@
 
     <input style="display: none;" type="text" id="hasilRatingPertama">
     <input style="display: none;" type="text" id="hasilRatingKedua">
+    <input style="display: none;" type="text" id="idDosen" value="<?= $riviewDosen['id_daftar_dosen']; ?>">
 
 
 

@@ -12,6 +12,5 @@
                 selama mengajar terhadap mahasiswa</p>
         </div>
 
-        <button onclick="animasiIntroOut()" id="btn-nilai" class="btn btn-outline-primary btn-home btn-remove">Nilai
-            Sekarang</button>
+        <button onclick="animasiIntroOut()" id="btn-nilai" class="btn btn-outline-primary btn-home btn-remove">Nilai Sekarang</button>
     </div>
