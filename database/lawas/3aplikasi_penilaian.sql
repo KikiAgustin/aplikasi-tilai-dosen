@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2021 at 06:27 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Feb 06, 2021 at 02:18 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,20 +57,17 @@ CREATE TABLE `hasil_penilaian` (
   `rating1` int(11) NOT NULL,
   `rating2` int(11) NOT NULL,
   `saran` text NOT NULL,
-  `id_daftar_dosen` int(11) NOT NULL,
-  `pilihan` int(11) NOT NULL,
-  `pilihan2` int(11) NOT NULL
+  `id_daftar_dosen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hasil_penilaian`
 --
 
-INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`, `pilihan`, `pilihan2`) VALUES
-(1, 10, 10, 'cara menyampaikan materi sangat enak dan mudah di mengerti', 1, 10, 10),
-(2, 10, 10, 'Dosenny sangat seru ketika mengajar', 3, 10, 10),
-(3, 8, 10, 'Cara mengajar saat enak dan mudah dimengerti', 1, 10, 10),
-(4, 4, 7, 'Pembelajaran lebih menyanangkan karena sistem pembelajaran yang milenial', 1, 4, 7);
+INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`) VALUES
+(1, 10, 10, 'cara menyampaikan materi sangat enak dan mudah di mengerti', 1),
+(2, 10, 10, 'Dosenny sangat seru ketika mengajar', 3),
+(3, 8, 10, 'Cara mengajar saat enak dan mudah dimengerti', 1);
 
 -- --------------------------------------------------------
 
@@ -131,7 +128,7 @@ ALTER TABLE `daftar_dosen`
 -- AUTO_INCREMENT for table `hasil_penilaian`
 --
 ALTER TABLE `hasil_penilaian`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`

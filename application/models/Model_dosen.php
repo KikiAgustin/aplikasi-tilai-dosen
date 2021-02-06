@@ -130,14 +130,206 @@ class Model_dosen extends CI_Model
         return $this->db->get('hasil_penilaian')->result_array();
     }
 
-    public function hasilNilai($id_dosen)
+    // Cara mengajar
+    public function mengajar1($id_dosen)
     {
-        for ($i = 1; $i < 10; $i++) {
-            $sql = "SELECT SUM(rating1) AS rating1 FROM hasil_penilaian WHERE id_daftar_dosen='$id_dosen' AND rating1='$i' ";
-            $result = $this->db->query($sql);
-            // $sql = "SELECT rating1,rating2 FROM hasil_penilaian WHERE id_daftar_dosen='$id_dosen' ";
-            // return $this->db->query($sql)->result_array();
-        }
-        return $result->row()->rating1;
+        $pilihan = "1";
+
+        $this->db->where('pilihan', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function mengajar2($id_dosen)
+    {
+        $pilihan = "2";
+
+        $this->db->where('pilihan', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function mengajar3($id_dosen)
+    {
+        $pilihan = "3";
+
+        $this->db->where('pilihan', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function mengajar4($id_dosen)
+    {
+        $pilihan = "4";
+
+        $this->db->where('pilihan', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function mengajar5($id_dosen)
+    {
+        $pilihan = "5";
+
+        $this->db->where('pilihan', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function mengajar6($id_dosen)
+    {
+        $pilihan = "6";
+
+        $this->db->where('pilihan', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function mengajar7($id_dosen)
+    {
+        $pilihan = "7";
+
+        $this->db->where('pilihan', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function mengajar8($id_dosen)
+    {
+        $pilihan = "8";
+
+        $this->db->where('pilihan', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function mengajar9($id_dosen)
+    {
+        $pilihan = "9";
+
+        $this->db->where('pilihan', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function mengajar10($id_dosen)
+    {
+        $pilihan = "10";
+
+        $this->db->where('pilihan', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+
+    // Penyampaian Materi
+    public function penyampaian1($id_dosen)
+    {
+        $pilihan = "1";
+
+        $this->db->where('pilihan2', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function penyampaian2($id_dosen)
+    {
+        $pilihan = "2";
+
+        $this->db->where('pilihan2', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function penyampaian3($id_dosen)
+    {
+        $pilihan = "3";
+
+        $this->db->where('pilihan2', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function penyampaian4($id_dosen)
+    {
+        $pilihan = "4";
+
+        $this->db->where('pilihan2', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function penyampaian5($id_dosen)
+    {
+        $pilihan = "5";
+
+        $this->db->where('pilihan2', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function penyampaian6($id_dosen)
+    {
+        $pilihan = "6";
+
+        $this->db->where('pilihan2', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function penyampaian7($id_dosen)
+    {
+        $pilihan = "7";
+
+        $this->db->where('pilihan2', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function penyampaian8($id_dosen)
+    {
+        $pilihan = "8";
+
+        $this->db->where('pilihan2', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function penyampaian9($id_dosen)
+    {
+        $pilihan = "9";
+
+        $this->db->where('pilihan2', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+    public function penyampaian10($id_dosen)
+    {
+        $pilihan = "10";
+
+        $this->db->where('pilihan2', $pilihan);
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+
+    // Jumlah Reviewer 
+    public function jumlahReview($id_dosen)
+    {
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
+    }
+
+    public function jumlahCaraMengajar($id_dosen)
+    {
+        $query = "SELECT SUM(rating1) AS rating1 FROM hasil_penilaian WHERE id_daftar_dosen='$id_dosen' ";
+        return $this->db->query($query)->row_array();
+    }
+    public function jumlahPenyampaianMatari($id_dosen)
+    {
+        $query = "SELECT SUM(rating2) AS rating2 FROM hasil_penilaian WHERE id_daftar_dosen='$id_dosen' ";
+        return $this->db->query($query)->row_array();
     }
 }

@@ -9,6 +9,12 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-12">
+            <button onclick="goBack()" class="btn btn-primary mb-3"><i class="fas fa-arrow-left"></i> Kembali</button>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Hasil Review</h6>
@@ -47,7 +53,7 @@
                                                                         <i class="fas fa-star-half-alt fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $mengajar1; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -55,7 +61,7 @@
                                                                         <i class="fas fa-star fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $mengajar2; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -64,7 +70,7 @@
                                                                         <i class="fas fa-star-half-alt fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $mengajar3; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -73,7 +79,7 @@
                                                                         <i class="fas fa-star fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $mengajar4; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -83,7 +89,7 @@
                                                                         <i class="fas fa-star-half-alt fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $mengajar5; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -93,7 +99,7 @@
                                                                         <i class="fas fa-star fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $mengajar6; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -104,7 +110,7 @@
                                                                         <i class="fas fa-star-half-alt fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $mengajar7; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -115,7 +121,7 @@
                                                                         <i class="fas fa-star fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $mengajar8; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -127,7 +133,7 @@
                                                                         <i class="fas fa-star-half-alt fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $mengajar9; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -139,7 +145,7 @@
                                                                         <i class="fas fa-star fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $mengajar10; ?></h5>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -148,19 +154,19 @@
                                                     <div class="card">
                                                         <div class="card-header" id="headingTwo">
                                                             <h2 class="mb-0">
-                                                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#penyampaian_materi" aria-expanded="false" aria-controls="collapseTwo">
                                                                     Penyampaian Materi
                                                                 </button>
                                                             </h2>
                                                         </div>
-                                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                                        <div id="penyampaian_materi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                                             <div class="card-body">
                                                                 <div class="row">
                                                                     <div class="col-sm-6">
                                                                         <i class="fas fa-star-half-alt fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $penyampaian1; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -168,7 +174,7 @@
                                                                         <i class="fas fa-star fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $penyampaian2; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -177,7 +183,7 @@
                                                                         <i class="fas fa-star-half-alt fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $penyampaian3; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -186,7 +192,7 @@
                                                                         <i class="fas fa-star fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $penyampaian4; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -196,7 +202,7 @@
                                                                         <i class="fas fa-star-half-alt fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $penyampaian5; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -206,7 +212,7 @@
                                                                         <i class="fas fa-star fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $penyampaian6; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -217,7 +223,7 @@
                                                                         <i class="fas fa-star-half-alt fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $penyampaian7; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -228,7 +234,7 @@
                                                                         <i class="fas fa-star fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $penyampaian8; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -240,7 +246,7 @@
                                                                         <i class="fas fa-star-half-alt fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $penyampaian9; ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -252,7 +258,7 @@
                                                                         <i class="fas fa-star fa-2x "></i>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <h5 class="card-title font-weight-bold">1</h5>
+                                                                        <h5 class="card-title font-weight-bold"><?= $penyampaian10; ?></h5>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -268,7 +274,7 @@
                                                         </div>
                                                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                                                             <div class="card-body">
-                                                                <a href="">Lihat Saran</a>
+                                                                <a href="<?= base_url('HasilPenilaian/saran/') . $dosen_detail['id_daftar_dosen'];  ?>">Lihat Saran</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -276,7 +282,10 @@
                                             </div>
                                         </div>
 
-                                        <p class="card-text mt-3"><small class="text-muted pt-3">Hasil Penilaian</small></p>
+                                        <p class="card-text mt-3"><small class="text-muted pt-3">Jumlah Reviewer : <?= $jumlah_review; ?></small></p>
+                                        <hr>
+                                        <h5 class="card-title">Hasil Akhir</h5>
+                                        <p class="card-text mt-3">Sistem pembelajaran dari <span class="font-weight-bold"><?= $dosen_detail['nama'];  ?></span> hasilnya <span class="font-weight-bold"><?= $hasil_final; ?></span> </p>
                                     </div>
                                 </div>
                             </div>
