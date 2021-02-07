@@ -285,7 +285,10 @@
                                         <p class="card-text mt-3"><small class="text-muted pt-3">Jumlah Reviewer : <?= $jumlah_review; ?></small></p>
                                         <hr>
                                         <h5 class="card-title">Hasil Akhir</h5>
-                                        <p class="card-text mt-3">Sistem pembelajaran dari <span class="font-weight-bold"><?= $dosen_detail['nama'];  ?></span> hasilnya <span class="font-weight-bold"><?= $hasil_final; ?></span> </p>
+                                        <p class="card-text mt-3">Sistem pembelajaran dari <span class="font-weight-bold"><?= $dosen_detail['nama'];  ?></span> hasilnya <span class="font-weight-bold"><?= $hasil_final; ?></span>
+                                            <br>
+                                            <a href="#" data-toggle="modal" data-target="#detail_hasil">Lihat Detail</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -300,3 +303,59 @@
 
 </div>
 <!-- /.container-fluid -->
+
+<!-- Modal -->
+<div class="modal fade" id="detail_hasil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Hasil Review</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="card-text">
+                    <small class="text-muted pt-3">Nama Dosen : <?= $dosen_detail['nama']; ?></small>
+                    <br>
+                    <small class="text-muted pt-3">Dosen Dari Prodi : <?= $dosen_detail['mengajar']; ?></small>
+                </p>
+                <p class="card-text">
+                    <small class="text-muted pt-3">Jumlah Reviewer : <?= $jumlah_review; ?></small>
+                    <br>
+                    <small class="text-muted pt-3">Jumlah Dari Cara mengajar : <?= $jumlahCaraMengajar; ?> / <?= $jumlah_review;  ?> = <?= ceil($hasil_satu); ?> </small>
+                    <br>
+                    <small class="text-muted pt-3">Jumlah Dari Penyampaian Materi : <?= $jumlahPenyampaianMateri; ?> / <?= $jumlah_review;  ?> = <?= ceil($hasil_dua); ?> </small>
+                    <br>
+                    <small class="text-muted pt-3">Jumlah : <?= ceil($hasil_satu); ?> + <?= ceil($hasil_dua);  ?> = <?= ceil($hasil_satu_dua); ?> </small>
+                    <br>
+                    <small class="text-muted pt-3">Hasil Akhir : <?= ceil($hasil_satu_dua); ?> / 2 = <?= ceil($hasi_akhir); ?> </small>
+                </p>
+
+                <p class="card-text ">
+                    <small class="text-danger  pt-3">Note : Semua nilai yang mempunyai koma akan dibulatkan</small>
+                    <br>
+                    <small class="text-danger  pt-3">Contoh : 1,2 Makan akan menjadi 2</small>
+                </p>
+
+                <p class="card-text">
+                    <small class="text-muted pt-3">Keterangan Nilai</small>
+                    <br>
+                    <small class="text-muted pt-3"> 8 - 10 = Sangat Baik </small>
+                    <br>
+                    <small class="text-muted pt-3"> 6 - 8 = Baik </small>
+                    <br>
+                    <small class="text-muted pt-3"> 4 - 6 = Cukup </small>
+                    <br>
+                    <small class="text-muted pt-3"> 2 - 4 = Tidak Cukup </small>
+                    <br>
+                    <small class="text-muted pt-3"> 0 - 2 = Sangat Tidak Cukup </small>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div>
+    </div>
+</div>

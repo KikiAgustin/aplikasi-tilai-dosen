@@ -123,11 +123,24 @@ class Model_dosen extends CI_Model
 
     // Halama Penilaian
 
+    public function daftarDosenNilai()
+    {
+        $query = "SELECT DISTINCT id_daftar_dosen FROM hasil_penilaian";
+        return $this->db->query($query)->result_array();
+    }
+
     public function daftarNilaiDosen()
     {
         $this->db->join('daftar_dosen', 'daftar_dosen.id_daftar_dosen = hasil_penilaian.id_daftar_dosen ', 'left');
 
         return $this->db->get('hasil_penilaian')->result_array();
+    }
+
+    public function cekDosen($id_dosen)
+    {
+        $this->db->where('id_daftar_dosen', $id_dosen);
+        $this->db->from('hasil_penilaian');
+        return $this->db->count_all_results();
     }
 
     // Cara mengajar

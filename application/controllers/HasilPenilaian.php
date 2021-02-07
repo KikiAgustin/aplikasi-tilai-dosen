@@ -14,7 +14,10 @@ class HasilPenilaian extends CI_Controller
 
     public function index()
     {
+        // $idDaftarDosen = $this->Model_dosen->daftarDosenNilai();
+
         $daftarDosen = $this->db->get('daftar_dosen')->result_array();
+
 
         $data = [
             'getUser'      => $this->Model_user->getUser(),
@@ -30,6 +33,18 @@ class HasilPenilaian extends CI_Controller
 
     public function detail($id_dosen)
     {
+        $cekDosen = $this->Model_dosen->cekDosen($id_dosen);
+
+        if ($cekDosen < 1) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Mohon Maaf untuk dosen ini belum ada Review yang masuk!!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>');
+            redirect('HasilPenilaian/index');
+        }
+
         $dosenDetail = $this->db->get_where('daftar_dosen', ['id_daftar_dosen' => $id_dosen])->row_array();
 
         // Cara Mengajar
@@ -64,22 +79,22 @@ class HasilPenilaian extends CI_Controller
         $jumlahPenyampaianMateri = $this->Model_dosen->jumlahPenyampaianMatari($id_dosen);
         $hasilJumlahPenyampaianMateri = $jumlahPenyampaianMateri['rating2'];
 
-        $hasilSatu =  $hasilJumlahCaraMengajar / $jumlahReview;
-        $hasilDua = $hasilJumlahPenyampaianMateri / $jumlahReview;
+        $hasilSatu =  ceil($hasilJumlahCaraMengajar) / ceil($jumlahReview);
+        $hasilDua = ceil($hasilJumlahPenyampaianMateri) / $jumlahReview;
 
-        $jumlahSatuDua = $hasilSatu + $hasilDua;
+        $jumlahSatuDua = ceil($hasilSatu) + ceil($hasilDua);
 
-        $hasilAkhir = $jumlahSatuDua / 2;
+        $hasilAkhir = ceil($jumlahSatuDua) / 2;
 
-        $hasilFinal = round($hasilAkhir);
+        $hasilFinal = ceil($hasilAkhir);
 
-        if ($hasilFinal > 8) {
+        if ($hasilFinal >= 8) {
             $hasilFinal = "Sangat Baik";
-        } else if ($hasilFinal > 6) {
+        } else if ($hasilFinal >= 6) {
             $hasilFinal = "Baik";
-        } else if ($hasilFinal > 4) {
+        } else if ($hasilFinal >= 4) {
             $hasilFinal = "Cukup";
-        } else if ($hasilFinal > 2) {
+        } else if ($hasilFinal >= 2) {
             $hasilFinal = "Tidak Cukup";
         } else {
             $hasilFinal = "Sangat Tidak Cukup";
@@ -110,9 +125,13 @@ class HasilPenilaian extends CI_Controller
             'penyampaian9'  =>  $penyampaian9,
             'penyampaian10'  =>  $penyampaian10,
             'jumlah_review' => $jumlahReview,
-            'jumlahCaraMengajar' => $jumlahCaraMengajar,
-            'jumlahPenyampaianMateri' => $jumlahPenyampaianMateri,
-            'hasil_final' => $hasilFinal
+            'jumlahCaraMengajar' => $hasilJumlahCaraMengajar,
+            'jumlahPenyampaianMateri' => $hasilJumlahPenyampaianMateri,
+            'hasil_satu' => $hasilSatu,
+            'hasil_dua' => $hasilDua,
+            'hasil_satu_dua' => $jumlahSatuDua,
+            'hasil_final' => $hasilFinal,
+            'hasi_akhir' => $hasilAkhir
         ];
 
         $this->load->view('templates/header', $data);
