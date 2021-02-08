@@ -18,10 +18,6 @@
     <script src="<?= base_url("assets/user/"); ?>js/velocity.ui.js"></script>
     <!-- My style -->
     <link rel="stylesheet" href="<?= base_url("assets/user/"); ?>css/style.css">
-    <!-- Style rating -->
-    <link rel="stylesheet" href="<?= base_url("assets/user/"); ?>css/rating.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Aplikasi Review Dosen | Login</title>
 </head>
@@ -29,28 +25,37 @@
 <body class="halaman-utama">
 
 
-    <section id="halaman-berhasil" class="halaman-nilai hapus-berhasil ">
-        <div class="box-nilai mb-4">
-            <div class="container bg-light rounded">
-                <div class="row box-nilai-n">
-                    <div class="col-sm-12 text-center">
-                        <img class="img-berhasil" src="<?= base_url("assets/user/"); ?>img/Saly-22.png" class="img-fluid" alt="Berhasil">
-                    </div>
+    <section class="login_user">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 ">
+                    <p class="judul-login">
+                        Silahkan Login
+                        <br>
+                        Untuk Mulai Mereview
+                    </p>
+
+                    <p class="isi-sub-login">
+                        Jika Kamu Belum Memiliki Akun
+                        <br>
+                        Silahkan <span class="fw-bold"><a class="text-decoration-none" href="<?= base_url('User/registrasiUser'); ?>">Registrasi</a></span> Disini
+                    </p>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12 text-center">
-                        <span class="text-berhasil">
-                            Terimakasih sudah memberikan review kepada dosen ini
-                            <br>
-                            semoga review dari temen-temen semua bisa memberikan dampak positif
-                            <br>
-                            dan menjadikan proses pembelajaran lebih baik
-                        </span>
-                    </div>
+                <div class="col-sm-12 col-md-2 ">
+                    <img class="img-fluid gambar-login" src="<?= base_url('assets/user/img/'); ?>login.png  " alt="">
                 </div>
-                <div class="row mt-4 pb-4">
-                    <div class="col-sm-12 text-center">
-                        <a onclick="animasiBerhasil()" class="btn btn-primary">Review Dosen Lain</a>
+                <div class="col-sm-12 col-md-4 ">
+                    <div class="bg-light box-form-email form-email ">
+                        <div class="mb-4">
+                            <input type="email" class="form-control p-3 form-email" autocomplete="off" name="email" id="email" placeholder="Masukan Email Yang Terdaftar ">
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control p-3 fpassword form-email " autocomplete="off" name="password" id="password" placeholder="Masukan Password ">
+                            <p class="text-end  "><small class="text-muted "><a class="text-decoration-none" href="">Lupa Password</a></small></p>
+                        </div>
+                        <div class="d-grid gap-2 mt-5 ">
+                            <button class="btn btn-primary form-email  btn-login ">Login</button>
+                        </div>
                     </div>
                 </div>
             </div>

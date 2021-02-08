@@ -206,6 +206,47 @@
     display: none;
 }
 
+/* Login User */
+.login_user {
+    margin-top: 10%;
+}
+
+.form-email {
+    border-radius: 10px;
+}
+
+.btn-login {
+    padding: 14px;
+}
+
+.gambar-login {
+    width: 350px;
+    position: absolute;
+    left: 45%;
+}
+
+.gambar-registrasi {
+    width: 350px;
+    position: absolute;
+    left: 45%;
+}
+
+.judul-login {
+    font-size: 'Open Sans';
+    font-size: 45px;
+    font-weight: 610;
+}
+
+
+
+.isi-sub-login {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.box-form-email {
+    padding: 40px;
+}
 
 /*  Ukuran Mobile */
 @media (max-width: 575.98px) { 
@@ -321,6 +362,33 @@
     font-weight: 600;
 }
 
+/* Halaman Login */
+.judul-login {
+    font-size: 'Open Sans';
+    font-size: 25px;
+    font-weight: 610;
+}
+
+.box-form-email {
+    padding: 20px;
+}
+
+.gambar-login {
+    display: none;
+    width: 200px;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+}
+
+.gambar-registrasi {
+    display: none;
+    width: 200px;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+}
+
  }
 
 
@@ -375,10 +443,5 @@
     margin-top: 0%;
 }
 
-.box-nilai {
-    width: 270px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
  }
