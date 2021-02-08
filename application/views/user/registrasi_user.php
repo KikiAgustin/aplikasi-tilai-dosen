@@ -16,6 +16,10 @@
     <script src="<?= base_url("assets/user/"); ?>js/velocity.min.js"></script>
     <!-- Velocity UI -->
     <script src="<?= base_url("assets/user/"); ?>js/velocity.ui.js"></script>
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- Animate css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- My style -->
     <link rel="stylesheet" href="<?= base_url("assets/user/"); ?>css/style.css">
 
@@ -24,11 +28,16 @@
 
 <body class="halaman-utama">
 
+    <div class="container ">
+        <div class="row">
+            <div class="col-sm-12"><?= $this->session->flashdata('message'); ?></div>
+        </div>
+    </div>
 
-    <section class="login_user">
+    <section id="login_user" class="login_user">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 col-md-6 ">
+                <div class="col-sm-12 col-md-8 ">
                     <p class="judul-login">
                         Silahkan Registrasi
                         <br>
@@ -38,12 +47,13 @@
                     <p class="isi-sub-login">
                         Jika Kamu Sudah Memiliki Akun
                         <br>
-                        Silahkan <span class="fw-bold"><a class="text-decoration-none" href="<?= base_url('User/loginUser'); ?>">Login</a></span> Disini
+                        Silahkan <span class="fw-bold"><a class="text-decoration-none" href="<?= base_url('AuthUser'); ?>">Login</a></span> Disini
+                    </p>
+                    <p class="text-end  ">
+                        <img class="img-fluid gambar-registrasi" src="<?= base_url('assets/user/img/'); ?>login.png  " alt="">
                     </p>
                 </div>
-                <div class="col-sm-12 col-md-2 ">
-                    <img class="img-fluid gambar-registrasi" src="<?= base_url('assets/user/img/'); ?>login.png  " alt="">
-                </div>
+
                 <div class="col-sm-12 col-md-4 ">
                     <div class="bg-light box-form-email form-email ">
                         <div class="mb-4">
@@ -52,14 +62,14 @@
                         <div class="mb-4">
                             <input type="email" class="form-control p-3 form-email" autocomplete="off" name="email" id="email" placeholder="Email">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <input type="password" class="form-control p-3 fpassword form-email " autocomplete="off" name="password" id="password" placeholder="Password ">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <input type="password" class="form-control p-3 fpassword form-email " autocomplete="off" name="password1" id="password1" placeholder="Konfirmasi Password ">
                         </div>
                         <div class="d-grid gap-2 mt-5">
-                            <button class="btn btn-primary form-email  btn-login ">Registrasi</button>
+                            <a id="btn_register" class="btn btn-primary form-email  btn-login ">Registrasi</a>
                         </div>
                     </div>
                 </div>
@@ -71,7 +81,7 @@
 
 
     <!-- My Script -->
-    <script type="text/javascript" src="<?= base_url("assets/user/"); ?>js/script.js"></script>
+    <script type="text/javascript" src="<?= base_url("assets/user/"); ?>js/login.js"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>

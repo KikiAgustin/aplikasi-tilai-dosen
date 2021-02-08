@@ -28,29 +28,6 @@ class User extends CI_Controller
         $this->load->view('template_user/footer');
     }
 
-    // Login User
-    public function loginUser()
-    {
-        $data = [
-            'judul' => "Aplikasi Review Dosen | Login"
-        ];
-
-        $this->load->view('template_user/header', $data);
-        $this->load->view('user/login_user');
-        $this->load->view('template_user/footer');
-    }
-
-    public function registrasiUser()
-    {
-        $data = [
-            'judul' => "Aplikasi Review Dosen | Registrasi"
-        ];
-
-        $this->load->view('template_user/header', $data);
-        $this->load->view('user/registrasi_user');
-        $this->load->view('template_user/footer');
-    }
-
     public function daftarDosen()
     {
         $daftarDosen = $this->db->get('daftar_dosen')->result_array();

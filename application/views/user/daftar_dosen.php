@@ -12,6 +12,7 @@
     <!-- Daftar Dosen -->
     <section id="daftar_dosen" class="mt-5 pt-3 hapus-daftar">
         <div class="container">
+            <?= $this->session->flashdata('message'); ?>
             <div class="row isi-daftar-dosen">
                 <?php foreach ($daftar_dosen as $df) : ?>
                     <div class="col-sm-12 col-md-6">

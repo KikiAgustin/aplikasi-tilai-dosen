@@ -345,4 +345,13 @@ class Model_dosen extends CI_Model
         $query = "SELECT SUM(rating2) AS rating2 FROM hasil_penilaian WHERE id_daftar_dosen='$id_dosen' ";
         return $this->db->query($query)->row_array();
     }
+
+
+    // Cek email Mahasiswa
+    public function cekEmail($email)
+    {
+        $this->db->where('email', $email);
+        $this->db->from('mahasiswa');
+        return $this->db->count_all_results();
+    }
 }

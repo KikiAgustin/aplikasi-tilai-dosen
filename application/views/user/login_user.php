@@ -25,10 +25,10 @@
 <body class="halaman-utama">
 
 
-    <section class="login_user">
+    <section id="login_user" class="login_user">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 col-md-6 ">
+                <div class="col-sm-12 col-md-8 ">
                     <p class="judul-login">
                         Silahkan Login
                         <br>
@@ -38,12 +38,13 @@
                     <p class="isi-sub-login">
                         Jika Kamu Belum Memiliki Akun
                         <br>
-                        Silahkan <span class="fw-bold"><a class="text-decoration-none" href="<?= base_url('User/registrasiUser'); ?>">Registrasi</a></span> Disini
+                        Silahkan <span class="fw-bold"><a class="text-decoration-none" href="<?= base_url('AuthUser/registrasiUser'); ?>">Registrasi</a></span> Disini
+                    </p>
+                    <p class="text-end  ">
+                        <img class="img-fluid gambar-login" src="<?= base_url('assets/user/img/'); ?>login.png  " alt="">
                     </p>
                 </div>
-                <div class="col-sm-12 col-md-2 ">
-                    <img class="img-fluid gambar-login" src="<?= base_url('assets/user/img/'); ?>login.png  " alt="">
-                </div>
+
                 <div class="col-sm-12 col-md-4 ">
                     <div class="bg-light box-form-email form-email ">
                         <div class="mb-4">
@@ -54,7 +55,7 @@
                             <p class="text-end  "><small class="text-muted "><a class="text-decoration-none" href="">Lupa Password</a></small></p>
                         </div>
                         <div class="d-grid gap-2 mt-5 ">
-                            <button class="btn btn-primary form-email  btn-login ">Login</button>
+                            <a id="btn-login" class="btn btn-primary form-email  btn-login ">Login</a>
                         </div>
                     </div>
                 </div>
@@ -66,7 +67,7 @@
 
 
     <!-- My Script -->
-    <script type="text/javascript" src="<?= base_url("assets/user/"); ?>js/script.js"></script>
+    <script type="text/javascript" src="<?= base_url("assets/user/"); ?>js/login.js"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>

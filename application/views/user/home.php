@@ -12,7 +12,7 @@
                 <a class="nav-link text-white  " aria-current="page" href="#about">About</a>
                 <a class="nav-link text-white  " aria-current="page" href="#daftar-dosen">Daftar Dosen</a>
                 <a class="nav-link text-white  " aria-current="page" href="#contact">Contact</a>
-                <a class="nav-link text-white  " aria-current="page" href="<?= base_url('User/loginUser'); ?>">Login</a>
+                <a class="nav-link text-white  " aria-current="page" href="<?= base_url('AuthUser'); ?>">Login</a>
             </div>
         </div>
     </nav>

@@ -170,6 +170,7 @@ function animasiBerhasil() {
 
 
 
+
 $(document).ready(function () {
     textIntro();
     navdaftarDosen();
