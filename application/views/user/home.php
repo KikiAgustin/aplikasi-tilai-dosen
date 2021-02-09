@@ -12,10 +12,20 @@
                 <a class="nav-link text-white  " aria-current="page" href="#about">About</a>
                 <a class="nav-link text-white  " aria-current="page" href="#daftar-dosen">Daftar Dosen</a>
                 <a class="nav-link text-white  " aria-current="page" href="#contact">Contact</a>
-                <a class="nav-link text-white  " aria-current="page" href="<?= base_url('AuthUser'); ?>">Login</a>
+                <?php if ($this->session->userdata('email')) : ?>
+                    <a class="nav-link text-white  " aria-current="page" href="<?= base_url('AuthUser'); ?>">Kiki</a>
+                <?php else : ?>
+                    <a class="nav-link text-white  " aria-current="page" href="<?= base_url('AuthUser'); ?>">Login</a>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
+
+    <div class="container ">
+        <div class="row">
+            <div class="col-sm-12"><?= $this->session->flashdata('message'); ?></div>
+        </div>
+    </div>
 
     <!-- Home -->
     <section id="home" class="hapus-home">

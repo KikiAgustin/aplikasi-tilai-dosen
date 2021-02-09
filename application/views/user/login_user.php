@@ -24,6 +24,12 @@
 
 <body class="halaman-utama">
 
+    <div class="container ">
+        <div class="row">
+            <div class="col-sm-12"><?= $this->session->flashdata('message'); ?></div>
+        </div>
+    </div>
+
 
     <section id="login_user" class="login_user">
         <div class="container">
@@ -46,18 +52,26 @@
                 </div>
 
                 <div class="col-sm-12 col-md-4 ">
-                    <div class="bg-light box-form-email form-email ">
-                        <div class="mb-4">
-                            <input type="email" class="form-control p-3 form-email" autocomplete="off" name="email" id="email" placeholder="Masukan Email Yang Terdaftar ">
+                    <form class="needs-validation" novalidate" action="" method="POST">
+                        <div class="bg-light box-form-email form-email ">
+                            <div class="mb-4">
+                                <input type="email" class="form-control p-3 form-email <?= form_error('email') ? 'is-invalid' : ''; ?> " autocomplete="off" name="email" id="email" placeholder="Masukan Email Yang Terdaftar " value="<?= set_value('email'); ?>">
+                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                    <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control p-3 fpassword form-email <?= form_error('password') ? 'is-invalid' : ''; ?> " autocomplete="off" name="password" id="password" placeholder="Masukan Password ">
+                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                                <p class="text-end  "><small class="text-muted "><a class="text-decoration-none" href="">Lupa Password</a></small></p>
+                            </div>
+                            <div class="d-grid gap-2 mt-5 ">
+                                <button type="submit" class="btn btn-primary form-email  btn-login ">Login</button>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <input type="password" class="form-control p-3 fpassword form-email " autocomplete="off" name="password" id="password" placeholder="Masukan Password ">
-                            <p class="text-end  "><small class="text-muted "><a class="text-decoration-none" href="">Lupa Password</a></small></p>
-                        </div>
-                        <div class="d-grid gap-2 mt-5 ">
-                            <a id="btn-login" class="btn btn-primary form-email  btn-login ">Login</a>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

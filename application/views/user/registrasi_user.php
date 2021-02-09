@@ -16,10 +16,6 @@
     <script src="<?= base_url("assets/user/"); ?>js/velocity.min.js"></script>
     <!-- Velocity UI -->
     <script src="<?= base_url("assets/user/"); ?>js/velocity.ui.js"></script>
-    <!-- Sweet Alert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <!-- Animate css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- My style -->
     <link rel="stylesheet" href="<?= base_url("assets/user/"); ?>css/style.css">
 
@@ -55,23 +51,37 @@
                 </div>
 
                 <div class="col-sm-12 col-md-4 ">
-                    <div class="bg-light box-form-email form-email ">
-                        <div class="mb-4">
-                            <input type="text" class="form-control p-3 form-email" autocomplete="off" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap">
+                    <form class="needs-validation" novalidate" action="" method="POST">
+                        <div class="bg-light box-form-email form-email ">
+                            <div class="mb-4">
+                                <input type="text" class="form-control p-3 form-email <?= form_error('nama_lengkap') ? 'is-invalid' : ''; ?> " autocomplete="off" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap" value="<?= set_value('nama_lengkap'); ?>">
+                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                    <?= form_error('nama_lengkap', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <input type="email" class="form-control p-3 form-email <?= form_error('email') ? 'is-invalid' : ''; ?> " autocomplete="off" name="email" id="email" placeholder="Email" value="<?= set_value('email'); ?>">
+                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                    <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <input type="password" class="form-control p-3 fpassword form-email <?= form_error('password') ? 'is-invalid' : ''; ?> " autocomplete="off" name="password" id="password" placeholder="Password ">
+                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <input type="password" class="form-control p-3 fpassword form-email <?= form_error('password1') ? 'is-invalid' : ''; ?> " autocomplete="off" name="password1" id="password1" placeholder="Konfirmasi Password ">
+                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                    <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2 mt-5">
+                                <button type="submit" class="btn btn-primary form-email  btn-login ">Registrasi</button>
+                            </div>
                         </div>
-                        <div class="mb-4">
-                            <input type="email" class="form-control p-3 form-email" autocomplete="off" name="email" id="email" placeholder="Email">
-                        </div>
-                        <div class="mb-4">
-                            <input type="password" class="form-control p-3 fpassword form-email " autocomplete="off" name="password" id="password" placeholder="Password ">
-                        </div>
-                        <div class="mb-4">
-                            <input type="password" class="form-control p-3 fpassword form-email " autocomplete="off" name="password1" id="password1" placeholder="Konfirmasi Password ">
-                        </div>
-                        <div class="d-grid gap-2 mt-5">
-                            <a id="btn_register" class="btn btn-primary form-email  btn-login ">Registrasi</a>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

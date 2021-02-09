@@ -43,6 +43,11 @@ class User extends CI_Controller
 
     public function riviewDosen($id_daftar_dosen)
     {
+        if (!$this->session->userdata('email')) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk mulai mereview silahkan login terlebih dahulu <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+            redirect('Authuser');
+        }
+
         $riviewDosen = $this->db->get_where('daftar_dosen', ['id_daftar_dosen' => $id_daftar_dosen])->row_array();
 
         $data = [
@@ -61,6 +66,10 @@ class User extends CI_Controller
         $saran = $_POST['saran'];
         $id_dosen = $_POST['id_dosen'];
 
+        if ($rating1 == null) {
+            redirect('User/home');
+        }
+
         $data = [
             'rating1' => $rating1,
             'rating2' => $rating2,
@@ -73,6 +82,10 @@ class User extends CI_Controller
 
     public function berhasil()
     {
+        if (!$this->session->userdata('email')) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk mulai mereview silahkan login terlebih dahulu <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+            redirect('Authuser');
+        }
         $data = [
             'judul' => "Aplikasi Review Dosen | Berhasil"
         ];
@@ -80,5 +93,27 @@ class User extends CI_Controller
         $this->load->view('template_user/header', $data);
         $this->load->view('user/berhasil');
         $this->load->view('template_user/footer');
+    }
+
+    public function blankPage()
+    {
+        $data = [
+            'judul' => "Blank Page"
+        ];
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('user/blank_page');
+        $this->load->view('templates/footer');
+    }
+
+    public function pageNot()
+    {
+        $data = [
+            'judul' => "Blank Page"
+        ];
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('user/page_not');
+        $this->load->view('templates/footer');
     }
 }

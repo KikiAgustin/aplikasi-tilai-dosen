@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2021 at 02:08 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.29
+-- Generation Time: Feb 08, 2021 at 10:08 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -72,8 +72,23 @@ INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `i
 (3, 8, 10, 'Cara mengajar saat enak dan mudah dimengerti', 1, 10, 10),
 (4, 4, 7, 'Pembelajaran lebih menyanangkan karena sistem pembelajaran yang milenial', 1, 4, 7),
 (5, 9, 10, 'bagus sekali', 1, 0, 0),
-(6, 9, 9, 'asasasasaasasasasasaas', 1, 0, 0),
-(7, 10, 10, 'mantap pak haji', 1, 0, 0);
+(6, 9, 9, 'asasasasaasasasasasaas', 1, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mahasiswa`
+--
+
+CREATE TABLE `mahasiswa` (
+  `id_mahasiswa` int(11) NOT NULL,
+  `nama_lengkap` varchar(90) NOT NULL,
+  `email` varchar(80) NOT NULL,
+  `image` varchar(120) NOT NULL,
+  `password` varchar(250) NOT NULL,
+  `is_active` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -85,9 +100,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `name` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `image` varchar(120) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `date_created` int(11) NOT NULL,
   `is_active` int(11) NOT NULL,
   `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -96,30 +109,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `date_created`, `is_active`, `role_id`) VALUES
-(4, 'Kintan', 'admin@admin.com', '', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 0, 1, 1),
-(7, 'Kiki Agustin', 'kiki@gmail.com', 'default.jpg', '$2y$10$YQSJsbvCpTLiypG.jGLxs.zDJuS9tNata.JMkSjY7xZ8i0jnU1P1O', 0, 1, 2),
-(8, 'Kiki Agustin', 'kikiagustin62@gmail.com', 'default.jpg', '$2y$10$LcxPyE.Ppt1TB3MZxOp0Zeu8onqUNobWSjXrkArVQf5fcZhD0zI4q', 1612832754, 0, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_token`
---
-
-CREATE TABLE `user_token` (
-  `id_token` int(11) NOT NULL,
-  `email` varchar(125) NOT NULL,
-  `token` varchar(125) NOT NULL,
-  `date_created` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user_token`
---
-
-INSERT INTO `user_token` (`id_token`, `email`, `token`, `date_created`) VALUES
-(1, 'kikiagustin62@gmail.com', '9HB6oDpo0ArEKQzBOTNVNMNDSBbyyu4EMFGbEiPslW0=', 1612832754);
+INSERT INTO `user` (`id`, `name`, `email`, `password`, `is_active`, `role_id`) VALUES
+(4, 'Kintan', 'admin@admin.com', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 1, 1),
+(6, 'Kiki Agustin', 'kikiagustin62@gmail.com', '$2y$10$Xdrs3fZKYHLGMwTMLtSdsOwULC3Um8pvkLEsTw4r.pKYVPCRNDypu', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -138,16 +130,16 @@ ALTER TABLE `hasil_penilaian`
   ADD PRIMARY KEY (`id_penilaian`);
 
 --
+-- Indexes for table `mahasiswa`
+--
+ALTER TABLE `mahasiswa`
+  ADD PRIMARY KEY (`id_mahasiswa`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user_token`
---
-ALTER TABLE `user_token`
-  ADD PRIMARY KEY (`id_token`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -163,19 +155,19 @@ ALTER TABLE `daftar_dosen`
 -- AUTO_INCREMENT for table `hasil_penilaian`
 --
 ALTER TABLE `hasil_penilaian`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `mahasiswa`
+--
+ALTER TABLE `mahasiswa`
+  MODIFY `id_mahasiswa` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `user_token`
---
-ALTER TABLE `user_token`
-  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
