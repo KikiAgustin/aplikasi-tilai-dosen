@@ -35,18 +35,16 @@
             <div class="row">
                 <div class="col-sm-12 col-md-8 ">
                     <p class="judul-login">
-                        Silahkan Registrasi
+                        Silahkan Masukan Emaiil
                         <br>
-                        Untuk Untuk Membuat Akun
+                        Yang Terdaftar Di Aplikasi
                     </p>
 
-                    <p class="isi-sub-login">
-                        Jika Kamu Sudah Memiliki Akun
-                        <br>
-                        Silahkan <span class="fw-bold"><a class="text-decoration-none" href="<?= base_url('AuthUser'); ?>">Login</a></span> Disini
+                    <p class="isi-sub-login pb-5">
+                        Kembali Ke Halaman <span class="fw-bold"><a class="text-decoration-none" href="<?= base_url('AuthUser'); ?>">Login</a></span>
                     </p>
                     <p class="text-end  ">
-                        <img class="img-fluid gambar-registrasi" src="<?= base_url('assets/user/img/'); ?>login.png  " alt="">
+                        <img class="img-fluid gambar-lupa-password" src="<?= base_url('assets/user/img/'); ?>lupa_password.png  " alt="">
                     </p>
                 </div>
 
@@ -55,31 +53,13 @@
                         <div class="bg-light box-form-email form-email ">
                             <div class="col-sm-12"><?= $this->session->flashdata('auth_user'); ?></div>
                             <div class="mb-4">
-                                <input type="text" class="form-control p-3 form-email <?= form_error('nama_lengkap') ? 'is-invalid' : ''; ?> " autocomplete="off" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap" value="<?= set_value('nama_lengkap'); ?>">
-                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                    <?= form_error('nama_lengkap', '<small class="text-danger pl-3">', '</small>'); ?>
-                                </div>
-                            </div>
-                            <div class="mb-4">
                                 <input type="email" class="form-control p-3 form-email <?= form_error('email') ? 'is-invalid' : ''; ?> " autocomplete="off" name="email" id="email" placeholder="Email" value="<?= set_value('email'); ?>">
                                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                     <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
-                            <div class="mb-4">
-                                <input type="password" class="form-control p-3 fpassword form-email <?= form_error('password') ? 'is-invalid' : ''; ?> " autocomplete="off" name="password" id="password" placeholder="Password ">
-                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <input type="password" class="form-control p-3 fpassword form-email <?= form_error('password1') ? 'is-invalid' : ''; ?> " autocomplete="off" name="password1" id="password1" placeholder="Konfirmasi Password ">
-                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                    <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
-                                </div>
-                            </div>
-                            <div class="d-grid gap-2 mt-5">
-                                <button type="submit" class="btn btn-primary form-email  btn-login ">Registrasi</button>
+                            <div class="d-grid gap-2 mt-4">
+                                <button type="submit" class="btn btn-primary form-email  btn-login ">Ganti Password</button>
                             </div>
                         </div>
                     </form>

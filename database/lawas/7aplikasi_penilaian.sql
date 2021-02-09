@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2021 at 10:13 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Feb 09, 2021 at 02:08 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -59,39 +59,21 @@ CREATE TABLE `hasil_penilaian` (
   `saran` text NOT NULL,
   `id_daftar_dosen` int(11) NOT NULL,
   `pilihan` int(11) NOT NULL,
-  `pilihan2` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `nama_user` varchar(80) NOT NULL,
-  `cek_read` int(11) NOT NULL,
-  `periode` varchar(30) NOT NULL
+  `pilihan2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hasil_penilaian`
 --
 
-INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`, `pilihan`, `pilihan2`, `id_user`, `nama_user`, `cek_read`, `periode`) VALUES
-(1, 10, 10, 'Cara penyampaian sangat enak dan mudah dimengerti', 1, 10, 10, 10, 'Kiki Agustin', 1, '2020/2021'),
-(2, 5, 10, 'Bisa di tingkatkan kembali cara penyampaian materi nya', 3, 5, 10, 10, 'Kiki Agustin', 0, '2020/2021');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `periode`
---
-
-CREATE TABLE `periode` (
-  `id_periode` int(11) NOT NULL,
-  `semester` varchar(50) NOT NULL,
-  `periode` varchar(55) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `periode`
---
-
-INSERT INTO `periode` (`id_periode`, `semester`, `periode`) VALUES
-(1, 'Semester Ganjil', '2020/2019');
+INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`, `pilihan`, `pilihan2`) VALUES
+(1, 10, 10, 'cara menyampaikan materi sangat enak dan mudah di mengerti', 1, 10, 10),
+(2, 10, 10, 'Dosenny sangat seru ketika mengajar', 3, 10, 10),
+(3, 8, 10, 'Cara mengajar saat enak dan mudah dimengerti', 1, 10, 10),
+(4, 4, 7, 'Pembelajaran lebih menyanangkan karena sistem pembelajaran yang milenial', 1, 4, 7),
+(5, 9, 10, 'bagus sekali', 1, 0, 0),
+(6, 9, 9, 'asasasasaasasasasasaas', 1, 0, 0),
+(7, 10, 10, 'mantap pak haji', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -116,8 +98,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `date_created`, `is_active`, `role_id`) VALUES
 (4, 'Kintan', 'admin@admin.com', '', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 0, 1, 1),
-(10, 'Kiki Agustin', 'onlinekiki008@gmail.com', 'default.jpg', '$2y$10$BE6HWWStTtDqvG5MoaZIMuzotVZjb.ubYFlxQxCIBrgmh0iKGpcVC', 1612837278, 1, 2),
-(11, 'Mencoba', 'dede@gmail.com', 'default.jpg', '$2y$10$K1hLUOEycAW8bUCB.3Y7TuxdNFRYUtnJiWkJPbaMZ2j2PTjbqIIUC', 1612839509, 0, 2);
+(7, 'Kiki Agustin', 'kiki@gmail.com', 'default.jpg', '$2y$10$YQSJsbvCpTLiypG.jGLxs.zDJuS9tNata.JMkSjY7xZ8i0jnU1P1O', 0, 1, 2),
+(8, 'Kiki Agustin', 'kikiagustin62@gmail.com', 'default.jpg', '$2y$10$LcxPyE.Ppt1TB3MZxOp0Zeu8onqUNobWSjXrkArVQf5fcZhD0zI4q', 1612832754, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -137,11 +119,7 @@ CREATE TABLE `user_token` (
 --
 
 INSERT INTO `user_token` (`id_token`, `email`, `token`, `date_created`) VALUES
-(2, 'dede@gmail.com', 'gIyAMHyMksYUeKSNiYJSmzU+usmF/WboOPPcjtQk1Ks=', 1612839509),
-(3, 'onlinekiki008@gmail.com', 'aXDxCWSyK410jN55DzyUsrBvLjnYwTdHohn6V9dGYDE=', 1612842196),
-(4, 'onlinekiki008@gmail.com', '4PJjcRoiZpDUwwi4pFoeEDoP0YNWqeJU+/ACadH8Y2g=', 1612842201),
-(5, 'onlinekiki008@gmail.com', 'z8oaD/VtWZJ9tvcLL4aZYdy4mpQupKannwjsq+6NmIA=', 1612845720),
-(6, 'onlinekiki008@gmail.com', 'msesMLKiIvfcg6d+K2YVBc9PuL5efEjY/2MjTC6dKA8=', 1612846211);
+(1, 'kikiagustin62@gmail.com', '9HB6oDpo0ArEKQzBOTNVNMNDSBbyyu4EMFGbEiPslW0=', 1612832754);
 
 --
 -- Indexes for dumped tables
@@ -158,12 +136,6 @@ ALTER TABLE `daftar_dosen`
 --
 ALTER TABLE `hasil_penilaian`
   ADD PRIMARY KEY (`id_penilaian`);
-
---
--- Indexes for table `periode`
---
-ALTER TABLE `periode`
-  ADD PRIMARY KEY (`id_periode`);
 
 --
 -- Indexes for table `user`
@@ -191,25 +163,19 @@ ALTER TABLE `daftar_dosen`
 -- AUTO_INCREMENT for table `hasil_penilaian`
 --
 ALTER TABLE `hasil_penilaian`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `periode`
---
-ALTER TABLE `periode`
-  MODIFY `id_periode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

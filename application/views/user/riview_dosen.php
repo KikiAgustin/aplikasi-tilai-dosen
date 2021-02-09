@@ -162,6 +162,13 @@
                                 </div>
                             </div>
 
+                            <div class="form-check mt-3">
+                                <input class="form-check-input" type="checkbox" name="tampilNama" value="1" id="tampilNama">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Samarkan Nama
+                                </label>
+                            </div>
+
                             <!-- <a id="btn_rating"  onclick="animasiNilai()" class="btn btn-primary  mt-4 mb-4"> -->
                             <a id="btn_rating" type="submit" class="btn btn-primary  mt-4 mb-4">
                                 Review
@@ -176,6 +183,9 @@
     <input style="display: none;" type="text" id="hasilRatingPertama">
     <input style="display: none;" type="text" id="hasilRatingKedua">
     <input style="display: none;" type="text" id="idDosen" value="<?= $riviewDosen['id_daftar_dosen']; ?>">
+    <input style="display: none;" type="text" id="id_user" value="<?= $id_user; ?>">
+    <input style="display: none;" type="text" id="nama_user" value="<?= $nama_user; ?>">
+    <input style="display: none;" type="text" id="periode" value="2020/2021">
 
 
 

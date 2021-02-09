@@ -230,6 +230,11 @@
     margin-top: -150px;
 }
 
+.gambar-lupa-password {
+    width: 450px;
+    margin-top: -150px;
+}
+
 .judul-login {
     font-size: 'Open Sans';
     font-size: 45px;
@@ -382,6 +387,11 @@
     margin-top: -120px;
 }
 
+.gambar-lupa-password {
+    width: 200px;
+    margin-top: -120px;
+}
+
  }
 
 
@@ -445,6 +455,12 @@
 }
 
 .gambar-registrasi {
+    display: none;
+    width: 200px;
+    margin-top: 0px;
+}
+
+.gambar-lupa-password {
     display: none;
     width: 200px;
     margin-top: 0px;

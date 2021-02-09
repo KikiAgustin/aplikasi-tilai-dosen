@@ -6,6 +6,9 @@ function ratingKedua(rating2) {
     document.getElementById("hasilRatingKedua").value = rating2;
 }
 
+function tampilNama(tampil) {
+    document.getElementById("hasilTampilNama").value = tampil;
+}
 
 
 $(document).ready(function () {
@@ -18,6 +21,11 @@ $(document).ready(function () {
         let rating2 = $("#hasilRatingKedua").val();
         let saran = $("#saran").val();
         let id_dosen = $("#idDosen").val();
+        let id_user = $("#id_user").val();
+        let nama_user = $("#nama_user").val();
+        let periode = $("#periode").val();
+        var tampilNama = $("input:checked" + "#tampilNama").val();
+
 
         if ($.trim(rating1).length < 1) {
             Swal.fire({
@@ -50,7 +58,7 @@ $(document).ready(function () {
                 }
             })
         } else {
-            let dataString = "rating1=" + rating1 + "&rating2=" + rating2 + "&saran=" + saran + "&id_dosen=" + id_dosen;
+            let dataString = "rating1=" + rating1 + "&rating2=" + rating2 + "&saran=" + saran + "&id_dosen=" + id_dosen + "&id_user=" + id_user + "&nama_user=" + nama_user + "&cek_read=" + tampilNama + "&periode=" + periode;
 
             if ($.trim(rating1).length > 0) {
                 $.ajax({

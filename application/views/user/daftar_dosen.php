@@ -27,7 +27,13 @@
                                         <p class="card-text">
                                             <?= $df["quotes"]; ?>
                                         </p>
-                                        <a href="<?= base_url('User/riviewDosen/') . $df["id_daftar_dosen"]; ?>" class="btn btn-primary"> Riview Sekarang</a>
+                                        <?php $getUser = $this->db->get_where('hasil_penilaian', ['id_daftar_dosen' => $df['id_daftar_dosen'], 'id_user' => $id_user])->row_array(); ?>
+
+                                        <?php if ($getUser) : ?>
+                                            <a href="<?= base_url('User/riviewDosen/') . $df["id_daftar_dosen"]; ?>" class="btn btn-success"> Sudah Sekarang</a>
+                                        <?php else : ?>
+                                            <a href="<?= base_url('User/riviewDosen/') . $df["id_daftar_dosen"]; ?>" class="btn btn-primary"> Riview Sekarang</a>
+                                        <?php endif; ?>
                                         </p>
                                     </div>
                                 </div>

@@ -13,7 +13,7 @@
                 <a class="nav-link text-white  " aria-current="page" href="#daftar-dosen">Daftar Dosen</a>
                 <a class="nav-link text-white  " aria-current="page" href="#contact">Contact</a>
                 <?php if ($this->session->userdata('email')) : ?>
-                    <a class="nav-link text-white  " aria-current="page" href="<?= base_url('AuthUser'); ?>">Kiki</a>
+                    <a class="nav-link text-white  " aria-current="page" href="<?= base_url('AuthUser'); ?>"><?= $nama_user; ?></a>
                 <?php else : ?>
                     <a class="nav-link text-white  " aria-current="page" href="<?= base_url('AuthUser'); ?>">Login</a>
                 <?php endif; ?>
@@ -119,24 +119,23 @@
             </div>
             <div class="row mt-4">
                 <div class="col-sm-12 isi-contact col-md-6 p-3 text-center ">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.5300384867724!2d107.59168111397804!3d-6.946628069933592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e8bee3bd350f%3A0x198c9de6ba46e374!2sSTMIK%20Mardira%20Indonesia!5e0!3m2!1sen!2sid!4v1612145885586!5m2!1sen!2sid" class="google-maps"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.5032915802053!2d107.59180451397803!3d-6.94980316996729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e8c09b746f03%3A0x2a1ff1decaf8ba04!2sJl.%20Cibaduyut%20Lama%20No.57%2C%20Kb.%20Lega%2C%20Kec.%20Bojongloa%20Kidul%2C%20Kota%20Bandung%2C%20Jawa%20Barat%2040236!5e0!3m2!1sen!2sid!4v1612834110994!5m2!1sen!2sid" class="google-maps"></iframe>
                 </div>
                 <div class="col-sm-12 isi-contact col-md-6 ">
                     <div class="isi-contact">
                         <div class="row">
                             <div class="col-sm-12 col-md-2">Telepon</div>
-                            <div class="col-sm-12 col-md-10">022320002112</div>
+                            <div class="col-sm-12 col-md-10">085794203570</div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-2">Email</div>
-                            <div class="col-sm-12 col-md-10">stimikmi@gmail.com</div>
+                            <div class="col-sm-12 col-md-10">kikiagustin62@gmail.com</div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-2">Alamat</div>
-                            <div class="col-sm-12 col-md-10">Jl. Soekarno Hatta No. 211 Leuwi Panjang, Situaseur
-                                Kec.
-                                Bojong
-                                Loa Kidul Kota. Bandung Jawa Barat</div>
+                            <div class="col-sm-12 col-md-10">
+                                Jl. Cibaduyut Lama No. 57 A, Kb Lega Kec. Bojong Loa Kidul Kota. Bandung Jawa Barat 40236
+                            </div>
                         </div>
                     </div>
                 </div>

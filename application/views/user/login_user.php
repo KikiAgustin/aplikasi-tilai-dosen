@@ -54,6 +54,7 @@
                 <div class="col-sm-12 col-md-4 ">
                     <form class="needs-validation" novalidate" action="" method="POST">
                         <div class="bg-light box-form-email form-email ">
+                            <div class="col-sm-12"><?= $this->session->flashdata('auth_user'); ?></div>
                             <div class="mb-4">
                                 <input type="email" class="form-control p-3 form-email <?= form_error('email') ? 'is-invalid' : ''; ?> " autocomplete="off" name="email" id="email" placeholder="Masukan Email Yang Terdaftar " value="<?= set_value('email'); ?>">
                                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
@@ -65,7 +66,7 @@
                                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                     <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
-                                <p class="text-end  "><small class="text-muted "><a class="text-decoration-none" href="">Lupa Password</a></small></p>
+                                <p class="text-end  "><small class="text-muted "><a class="text-decoration-none" href="<?= base_url('AuthUser/lupaPassword'); ?>">Lupa Password</a></small></p>
                             </div>
                             <div class="d-grid gap-2 mt-5 ">
                                 <button type="submit" class="btn btn-primary form-email  btn-login ">Login</button>

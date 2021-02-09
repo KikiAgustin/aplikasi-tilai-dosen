@@ -38,7 +38,7 @@
                                     <div class="text-center">
                                         <?= $this->session->flashdata('message'); ?>
                                         <h1 class="h4 text-gray-900 mb-4">
-                                            Selamat Datang di Halaman Login
+                                            Selamat Datang di Halaman Login Admin
                                         </h1>
                                         <p>Silahkan Masukan Username dan Password</p>
                                     </div>
