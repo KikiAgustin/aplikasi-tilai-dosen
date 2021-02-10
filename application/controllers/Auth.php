@@ -6,8 +6,11 @@ class Auth extends CI_Controller
 
     public function index()
     {
+        $cekRole = $this->session->userdata('role_id');
         if ($this->session->userdata('email')) {
             redirect('Admin');
+        } else if ($cekRole != 1) {
+            redirect('Auth');
         }
 
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', [
@@ -37,21 +40,28 @@ class Auth extends CI_Controller
         if ($user) {
             // jika usernya aktif
             if ($user['is_active'] == 1) {
-                // Cek password
-                if (password_verify($password, $user['password'])) {
-                    $data = [
-                        'email' => $user['email']
-                    ];
-                    $this->session->set_userdata($data);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+
+                if ($user['role_id'] == 1) {
+                    // Cek password
+                    if (password_verify($password, $user['password'])) {
+                        $data = [
+                            'email' => $user['email'],
+                            'role_id' => $user['role_id']
+                        ];
+                        $this->session->set_userdata($data);
+                        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>Selamat Datang Dihalaman Admin </strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                     </div>');
-                    redirect('Admin');
+                        redirect('Admin');
+                    } else {
+                        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert" > Password salah! </div>');
+                        redirect('Auth');
+                    }
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert" > Password salah! </div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert" > Anda bukan seorang admin </div>');
                     redirect('Auth');
                 }
             } else {
@@ -68,6 +78,7 @@ class Auth extends CI_Controller
     {
 
         $this->session->unset_userdata('email');
+        $this->session->unset_userdata('role_id');
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert" >Anda berhasil Keluar!</div>');
         redirect('Auth');

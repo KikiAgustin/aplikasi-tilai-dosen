@@ -9,11 +9,20 @@
         </div>
     </nav>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+
+            </div>
+        </div>
+    </div>
+
     <!-- Daftar Dosen -->
     <section id="daftar_dosen" class="mt-5 pt-3 hapus-daftar">
         <div class="container">
             <?= $this->session->flashdata('message'); ?>
             <div class="row isi-daftar-dosen">
+                <h5 class="fw-bold mb-4"><?= $periode ? 'Periode : Semester' . $semester . ' / ' . $tahun : 'Tidak ada periode yang harus direview'  ?> </h5>
                 <?php foreach ($daftar_dosen as $df) : ?>
                     <div class="col-sm-12 col-md-6">
                         <div class="card mb-3" style="max-width: 540px;">
@@ -27,10 +36,10 @@
                                         <p class="card-text">
                                             <?= $df["quotes"]; ?>
                                         </p>
-                                        <?php $getUser = $this->db->get_where('hasil_penilaian', ['id_daftar_dosen' => $df['id_daftar_dosen'], 'id_user' => $id_user])->row_array(); ?>
+                                        <?php $getUser = $this->db->get_where('hasil_penilaian', ['periode' => $tahun, 'id_daftar_dosen' => $df['id_daftar_dosen'], 'id_user' => $id_user])->row_array(); ?>
 
                                         <?php if ($getUser) : ?>
-                                            <a href="<?= base_url('User/riviewDosen/') . $df["id_daftar_dosen"]; ?>" class="btn btn-success"> Sudah Sekarang</a>
+                                            <button style="cursor:none;" class="btn btn-success"> Sudah Direview</button>
                                         <?php else : ?>
                                             <a href="<?= base_url('User/riviewDosen/') . $df["id_daftar_dosen"]; ?>" class="btn btn-primary"> Riview Sekarang</a>
                                         <?php endif; ?>

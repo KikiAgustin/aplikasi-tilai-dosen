@@ -22,11 +22,20 @@ class User extends CI_Controller
 
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
         $nama = $user['name'];
+        $id_user = $user['id'];
+        $image = $user['image'];
+
+        $periode = $this->db->get_where('periode', ['status' => 1])->row_array();
 
         $data = [
             'judul'         => "Aplikasi Review Dosen | Home",
             'daftar_dosen'  => $daftarDosen,
-            'nama_user'     => $nama
+            'nama_user'     => $nama,
+            'id_user'       => $id_user,
+            'image'         => $image,
+            'periode'       => $periode,
+            'semester'       => $periode['semester'],
+            'tahun'         => $periode['periode']
         ];
 
         $this->load->view('template_user/header', $data);
@@ -40,10 +49,16 @@ class User extends CI_Controller
         $email = $this->session->userdata('email');
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
         $id_user = $user['id'];
+
+        $periode = $this->db->get_where('periode', ['status' => 1])->row_array();
+
         $data = [
             'judul' => "Aplikasi Review Dosen | Daftar Dosen",
             'daftar_dosen'  => $daftarDosen,
-            'id_user' => $id_user
+            'id_user'       => $id_user,
+            'periode'       => $periode,
+            'semester'       => $periode['semester'],
+            'tahun'         => $periode['periode']
         ];
 
         $this->load->view('template_user/header', $data);
@@ -53,27 +68,34 @@ class User extends CI_Controller
 
     public function riviewDosen($id_daftar_dosen)
     {
+        $periode = $this->db->get_where('periode', ['status' => 1])->row_array();
+        $statusPeriode = $periode['status'];
+        $tahun         = $periode['periode'];
+
         if (!$this->session->userdata('email')) {
             $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk mulai mereview silahkan login terlebih dahulu <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
             redirect('Authuser');
+        } else if ($statusPeriode) {
+            $riviewDosen = $this->db->get_where('daftar_dosen', ['id_daftar_dosen' => $id_daftar_dosen])->row_array();
+
+            $email = $this->session->userdata('email');
+            $user = $this->db->get_where('user', ['email' => $email])->row_array();
+            $idUser = $user['id'];
+            $nama = $user['name'];
+
+            $data = [
+                'judul' => "Aplikasi Review Dosen | Riview Dosen",
+                'riviewDosen' => $riviewDosen,
+                'id_user'     => $idUser,
+                'nama_user'   => $nama,
+                'tahun'       => $tahun
+            ];
+
+            $this->load->view('user/riview_dosen', $data);
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk sekarang tidak ada periode yang harus di review <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+            redirect('User/daftarDosen');
         }
-
-        $riviewDosen = $this->db->get_where('daftar_dosen', ['id_daftar_dosen' => $id_daftar_dosen])->row_array();
-
-        $email = $this->session->userdata('email');
-
-        $user = $this->db->get_where('user', ['email' => $email])->row_array();
-        $idUser = $user['id'];
-        $nama = $user['name'];
-
-        $data = [
-            'judul' => "Aplikasi Review Dosen | Riview Dosen",
-            'riviewDosen' => $riviewDosen,
-            'id_user'     => $idUser,
-            'nama_user'   => $nama
-        ];
-
-        $this->load->view('user/riview_dosen', $data);
     }
 
 
@@ -155,5 +177,24 @@ class User extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('user/page_not');
         $this->load->view('templates/footer');
+    }
+
+    public function profile()
+    {
+        if (!$this->session->userdata('email')) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk mulai mereview silahkan login terlebih dahulu <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+            redirect('Authuser');
+        }
+
+        $email = $this->session->userdata('email');
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+        $data = [
+            'judul' => "Aplikasi Review Dosen | Profile",
+            'user'  => $user
+
+        ];
+
+        $this->load->view('user/profile', $data);
     }
 }

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2021 at 02:15 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.29
+-- Generation Time: Feb 09, 2021 at 10:13 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -72,7 +72,7 @@ CREATE TABLE `hasil_penilaian` (
 
 INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`, `pilihan`, `pilihan2`, `id_user`, `nama_user`, `cek_read`, `periode`) VALUES
 (1, 10, 10, 'Cara penyampaian sangat enak dan mudah dimengerti', 1, 10, 10, 10, 'Kiki Agustin', 1, '2020/2021'),
-(2, 5, 10, 'Bisa di tingkatkan kembali cara penyampaian materi nya', 3, 5, 10, 10, 'Kiki Agustin', 0, '2019/2020');
+(2, 5, 10, 'Bisa di tingkatkan kembali cara penyampaian materi nya', 3, 5, 10, 10, 'Kiki Agustin', 0, '2020/2021');
 
 -- --------------------------------------------------------
 
@@ -83,16 +83,15 @@ INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `i
 CREATE TABLE `periode` (
   `id_periode` int(11) NOT NULL,
   `semester` varchar(50) NOT NULL,
-  `periode` varchar(55) NOT NULL,
-  `status` int(11) NOT NULL
+  `periode` varchar(55) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `periode`
 --
 
-INSERT INTO `periode` (`id_periode`, `semester`, `periode`, `status`) VALUES
-(1, 'Semester Ganjil', '2020/2021', 1);
+INSERT INTO `periode` (`id_periode`, `semester`, `periode`) VALUES
+(1, 'Semester Ganjil', '2020/2019');
 
 -- --------------------------------------------------------
 
@@ -116,7 +115,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `date_created`, `is_active`, `role_id`) VALUES
-(4, 'Kintan', 'admin@admin.com', 'dafault.jpg', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 1612837278, 1, 1),
+(4, 'Kintan', 'admin@admin.com', '', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 0, 1, 1),
 (10, 'Kiki Agustin', 'onlinekiki008@gmail.com', 'default.jpg', '$2y$10$BE6HWWStTtDqvG5MoaZIMuzotVZjb.ubYFlxQxCIBrgmh0iKGpcVC', 1612837278, 1, 2),
 (11, 'Mencoba', 'dede@gmail.com', 'default.jpg', '$2y$10$K1hLUOEycAW8bUCB.3Y7TuxdNFRYUtnJiWkJPbaMZ2j2PTjbqIIUC', 1612839509, 0, 2);
 
@@ -192,7 +191,7 @@ ALTER TABLE `daftar_dosen`
 -- AUTO_INCREMENT for table `hasil_penilaian`
 --
 ALTER TABLE `hasil_penilaian`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `periode`

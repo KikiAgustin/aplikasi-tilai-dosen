@@ -165,7 +165,7 @@
                             <div class="form-check mt-3">
                                 <input class="form-check-input" type="checkbox" name="tampilNama" value="1" id="tampilNama">
                                 <label class="form-check-label" for="flexCheckDefault">
-                                    Samarkan Nama
+                                    Sembunyikan Nama
                                 </label>
                             </div>
 
@@ -185,7 +185,7 @@
     <input style="display: none;" type="text" id="idDosen" value="<?= $riviewDosen['id_daftar_dosen']; ?>">
     <input style="display: none;" type="text" id="id_user" value="<?= $id_user; ?>">
     <input style="display: none;" type="text" id="nama_user" value="<?= $nama_user; ?>">
-    <input style="display: none;" type="text" id="periode" value="2020/2021">
+    <input style="display: none;" type="text" id="periode" value="<?= $tahun; ?>">
 
 
 

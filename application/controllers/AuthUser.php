@@ -349,7 +349,7 @@ class AuthUser extends CI_Controller
 
         $this->session->unset_userdata('email');
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert" >Anda berhasil Keluar!</div>');
-        redirect('Auth');
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show mt-3 text-center" role="alert">Anda berhasil keluar!!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+        redirect('AuthUser');
     }
 }

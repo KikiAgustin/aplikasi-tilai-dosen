@@ -13,9 +13,16 @@
                 <a class="nav-link text-white  " aria-current="page" href="#daftar-dosen">Daftar Dosen</a>
                 <a class="nav-link text-white  " aria-current="page" href="#contact">Contact</a>
                 <?php if ($this->session->userdata('email')) : ?>
-                    <a class="nav-link text-white  " aria-current="page" href="<?= base_url('AuthUser'); ?>"><?= $nama_user; ?></a>
+                    <div class="dropdown">
+                        <a class="nav-link text-dark fw-bold    " role="button" id="profile" data-bs-toggle="dropdown" aria-expanded="false" aria-current="page" href="#"> <?= $nama_user; ?> &nbsp; <img src="<?= base_url('assets/user/img/user/') . $image;  ?>" class="img-fluid rounded-circle " width="40px" height="40px" alt="<?= $nama_user; ?>"> </a>
+
+                        <ul class="dropdown-menu mt-2 " aria-labelledby="profile">
+                            <li><a class="dropdown-item" href="<?= base_url('User/profile'); ?>"><i class="bi bi-person-fill"></i> </i> Profile</a></li>
+                            <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#keluarAplikasi"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+                        </ul>
+                    </div>
                 <?php else : ?>
-                    <a class="nav-link text-white  " aria-current="page" href="<?= base_url('AuthUser'); ?>">Login</a>
+                    <a class="nav-link text-white  " aria-current="page" href="<?= base_url('AuthUser'); ?>"> <button style="padding-left: 25px; padding-right: 25px;" class="btn btn-primary rounded-pill fw-bold ">Login</button></a>
                 <?php endif; ?>
             </div>
         </div>
@@ -96,7 +103,13 @@
                                         <p class="card-text">
                                             <?= $df["quotes"]; ?>
                                         </p>
-                                        <a href="<?= base_url('User/riviewDosen/') . $df["id_daftar_dosen"]; ?>" class="btn btn-primary"> Riview Sekarang</a>
+                                        <?php $getUser = $this->db->get_where('hasil_penilaian', ['periode' => $tahun, 'id_daftar_dosen' => $df['id_daftar_dosen'], 'id_user' => $id_user])->row_array(); ?>
+
+                                        <?php if ($getUser) : ?>
+                                            <button style="cursor:none;" class="btn btn-success"> Sudah Direview</button>
+                                        <?php else : ?>
+                                            <a href="<?= base_url('User/riviewDosen/') . $df["id_daftar_dosen"]; ?>" class="btn btn-primary"> Riview Sekarang</a>
+                                        <?php endif; ?>
                                         </p>
                                     </div>
                                 </div>
@@ -145,3 +158,23 @@
     <!-- Footer -->
     <footer id="footer" class="text-center footer text-white p-3 hapus-footer">Copiright&copy; Kiki Agustin 2021
     </footer>
+
+    <!-- Modal Keluar aplikasi -->
+    <!-- Modal -->
+    <div class="modal fade" id="keluarAplikasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Keluar Aplikasi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Anda yakin mau keluar aplikasi?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <a href="<?= base_url('AuthUser/logout'); ?>" type="button" class="btn btn-primary">Keluar</a>
+                </div>
+            </div>
+        </div>
+    </div>

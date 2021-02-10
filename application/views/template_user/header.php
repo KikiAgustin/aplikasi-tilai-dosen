@@ -19,6 +19,8 @@
     <script src="<?= base_url("assets/user/"); ?>js/velocity.ui.js"></script>
     <!-- My style -->
     <link rel="stylesheet" href="<?= base_url("assets/user/"); ?>css/style.css">
+    <!-- Icon Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 
     <title><?= $judul; ?></title>
