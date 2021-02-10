@@ -1,0 +1,18 @@
+Password root : Kiki1agu
+
+
+Password VNC : Kiki11
+
+
+
+Connect ke ssh dengan git 
+ssh root@149.129.180.250
+
+
+
+password database : mysql : ki@juara1
+
+
+https://pastebin.com/KWnNqUAQ
+
+http://www.newbienote.com/2016/09/tutorial-import-database-mysql-dari.html
