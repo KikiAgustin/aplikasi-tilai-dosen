@@ -6,7 +6,7 @@ class HasilPenilaian extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if (!$this->session->userdata('email')) {
+        if (!$this->session->userdata('akses_admin')) {
             $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                   <strong>Silahkan login dulu untuk masuk ke halaman admin</strong>
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -14,18 +14,6 @@ class HasilPenilaian extends CI_Controller
                   </button>
                 </div>');
             redirect('Auth');
-        } else if ($this->session->userdata('email')) {
-            $cekEmail = $this->session->userdata('email');
-            $getUser = $this->db->get_where('user', ['email' => $cekEmail])->row_array();
-            if ($getUser['role_id'] == 2) {
-                $this->session->set_flashdata('message', '<div class="alert mt-5 text-center alert-danger alert-dismissible fade show" role="alert">
-                <strong>Kamu tidak mempunyai hak akses untuk mengunjungi halaman admin</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>');
-                redirect('User/blankPage');
-            }
         }
     }
 

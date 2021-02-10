@@ -58,7 +58,7 @@ class Model_user extends CI_Model
     public function getUser()
     {
 
-        $user = $this->session->userdata('email');
+        $user = $this->session->userdata('email_admin');
 
         return $this->db->get_where('user', ['email' => $user])->row_array();
     }

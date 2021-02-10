@@ -6,11 +6,8 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        $cekRole = $this->session->userdata('role_id');
-        if ($this->session->userdata('email')) {
+        if ($this->session->userdata('akses_admin')) {
             redirect('Admin');
-        } else if ($cekRole != 1) {
-            redirect('Auth');
         }
 
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', [
@@ -45,8 +42,8 @@ class Auth extends CI_Controller
                     // Cek password
                     if (password_verify($password, $user['password'])) {
                         $data = [
-                            'email' => $user['email'],
-                            'role_id' => $user['role_id']
+                            'email_admin' => $user['email'],
+                            'akses_admin' => "admin"
                         ];
                         $this->session->set_userdata($data);
                         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -77,8 +74,9 @@ class Auth extends CI_Controller
     public function logout()
     {
 
-        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('email_admin');
         $this->session->unset_userdata('role_id');
+        $this->session->unset_userdata('akses_admin');
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert" >Anda berhasil Keluar!</div>');
         redirect('Auth');
