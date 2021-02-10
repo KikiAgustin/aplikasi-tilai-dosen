@@ -42,7 +42,7 @@
                     </p>
 
                     <p class="isi-sub-login">
-                        Jika Kamu Belum Memiliki Akun
+                        Jika Kamu Belum Memiliki Akun Ya
                         <br>
                         Silahkan <span class="fw-bold"><a class="text-decoration-none" href="<?= base_url('AuthUser/registrasiUser'); ?>">Registrasi</a></span> Disini
                     </p>
