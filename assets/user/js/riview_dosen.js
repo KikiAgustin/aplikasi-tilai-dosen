@@ -15,7 +15,7 @@ $(document).ready(function () {
 
 
     $("#btn_rating").click(function () {
-        let base_url = "149.129.180.250:81";
+        let base_url = "http://localhost/aplikasi_penilaian/";
         let url = base_url + "User/hasilRiviewDosen/?callback=?";
         let rating1 = $("#hasilRatingPertama").val();
         let rating2 = $("#hasilRatingKedua").val();

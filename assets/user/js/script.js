@@ -1,4 +1,4 @@
-const base_url = "149.129.180.250:81";
+const base_url = "http://localhost/aplikasi_penilaian/";
 
 function textIntro() {
     $("#judul-awal span").velocity("transition.slideLeftIn", {
