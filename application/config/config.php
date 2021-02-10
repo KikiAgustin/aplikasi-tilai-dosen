@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/aplikasi_penilaian/';
+$config['base_url'] = 'http://149.129.180.250:84/';
 
 /*
 |--------------------------------------------------------------------------
