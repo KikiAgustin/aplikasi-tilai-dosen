@@ -369,4 +369,12 @@ class Model_dosen extends CI_Model
         $this->db->from('mahasiswa');
         return $this->db->count_all_results();
     }
+
+    // periode
+    public function periode()
+    {
+
+        $this->db->order_by('id_periode', 'DESC');
+        return $this->db->get('periode')->result_array();
+    }
 }

@@ -208,11 +208,12 @@ class Admin extends CI_Controller
   // Periode
   public function periode()
   {
+    $periode = $this->Model_dosen->periode();
 
     $data = [
       'judul' => "Periode",
       'getUser' => $this->Model_user->getUser(),
-      'periode' => $this->db->get('periode')->result_array()
+      'periode' => $periode
     ];
 
     $this->load->view('templates/header', $data);
@@ -265,5 +266,28 @@ class Admin extends CI_Controller
         redirect('Admin/periode');
       }
     }
+  }
+
+  public function tambahPeriode()
+  {
+    $semester = $this->input->post('semester');
+    $tanggal_awal = $this->input->post('tanggal_awal');
+    $tanggal_akhir = $this->input->post('tanggal_akhir');
+
+    $periode = $tanggal_awal . "/" . $tanggal_akhir;
+
+    $data = [
+      'semester' => $semester,
+      'periode' => $periode
+    ];
+
+    $this->db->insert('periode', $data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Periode berhasil ditambah </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+    redirect('Admin/periode');
   }
 }
