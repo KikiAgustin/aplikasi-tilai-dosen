@@ -1,4 +1,4 @@
-const base_url = "http://149.129.180.250:84/";
+const base_url = "http://localhost/aplikasi_penilaian/";
 
 function textIntro() {
     $("#judul-awal span").velocity("transition.slideLeftIn", {
@@ -86,7 +86,7 @@ function navbarHome() {
 function scrollElement() {
     $(window).scroll(function () {
         if ($(document).scrollTop() < 150) {
-            $("#about .about-slide").velocity("transition.slideLeftIn", {
+            $("#about ").velocity("transition.slideLeftIn", {
                 stagger: 150
             }).stop();
 
@@ -100,25 +100,25 @@ function scrollElement() {
         }
 
         if ($(document).scrollTop() < 800) {
-            $("#daftar-dosen .bg-about-judul").velocity("transition.slideLeftIn", {
+            $("#daftar-dosen ").velocity("transition.slideLeftIn", {
                 stagger: 150
             }).stop();
         }
 
         if ($(document).scrollTop() < 830) {
-            $("#daftar-dosen .col-sm-12").velocity("transition.slideLeftIn", {
+            $("#daftar-dosen ").velocity("transition.slideLeftIn", {
                 stagger: 150
             }).stop();
         }
 
         if ($(document).scrollTop() < 1400) {
-            $("#contact .bg-about-judul").velocity("transition.slideLeftIn", {
+            $("#contact ").velocity("transition.slideLeftIn", {
                 stagger: 150
             }).stop();
         }
 
         if ($(document).scrollTop() < 1430) {
-            $("#contact .isi-contact").velocity("transition.slideLeftIn", {
+            $("#contact").velocity("transition.slideLeftIn", {
                 stagger: 150
             }).stop();
         }

@@ -1,7 +1,9 @@
     <!-- Navbar -->
     <nav id="navbar-home" class="navbar navbar-expand-lg navbar-light fixed-top ">
         <div class="container ">
-            <a class="navbar-brand text-white" href="#home">LOGO</a>
+            <a class="navbar-brand text-white" href="#home">
+                <img src="<?= base_url("assets/user/"); ?>img/logo.png" alt="logo">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

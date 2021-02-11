@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2021 at 10:04 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Feb 10, 2021 at 02:15 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,10 +63,6 @@ CREATE TABLE `hasil_penilaian` (
   `id_user` int(11) NOT NULL,
   `nama_user` varchar(80) NOT NULL,
   `cek_read` int(11) NOT NULL,
-  `read_admin` int(11) NOT NULL,
-  `bintang_admin` int(11) NOT NULL,
-  `read_dosen` int(11) NOT NULL,
-  `bintang_dosen` int(11) NOT NULL,
   `periode` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -74,10 +70,9 @@ CREATE TABLE `hasil_penilaian` (
 -- Dumping data for table `hasil_penilaian`
 --
 
-INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`, `pilihan`, `pilihan2`, `id_user`, `nama_user`, `cek_read`, `read_admin`, `bintang_admin`, `read_dosen`, `bintang_dosen`, `periode`) VALUES
-(1, 10, 10, 'Cara penyampaian sangat enak dan mudah dimengerti', 1, 10, 10, 10, 'Kiki Agustin', 1, 1, 1, 0, 0, '2020/2021'),
-(2, 5, 10, 'Bisa di tingkatkan kembali cara penyampaian materi nya', 3, 5, 10, 10, 'Kiki Agustin', 0, 0, 0, 0, 0, '2019/2020'),
-(4, 10, 10, 'Cara menyampaikan bisa lebih diperbaiki lagi, supaya anak -anak lebih mengerti', 1, 10, 10, 12, 'Jajang Jaelani', 0, 0, 0, 0, 0, '2020/2021');
+INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`, `pilihan`, `pilihan2`, `id_user`, `nama_user`, `cek_read`, `periode`) VALUES
+(1, 10, 10, 'Cara penyampaian sangat enak dan mudah dimengerti', 1, 10, 10, 10, 'Kiki Agustin', 1, '2020/2021'),
+(2, 5, 10, 'Bisa di tingkatkan kembali cara penyampaian materi nya', 3, 5, 10, 10, 'Kiki Agustin', 0, '2019/2020');
 
 -- --------------------------------------------------------
 
@@ -97,8 +92,7 @@ CREATE TABLE `periode` (
 --
 
 INSERT INTO `periode` (`id_periode`, `semester`, `periode`, `status`) VALUES
-(1, 'Semester Ganjil', '2020/2021', 1),
-(2, 'Genap', '2021-02-02', 0);
+(1, 'Semester Ganjil', '2020/2021', 1);
 
 -- --------------------------------------------------------
 
@@ -122,8 +116,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `date_created`, `is_active`, `role_id`) VALUES
-(4, 'Kintan', 'admin@admin.com', 'default.jpg', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 1612837278, 1, 1),
-(12, 'Kiki Agustin', 'onlinekiki008@gmail.com', 'default.jpg', '$2y$10$AjAXgisLCngF.k1ZhYUySeB2DCfAV4mSDkJZ6I7jQ1D2u7r2S.1fq', 1613019135, 1, 2);
+(4, 'Kintan', 'admin@admin.com', 'dafault.jpg', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 1612837278, 1, 1),
+(10, 'Kiki Agustin', 'onlinekiki008@gmail.com', 'default.jpg', '$2y$10$BE6HWWStTtDqvG5MoaZIMuzotVZjb.ubYFlxQxCIBrgmh0iKGpcVC', 1612837278, 1, 2),
+(11, 'Mencoba', 'dede@gmail.com', 'default.jpg', '$2y$10$K1hLUOEycAW8bUCB.3Y7TuxdNFRYUtnJiWkJPbaMZ2j2PTjbqIIUC', 1612839509, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -143,7 +138,11 @@ CREATE TABLE `user_token` (
 --
 
 INSERT INTO `user_token` (`id_token`, `email`, `token`, `date_created`) VALUES
-(2, 'dede@gmail.com', 'gIyAMHyMksYUeKSNiYJSmzU+usmF/WboOPPcjtQk1Ks=', 1612839509);
+(2, 'dede@gmail.com', 'gIyAMHyMksYUeKSNiYJSmzU+usmF/WboOPPcjtQk1Ks=', 1612839509),
+(3, 'onlinekiki008@gmail.com', 'aXDxCWSyK410jN55DzyUsrBvLjnYwTdHohn6V9dGYDE=', 1612842196),
+(4, 'onlinekiki008@gmail.com', '4PJjcRoiZpDUwwi4pFoeEDoP0YNWqeJU+/ACadH8Y2g=', 1612842201),
+(5, 'onlinekiki008@gmail.com', 'z8oaD/VtWZJ9tvcLL4aZYdy4mpQupKannwjsq+6NmIA=', 1612845720),
+(6, 'onlinekiki008@gmail.com', 'msesMLKiIvfcg6d+K2YVBc9PuL5efEjY/2MjTC6dKA8=', 1612846211);
 
 --
 -- Indexes for dumped tables
@@ -193,25 +192,25 @@ ALTER TABLE `daftar_dosen`
 -- AUTO_INCREMENT for table `hasil_penilaian`
 --
 ALTER TABLE `hasil_penilaian`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `periode`
 --
 ALTER TABLE `periode`
-  MODIFY `id_periode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_periode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

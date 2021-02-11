@@ -150,11 +150,15 @@ class HasilPenilaian extends CI_Controller
     public function saran($id_dosen)
     {
         $getUser = $this->Model_user->getUser();
-        $daftarSaran = $this->db->get_where('hasil_penilaian', ['id_daftar_dosen' => $id_dosen])->result_array();
+        $daftarSaran = $this->db->get_where('hasil_penilaian', ['id_daftar_dosen' => $id_dosen, 'read_admin' => 0])->result_array();
+        $sudahBaca = $this->db->get_where('hasil_penilaian', ['id_daftar_dosen' => $id_dosen, 'read_admin' => 1])->result_array();
+        $bintangAdmin = $this->db->get_where('hasil_penilaian', ['id_daftar_dosen' => $id_dosen, 'bintang_admin' => 1])->result_array();
 
         $data = [
             'getUser'      => $getUser,
-            'daftar_saran' => $daftarSaran
+            'daftar_saran' => $daftarSaran,
+            'sudah_baca'   => $sudahBaca,
+            'bintan_admin' => $bintangAdmin
         ];
 
         $this->load->view('templates/header', $data);
@@ -162,5 +166,41 @@ class HasilPenilaian extends CI_Controller
         $this->load->view('templates/topbar');
         $this->load->view('admin/review/saran_mahasiswa');
         $this->load->view('templates/footer');
+    }
+
+
+    public function readAdmin($id_penilaian)
+    {
+        $bintang = $this->db->get_where('hasil_penilaian', ['id_penilaian' => $id_penilaian])->row_array();
+        $id_dosen = $bintang['id_daftar_dosen'];
+
+        $this->db->set('read_admin', 1);
+        $this->db->where('id_penilaian', $id_penilaian);
+        $this->db->update('hasil_penilaian');
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Saran sudah ditandai telah dibaca</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>');
+        redirect('HasilPenilaian/saran/' . $id_dosen);
+    }
+
+    public function bintangAdmin($id_bintang)
+    {
+
+        $bintang = $this->db->get_where('hasil_penilaian', ['id_penilaian' => $id_bintang])->row_array();
+        $id_dosen = $bintang['id_daftar_dosen'];
+
+        $this->db->set('bintang_admin', 1);
+        $this->db->where('id_penilaian', $id_bintang);
+        $this->db->update('hasil_penilaian');
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Saran sudah ditandai</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>');
+        redirect('HasilPenilaian/saran/' . $id_dosen);
     }
 }
