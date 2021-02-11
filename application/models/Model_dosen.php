@@ -121,6 +121,21 @@ class Model_dosen extends CI_Model
         return $this->db->get('daftar_dosen')->num_rows();
     }
 
+    public function jumlahUser()
+    {
+        return  $this->db->get_where('user', ['is_active' => 1, 'role_id' => 2])->num_rows();
+    }
+
+    public function jumlahIndexReview()
+    {
+        return $this->db->get('hasil_penilaian')->num_rows();
+    }
+
+    public function jumlahIndexAdmin()
+    {
+        return  $this->db->get_where('user', ['is_active' => 1, 'role_id' => 1])->num_rows();
+    }
+
     // Halama Penilaian
 
     public function daftarDosenNilai()
@@ -353,5 +368,13 @@ class Model_dosen extends CI_Model
         $this->db->where('email', $email);
         $this->db->from('mahasiswa');
         return $this->db->count_all_results();
+    }
+
+    // periode
+    public function periode()
+    {
+
+        $this->db->order_by('id_periode', 'DESC');
+        return $this->db->get('periode')->result_array();
     }
 }

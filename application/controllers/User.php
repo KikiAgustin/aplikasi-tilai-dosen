@@ -74,7 +74,7 @@ class User extends CI_Controller
 
         if (!$this->session->userdata('email')) {
             $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk mulai mereview silahkan login terlebih dahulu <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
-            redirect('Authuser');
+            redirect('AuthUser');
         } else if ($statusPeriode) {
             $riviewDosen = $this->db->get_where('daftar_dosen', ['id_daftar_dosen' => $id_daftar_dosen])->row_array();
 
@@ -135,7 +135,7 @@ class User extends CI_Controller
     {
         if (!$this->session->userdata('email')) {
             $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk mulai mereview silahkan login terlebih dahulu <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
-            redirect('Authuser');
+            redirect('AuthUser');
         } else if ($this->session->userdata('save_berhasil')) {
             $data = [
                 'judul' => "Aplikasi Review Dosen | Berhasil"

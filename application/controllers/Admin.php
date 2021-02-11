@@ -20,9 +20,27 @@ class Admin extends CI_Controller
 
   public function index()
   {
+    $getUser = $this->Model_user->getUser();
 
-    $data['jumlah_dosen'] =  $this->Model_dosen->jumlahDosen();
-    $data['getUser'] = $this->Model_user->getUser();
+    $jumlahDosen =  $this->Model_dosen->jumlahDosen();
+    $jumlahUser = $this->Model_dosen->jumlahUser();
+    $jumlahReview = $this->Model_dosen->jumlahIndexReview();
+    $jumlahAdmin = $this->Model_dosen->jumlahIndexAdmin();
+
+
+    if (empty($jumlahDosen)) $jumlahDosen = "Tidak Ada";
+    if (empty($jumlahUser)) $jumlahUser = "Tidak Ada";
+    if (empty($jumlahReview)) $jumlahReview = "Tidak Ada";
+    if (empty($jumlahAdmin)) $jumlahAdmin = "Tidak Ada";
+
+
+    $data = [
+      'getUser' => $getUser,
+      'jumlah_dosen' => $jumlahDosen,
+      'jumlahUser' => $jumlahUser,
+      'jumlahreview' => $jumlahReview,
+      'jumlahAdmin' => $jumlahAdmin
+    ];
 
     $this->load->view('templates/header');
     $this->load->view('templates/sidebar');
@@ -185,5 +203,91 @@ class Admin extends CI_Controller
             </button>
           </div>');
     redirect('Admin/user');
+  }
+
+  // Periode
+  public function periode()
+  {
+    $periode = $this->Model_dosen->periode();
+
+    $data = [
+      'judul' => "Periode",
+      'getUser' => $this->Model_user->getUser(),
+      'periode' => $periode
+    ];
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar');
+    $this->load->view('templates/topbar');
+    $this->load->view('admin/periode');
+    $this->load->view('templates/footer');
+  }
+
+  public function ubahPeriode($id_periode)
+  {
+
+    $periode = $this->db->get_where('periode', ['id_periode' => $id_periode])->row_array();
+
+    $status = $periode['status'];
+
+    $cekStatus = $this->db->get_where('periode', ['status' => 1])->row_array();
+
+    if ($status == 1) {
+
+      $this->db->set('status', 2);
+      $this->db->where('id_periode', $id_periode);
+      $this->db->update('periode');
+      $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Periode berhasil diubah menjadi selasai </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+      redirect('Admin/periode');
+    } else if ($status == 0) {
+      if ($cekStatus) {
+        $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>periode yang aktif hanya boleh ada satu, silahkan ubah status terlebih dahulu menjadi selesai periode yang aktif </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+        redirect('Admin/periode');
+      } else {
+        $this->db->set('status', 1);
+        $this->db->where('id_periode', $id_periode);
+        $this->db->update('periode');
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Periode berhasil diubah menjadi aktif </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+        redirect('Admin/periode');
+      }
+    }
+  }
+
+  public function tambahPeriode()
+  {
+    $semester = $this->input->post('semester');
+    $tanggal_awal = $this->input->post('tanggal_awal');
+    $tanggal_akhir = $this->input->post('tanggal_akhir');
+
+    $periode = $tanggal_awal . "/" . $tanggal_akhir;
+
+    $data = [
+      'semester' => $semester,
+      'periode' => $periode
+    ];
+
+    $this->db->insert('periode', $data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Periode berhasil ditambah </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+    redirect('Admin/periode');
   }
 }
