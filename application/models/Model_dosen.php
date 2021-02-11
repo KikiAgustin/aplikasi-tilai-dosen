@@ -121,6 +121,21 @@ class Model_dosen extends CI_Model
         return $this->db->get('daftar_dosen')->num_rows();
     }
 
+    public function jumlahUser()
+    {
+        return  $this->db->get_where('user', ['is_active' => 1, 'role_id' => 2])->num_rows();
+    }
+
+    public function jumlahIndexReview()
+    {
+        return $this->db->get('hasil_penilaian')->num_rows();
+    }
+
+    public function jumlahIndexAdmin()
+    {
+        return  $this->db->get_where('user', ['is_active' => 1, 'role_id' => 1])->num_rows();
+    }
+
     // Halama Penilaian
 
     public function daftarDosenNilai()

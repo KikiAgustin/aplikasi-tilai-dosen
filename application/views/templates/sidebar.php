@@ -34,7 +34,13 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item active">
+        <a class="nav-link" href="<?= base_url('Admin/periode'); ?>">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Periode</span></a>
+    </li>
     <li class="nav-item">
+
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-user-tie"></i>
             <span>Dosen</span>
