@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2021 at 08:48 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.29
+-- Generation Time: Feb 13, 2021 at 06:29 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -71,13 +71,6 @@ CREATE TABLE `hasil_penilaian` (
   `periode` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `hasil_penilaian`
---
-
-INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`, `pilihan`, `pilihan2`, `id_user`, `nama_user`, `cek_read`, `read_admin`, `bintang_admin`, `read_dosen`, `bintang_dosen`, `periode`) VALUES
-(1, 9, 8, 'Ketika penyampaian materi, alangkah lebih baik langsung di praktekan, karena mahasiswa suka bingung yang dijelaskan itu fungsinya buat apa', 1, 9, 8, 18, 'Jajang Maulana', 1, 1, 1, 0, 0, '2020/2021');
-
 -- --------------------------------------------------------
 
 --
@@ -92,13 +85,6 @@ CREATE TABLE `periode` (
   `periode` varchar(55) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `periode`
---
-
-INSERT INTO `periode` (`id_periode`, `semester`, `tanggal1`, `tanggal2`, `periode`, `status`) VALUES
-(1, 'Genap', '13-01-2020', '13-02-2021', '2020/2021', 1);
 
 -- --------------------------------------------------------
 
@@ -191,13 +177,13 @@ ALTER TABLE `daftar_dosen`
 -- AUTO_INCREMENT for table `hasil_penilaian`
 --
 ALTER TABLE `hasil_penilaian`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `periode`
 --
 ALTER TABLE `periode`
-  MODIFY `id_periode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_periode` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
