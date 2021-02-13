@@ -20,7 +20,7 @@
     </li>
 
     <li class="nav-item active">
-        <a class="nav-link" href="<?= base_url('Admin/user'); ?>">
+        <a class="nav-link" href="<?= base_url('Admin/dataAdmin'); ?>">
             <i class="fas fa-users-cog"></i>
             <span>Admin</span></a>
     </li>

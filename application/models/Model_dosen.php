@@ -4,6 +4,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Model_dosen extends CI_Model
 {
 
+    public function getUser()
+    {
+        $dosen = $this->session->userdata('email_dosen');
+
+        return $this->db->get_where('user', ['email' => $dosen])->row_array();
+    }
+
     public function dataDosen()
     {
         $this->db->order_by('id_daftar_dosen', 'DESC');
@@ -18,9 +25,9 @@ class Model_dosen extends CI_Model
     public function tambahDataDosen()
     {
         $namaDosen = htmlspecialchars($this->input->post('nama'));
+        $email = htmlspecialchars($this->input->post('email'), true);
         $prodi = htmlspecialchars($this->input->post('prodi'));
         $quotes = htmlspecialchars($this->input->post('quotes'));
-        // $foto = htmlspecialchars($this->input->post('foto'));
 
         $gambar = $_FILES['foto']['name'];
 
@@ -45,10 +52,11 @@ class Model_dosen extends CI_Model
             }
         }
 
-        if (empty($foto_baru)) $foto_baru = "dosen-default.png";
+        if (empty($foto_baru)) $foto_baru = "default.png";
 
         $data = [
             'nama' => $namaDosen,
+            'email' => $email,
             'mengajar' => $prodi,
             'quotes' => $quotes,
             'image' => $foto_baru
@@ -60,19 +68,51 @@ class Model_dosen extends CI_Model
     public function getIdTerakhir()
     {
         $this->db->order_by('id_daftar_dosen', 'DESC');
-        return  $this->db->get('daftar_dosen', 1)->result_array();
+        return  $this->db->get('daftar_dosen', 1)->row_array();
     }
 
-    public function tambahAkunDosen($idTerakhir)
+    public function tambahAkunDosen()
     {
-        var_dump($idTerakhir);
-        die;
         $namaDosen = htmlspecialchars($this->input->post('nama'), true);
         $email = htmlspecialchars($this->input->post('email'), true);
         $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 
-        var_dump($namaDosen);
-        die;
+        $gambar = $_FILES['foto']['name'];
+
+        if ($gambar) {
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']     = '3000';
+            $config['upload_path'] = './assets/user/img/user/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) {
+                $foto_baru = $this->upload->data('file_name');
+            } else {
+                $error =  $this->upload->display_errors();
+                $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>' . $error . '</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>');
+                redirect('Admin/tambahDosen');
+            }
+        }
+
+        if (empty($foto_baru)) $foto_baru = "default.png";
+
+        $data = [
+            'name'          => $namaDosen,
+            'email'         => $email,
+            'image'         => $foto_baru,
+            'password'      => $password,
+            'date_created'  => time(),
+            'is_active'     => 1,
+            'role_id'       => 3
+        ];
+
+        $this->db->insert('user', $data);
     }
 
     public function getIdDosen($id_dosen)
@@ -100,7 +140,7 @@ class Model_dosen extends CI_Model
 
             if ($this->upload->do_upload('foto')) {
 
-                if ($gambar_dosen != 'dosen-default.png') {
+                if ($gambar_dosen != 'default.png') {
                     unlink(FCPATH . 'assets/user/img/dosen/' . $gambar_dosen);
                 }
                 $foto_baru = $this->upload->data('file_name');

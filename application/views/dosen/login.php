@@ -14,11 +14,11 @@
                                 <div class="text-center">
                                     <?= $this->session->flashdata('message'); ?>
                                     <h1 class="h4 text-gray-900 mb-4">
-                                        Selamat Datang di Halaman Login Admin
+                                        Selamat Datang di Halaman Login Dosen
                                     </h1>
                                     <p>Silahkan Masukan Username dan Password</p>
                                 </div>
-                                <form action="<?= base_url('Auth/index'); ?>" method="POST" class="user">
+                                <form action="<?= base_url('AuthDosen/index'); ?>" method="POST" class="user">
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address..." value="<?= set_value('email'); ?>" required>
                                         <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>

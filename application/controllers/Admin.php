@@ -49,6 +49,19 @@ class Admin extends CI_Controller
     $this->load->view('templates/footer');
   }
 
+  public function dataAdmin()
+  {
+    $this->load->model('Model_user');
+    $data['data_admin'] =  $this->Model_user->dataAdmin();
+    $data['getUser'] = $this->Model_user->getUser();
+
+    $this->load->view('templates/header');
+    $this->load->view('templates/sidebar');
+    $this->load->view('templates/topbar', $data);
+    $this->load->view('admin/data_admin', $data);
+    $this->load->view('templates/footer');
+  }
+
   // Daftar Dosen
 
   public function daftarDosen()
@@ -74,7 +87,7 @@ class Admin extends CI_Controller
     $daftar_dosen = $this->db->get_where('daftar_dosen', ['id_daftar_dosen' => $id_dosen])->row_array();
     $id_gambar  = $daftar_dosen['image'];
 
-    if ($id_gambar != 'dosen-default.png') {
+    if ($id_gambar != 'default.png') {
       unlink(FCPATH . 'assets/user/img/dosen/' . $id_gambar);
     }
 
@@ -91,7 +104,12 @@ class Admin extends CI_Controller
 
   public function tambahDosen()
   {
-    $data['getUser'] = $this->Model_user->getUser();
+    $getUser = $this->Model_user->getUser();
+
+    $data = [
+      'getUser' => $getUser
+
+    ];
 
     $this->form_validation->set_rules('nama', 'Nama Dosen', 'required|trim');
     $this->form_validation->set_rules('prodi', 'Dosen Dari Prodi', 'required|trim');
@@ -108,10 +126,8 @@ class Admin extends CI_Controller
       $this->load->view('templates/footer');
     } else {
       $this->load->model('Model_dosen');
-      $getIdTerakhir = $this->Model_dosen->getIdTerakhir();
-      $idTerakhir = $getIdTerakhir['id_daftar_dosen'];
       $this->Model_dosen->tambahDataDosen();
-      $this->Model_dosen->tambahAkunDosen($idTerakhir);
+      $this->Model_dosen->tambahAkunDosen();
       $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Dosen Berhasil ditambah</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -277,13 +293,18 @@ class Admin extends CI_Controller
   public function tambahPeriode()
   {
     $semester = $this->input->post('semester');
-    $tanggal_awal = $this->input->post('tanggal_awal');
-    $tanggal_akhir = $this->input->post('tanggal_akhir');
+    $tanggal_awal = date('d-m-Y', strtotime($this->input->post('tanggal_awal')));
+    $tanggal_akhir = date('d-m-Y', strtotime($this->input->post('tanggal_akhir')));
 
-    $periode = $tanggal_awal . "/" . $tanggal_akhir;
+    $tanggal1 = date('Y', strtotime($tanggal_awal));
+    $tanggal2 = date('Y', strtotime($tanggal_akhir));
+
+    $periode = $tanggal1 . "/" . $tanggal2;
 
     $data = [
       'semester' => $semester,
+      'tanggal1' => $tanggal_awal,
+      'tanggal2' => $tanggal_akhir,
       'periode' => $periode
     ];
 

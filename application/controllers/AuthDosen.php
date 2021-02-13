@@ -1,12 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth extends CI_Controller
+class AuthDosen extends CI_Controller
 {
-
     public function index()
     {
-        if ($this->session->userdata('akses_admin')) {
+        if ($this->session->userdata('akses_dosen')) {
             redirect('Admin');
         }
 
@@ -21,11 +20,11 @@ class Auth extends CI_Controller
         if ($this->form_validation->run() == false) {
 
             $data = [
-                'judul' => "Halaman Admin | Login"
+                'judul' => "Halaman login | Dosen"
             ];
 
             $this->load->view('template_auth/header', $data);
-            $this->load->view('admin/login');
+            $this->load->view('dosen/login');
             $this->load->view('template_auth/footer');
         } else {
             // Validasi Lolos
@@ -45,48 +44,46 @@ class Auth extends CI_Controller
             // jika usernya aktif
             if ($user['is_active'] == 1) {
 
-                if ($user['role_id'] == 1) {
+                if ($user['role_id'] == 3) {
                     // Cek password
                     if (password_verify($password, $user['password'])) {
                         $data = [
-                            'email_admin' => $user['email'],
-                            'akses_admin' => "admin"
+                            'email_dosen' => $user['email'],
+                            'akses_dosen' => "dosen"
                         ];
                         $this->session->set_userdata($data);
                         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Selamat Datang Dihalaman Admin </strong>
+                    <strong>Selamat Datang Dihalaman Dosen </strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                     </div>');
-                        redirect('Admin');
+                        redirect('Dosen');
                     } else {
                         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert" > Password salah! </div>');
-                        redirect('Auth');
+                        redirect('AuthDosen');
                     }
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert" > Anda bukan seorang admin </div>');
-                    redirect('Auth');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert" > Anda bukan seorang dosen </div>');
+                    redirect('AuthDosen');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert" > Email ini belum aktif! </div>');
-                redirect('Auth');
+                redirect('AuthDosen');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert" > Email tidak terdaftar! </div>');
-            redirect('Auth');
+            redirect('AuthDosen');
         }
     }
 
     public function logout()
     {
 
-        $this->session->unset_userdata('email_admin');
         $this->session->unset_userdata('role_id');
-        $this->session->unset_userdata('akses_admin');
         $this->session->unset_userdata('akses_dosen');
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert" >Anda berhasil Keluar!</div>');
-        redirect('Auth');
+        redirect('AuthDosen');
     }
 }

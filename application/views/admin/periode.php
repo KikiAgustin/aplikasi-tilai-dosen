@@ -37,7 +37,7 @@
                                     <tr>
                                         <td><?= $i; ?></td>
                                         <td><?= $prd['semester']; ?></td>
-                                        <td><?= date('Y', strtotime($prd['periode'])); ?></td>
+                                        <td><?= $prd['periode']; ?></td>
                                         <?php if ($prd['status'] == 1) : ?>
                                             <td><span class="badge badge-primary">Aktif</span></td>
                                         <?php elseif ($prd['status'] == 2) : ?>

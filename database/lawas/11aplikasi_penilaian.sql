@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2021 at 06:29 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Feb 13, 2021 at 01:59 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `daftar_dosen` (
   `id_daftar_dosen` int(11) NOT NULL,
   `nama` varchar(70) NOT NULL,
-  `email` varchar(120) NOT NULL,
   `mengajar` varchar(60) NOT NULL,
   `image` varchar(125) NOT NULL,
   `quotes` text NOT NULL
@@ -40,12 +39,14 @@ CREATE TABLE `daftar_dosen` (
 -- Dumping data for table `daftar_dosen`
 --
 
-INSERT INTO `daftar_dosen` (`id_daftar_dosen`, `nama`, `email`, `mengajar`, `image`, `quotes`) VALUES
-(1, 'Kiki Agustin', 'kikiagustin@gmail.com', 'Teknik Informatika', 'dosen-1.png', 'Belajar menghadapi hal kecil, sebelum menghadapii hal besar'),
-(2, 'Mega Kusmayati', 'mega@gmail.com', 'Keagamaan', 'dosen-2.png', 'Membiasakan mandiri sejak diusia dini, tuk bekal besar nanti'),
-(3, 'David Abdul Ajiz', 'davidabdul@gmail.com', 'Teknik Informatika', 'dosen-3.png', 'Kerja keras dahulu, lalu nikmati hasilnya kemuadian hari'),
-(4, 'Ismayanti', 'ismayanti@gmail.com', 'Komputerarisasi Akuntansi', 'dosen-4.png', 'Belajar ikhtiar dan berdoa untuk kesuksesan'),
-(5, 'Dea Hasanatus', 'deahasanah@gmail.com', 'Komputerarisasi Akuntansi', 'kikiagustin.jpg', 'Belajar dari sebuah kesalahan akan menjadikan diri kita lebih dewasa');
+INSERT INTO `daftar_dosen` (`id_daftar_dosen`, `nama`, `mengajar`, `image`, `quotes`) VALUES
+(1, 'Kiki Agustin', 'Teknik Informatika', 'dosen-1.png', 'Belajar menghadapi hal kecil, sebelum menghadapii hal besar'),
+(2, 'Mega Kusmayati', 'Teknik Informatika', 'dosen-2.png', 'Membiasakan mandiri sejak diusia dini, tuk bekal besar nanti'),
+(3, 'David Abdul Aziz', 'Teknik Informatika', 'dosen-3.png', 'Kerja keras dahulu, lalu nikmati hasilnya kemuadian hari'),
+(4, 'Ismayanti', 'Teknik Informatika', 'dosen-4.png', 'Belajar ikhtiar dan berdoa untuk kesuksesan'),
+(9, 'Dea Hasanah Tsaniah', 'Komputerarisasi Akuntansi', 'kikiagustin.jpg', 'Belajar belajar'),
+(10, 'Kiki Agustin', 'Informastika', 'dosen-default.png', 'asasasaasasasa'),
+(11, 'Kiki Agustin', 'Informastika', 'dosen-default.png', 'asasasasasa');
 
 -- --------------------------------------------------------
 
@@ -71,6 +72,16 @@ CREATE TABLE `hasil_penilaian` (
   `periode` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `hasil_penilaian`
+--
+
+INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`, `pilihan`, `pilihan2`, `id_user`, `nama_user`, `cek_read`, `read_admin`, `bintang_admin`, `read_dosen`, `bintang_dosen`, `periode`) VALUES
+(1, 10, 10, 'Cara penyampaian sangat enak dan mudah dimengerti', 1, 10, 10, 10, 'Kiki Agustin', 1, 1, 1, 0, 0, '2020/2021'),
+(2, 5, 10, 'Bisa di tingkatkan kembali cara penyampaian materi nya', 3, 5, 10, 10, 'Kiki Agustin', 0, 0, 0, 0, 0, '2019/2020'),
+(4, 10, 10, 'Cara menyampaikan bisa lebih diperbaiki lagi, supaya anak -anak lebih mengerti', 1, 10, 10, 12, 'Jajang Jaelani', 0, 0, 0, 0, 0, '2020/2021'),
+(5, 8, 10, 'Cara penyampaian materi bisa ditingkatkan kembail', 1, 8, 10, 4, 'Kintan', 0, 0, 0, 0, 0, '2020/2021');
+
 -- --------------------------------------------------------
 
 --
@@ -80,11 +91,17 @@ CREATE TABLE `hasil_penilaian` (
 CREATE TABLE `periode` (
   `id_periode` int(11) NOT NULL,
   `semester` varchar(50) NOT NULL,
-  `tanggal1` varchar(30) NOT NULL,
-  `tanggal2` varchar(30) NOT NULL,
   `periode` varchar(55) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `periode`
+--
+
+INSERT INTO `periode` (`id_periode`, `semester`, `periode`, `status`) VALUES
+(1, 'Semester Ganjil', '2020/2021', 1),
+(2, 'Genap', '2021-02-02', 0);
 
 -- --------------------------------------------------------
 
@@ -100,21 +117,17 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `date_created` int(11) NOT NULL,
   `is_active` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL
+  `role_id` int(11) NOT NULL,
+  `id_dosen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `date_created`, `is_active`, `role_id`) VALUES
-(4, 'Kiki Agustin', 'admin@admin.com', 'default.jpg', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 1612837278, 1, 1),
-(13, 'Kiki Agustin', 'kikiagustin@gmail.com', 'default.png', '$2y$10$Q0nb1jh.SmcU1Tgf8rtaTeY48Jge4kxBIgx8fBNcSX13mtdw7XzTu', 1613190303, 1, 3),
-(14, 'Mega Kusmayati', 'mega@gmail.com', 'default.png', '$2y$10$HKPfH08XbDjNRWb2f4iIwuhkmsc03Bl3vJBhKgI1baq2cvtGpR.B.', 1613190438, 1, 3),
-(15, 'David Abdul Ajiz', 'davidabdul@gmail.com', 'kikiagustin1.jpg', '$2y$10$bVxGBuq5kWjgBKZYCcDNKe.WX062Hx9Vm5YmlPu2FYkkIodbQYVde', 1613190600, 1, 3),
-(16, 'Ismayanti', 'ismayanti@gmail.com', 'kikiagustin1.jpg', '$2y$10$W.XdSqGtvwkT7sSuQPNLd.Ssr5nMEGV2242tUa3lS62F5MHAF2mFG', 1613190782, 1, 3),
-(17, 'Dea Hasanatus', 'deahasanah@gmail.com', 'default.png', '$2y$10$Zto/Kd157JL6Mu1g.OwUROeINweadk/aT1aJRDrva27baCEKs3Lcu', 1613191094, 1, 3),
-(18, 'Jajang Maulana', 'onlinekiki008@gmail.com', 'default.png', '$2y$10$NQ/w7eBozu6V11tih.27lOD9O5hamjdletqHxp/s7sMBLC1mk2/Fy', 1613191912, 1, 2);
+INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `date_created`, `is_active`, `role_id`, `id_dosen`) VALUES
+(4, 'Kintan', 'admin@admin.com', 'default.jpg', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 1612837278, 1, 1, 0),
+(12, 'Kiki Agustin', 'onlinekiki008@gmail.com', 'default.jpg', '$2y$10$AjAXgisLCngF.k1ZhYUySeB2DCfAV4mSDkJZ6I7jQ1D2u7r2S.1fq', 1613019135, 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -128,6 +141,13 @@ CREATE TABLE `user_token` (
   `token` varchar(125) NOT NULL,
   `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_token`
+--
+
+INSERT INTO `user_token` (`id_token`, `email`, `token`, `date_created`) VALUES
+(2, 'dede@gmail.com', 'gIyAMHyMksYUeKSNiYJSmzU+usmF/WboOPPcjtQk1Ks=', 1612839509);
 
 --
 -- Indexes for dumped tables
@@ -171,31 +191,31 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT for table `daftar_dosen`
 --
 ALTER TABLE `daftar_dosen`
-  MODIFY `id_daftar_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_daftar_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `hasil_penilaian`
 --
 ALTER TABLE `hasil_penilaian`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `periode`
 --
 ALTER TABLE `periode`
-  MODIFY `id_periode` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_periode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -6,6 +6,13 @@ class Model_user extends CI_Model
 
     public function dataUser()
     {
+        $this->db->where('role_id', 2);
+        return $this->db->get('user')->result_array();
+    }
+
+    public function dataAdmin()
+    {
+        $this->db->where('role_id', 1);
         return $this->db->get('user')->result_array();
     }
 
@@ -21,6 +28,7 @@ class Model_user extends CI_Model
         $data = array(
             'name' => $name,
             'email' => $email,
+            'image' => "default.png",
             'password' => $password,
             'is_active' => $aktif,
             'role_id' => $role

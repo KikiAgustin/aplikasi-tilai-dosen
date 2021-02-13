@@ -106,7 +106,7 @@ class AuthUser extends CI_Controller
             $data = [
                 'name' => $nama_lengkap,
                 'email' => $email,
-                'image' => "default.jpg",
+                'image' => "default.png",
                 'password' => $password,
                 'date_created' => time(),
                 'is_active' => 0,

@@ -21,7 +21,7 @@
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $getUser['name']; ?></span>
-                        <img loading="lazy" class="img-profile rounded-circle" src="<?= base_url('assets/'); ?>img/Admin/default.png">
+                        <img loading="lazy" class="img-profile rounded-circle" src="<?= base_url('assets/user/img/dosen/') . $dosen['image']; ?>">
                     </a>
                 </li>
 
