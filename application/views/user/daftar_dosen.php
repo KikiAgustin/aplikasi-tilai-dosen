@@ -28,7 +28,7 @@
                         <div class="card mb-3" style="max-width: 540px;">
                             <div class="row g-0 ">
                                 <div class="col-md-4 p-3 ">
-                                    <img src="<?= base_url("assets/user/img/dosen/") . $df["image"]; ?>" class="img-fluid rounded-circle border border-4 " alt="Dosen-1">
+                                    <img loading="lazy" src="<?= base_url("assets/user/img/dosen/") . $df["image"]; ?>" class="img-fluid rounded-circle border border-4 " alt="Dosen-1">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">

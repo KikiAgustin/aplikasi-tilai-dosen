@@ -46,7 +46,7 @@
                         Silahkan <span class="fw-bold"><a class="text-decoration-none" href="<?= base_url('AuthUser'); ?>">Login</a></span> Disini
                     </p>
                     <p class="text-end  ">
-                        <img class="img-fluid gambar-registrasi" src="<?= base_url('assets/user/img/'); ?>login.png  " alt="">
+                        <img loading="lazy" class="img-fluid gambar-registrasi" src="<?= base_url('assets/user/img/'); ?>login.png  " alt="">
                     </p>
                 </div>
 

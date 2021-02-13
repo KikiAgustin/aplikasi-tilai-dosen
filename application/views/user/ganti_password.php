@@ -46,7 +46,7 @@
                         <span class="fw-bold">Password</span> ini ke orang lain
                     </p>
                     <p class="text-end  ">
-                        <img class="img-fluid gambar-lupa-password" src="<?= base_url('assets/user/img/'); ?>lupa_password.png  " alt="">
+                        <img loading="lazy" class="img-fluid gambar-lupa-password" src="<?= base_url('assets/user/img/'); ?>lupa_password.png  " alt="">
                     </p>
                 </div>
 

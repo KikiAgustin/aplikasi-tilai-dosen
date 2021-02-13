@@ -1,0 +1,48 @@
+Kesempatan tidak selalu datang dua kali, maka dari itu jangan sia-siakan apabila kita dikasih sebuah kesempatan
+
+oh iya temen-temen gak kerasa ya, udah mau satu tahun aja pandemi ini ada di indonesia, biar #dirumahaja nya bermanfaat
+yu ikutan #Re_CloudChallengesIndonesia yang diselenggarakan oleh @re_cloud.id dan @codepolitan 
+
+banyak banget benefit ketika kita ikutan challenge, info lebih lanjutnya cek aja di https://re-cloud.id
+
+#Re_CloudChallenges
+#Re_CloudChallengesIndonesia
+#withcodepolitan
+#stayathome
+
+
+Halo perkenalkan nama saya Kiki Agustin
+
+saya akan menjelaskan project yang saya submit di #Re_CloudChallengesIndonesia
+
+Project yang saya buat adalah, aplikasi untuk menilai dan memberikan saran kapada dosen dari mahasiswa selama kegiatan belajar 1 semester terakhir,
+
+pada pertemuan terakhir di setiap semester, ada beberapa dosen yang suka meminta kepada mahasiswa untuk memberikan saran terhadap sistem pembelajaran yang dilakukan selama satu semester kebelakang, tujuannya untuk mengetahui apakah pembelajaran yang diberikan sudah baik atau belum, kalau sudah baik ditingkatkan kembali, kalau kurang baik dievaluasi, dan biasanya saran tersebut ditulis didalam sebuah kertas, sehingga kasian juga dosen harus membawa banyak kertas, dan harus membaca nya satu persatu
+
+maka dari itu saya membuat sebuah aplikasi untuk memecahkan masalah tersebut
+
+didalam aplikasinya semua mahasiswa yang sudah terdaftar di sistem bisa memberikan penilaian kepada dosen satu kali dari setiap akhir semester, peniliannya berupa memberikan bintang mengenai cara mengajar dan memberikan bintang mengenai penyampaian materi yang disampaikan oleh dosen. 
+
+dan nilainya akan secara otomatis dikalkulasikan oleh sistem, untuk nilaianya 50% dari cara mengajar dan 50% dari cara menyampaikan materi, lalu hasilnya dijumlahkan dan dibagi menjadi 2.
+
+hasil akhir yang akan diperoleh setiap dosen yaitu sebuah nilai dari 1 sampai dengan 10
+
+untuk yudisiumnya yaitu
+8 - 10 = Sangat Baik
+6 - 8  = Baik
+4 - 6  = Cukup
+2 - 4  = Tidak Cukup
+1 - 2  = Sangat Tidak Cukup
+
+Selain memberikan nilai, mahasiswa juga diminta untuk memberikan saran mengenai sistem pembelajaran yang dilakukan 1 semester terakhir kepada dosen yang bersangkutan, sehingga bisa memperbaiki kukurangan-kekurangan dari pembelajaran yang telah dilakukan,
+
+saran tersebut disimpan kedalam sebuah database, sehinngga dosen tidak perlu lagi repot-repot membawa kertas seperti kalau sarannya ditulis dikertas. dan yang paling enak saran tersebut kita bisa akses dimanapun selagi tersedia internet
+
+isi sarannya bisa ditandai mana yang sudah dibaca dan belum, lalu saran yang menurut dosen tersebut membantu bisa ditandai juga dan dipisahkan
+
+Untuk aktor dari aplikasi ini ada 3 yaitu admin, mahasiswa dan dosen
+
+untuk admin tugasnya mengelola semua aktifitas yang ada di aplikasi ini, dari menambahkan data dosen sampai mengatur semester mana yang sedang aktif
+untuk mahasiswa hanya menilai dan memberikan saran kepada dosen
+sedangkan dosen melihat nilai dan isi saran yang masuk kapada dosen yang bersangkutan 
+  

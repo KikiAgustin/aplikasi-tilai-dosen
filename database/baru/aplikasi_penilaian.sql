@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2021 at 10:04 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Feb 13, 2021 at 01:59 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,7 +44,9 @@ INSERT INTO `daftar_dosen` (`id_daftar_dosen`, `nama`, `mengajar`, `image`, `quo
 (2, 'Mega Kusmayati', 'Teknik Informatika', 'dosen-2.png', 'Membiasakan mandiri sejak diusia dini, tuk bekal besar nanti'),
 (3, 'David Abdul Aziz', 'Teknik Informatika', 'dosen-3.png', 'Kerja keras dahulu, lalu nikmati hasilnya kemuadian hari'),
 (4, 'Ismayanti', 'Teknik Informatika', 'dosen-4.png', 'Belajar ikhtiar dan berdoa untuk kesuksesan'),
-(9, 'Dea Hasanah Tsaniah', 'Komputerarisasi Akuntansi', 'kikiagustin.jpg', 'Belajar belajar');
+(9, 'Dea Hasanah Tsaniah', 'Komputerarisasi Akuntansi', 'kikiagustin.jpg', 'Belajar belajar'),
+(10, 'Kiki Agustin', 'Informastika', 'dosen-default.png', 'asasasaasasasa'),
+(11, 'Kiki Agustin', 'Informastika', 'dosen-default.png', 'asasasasasa');
 
 -- --------------------------------------------------------
 
@@ -77,7 +79,8 @@ CREATE TABLE `hasil_penilaian` (
 INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`, `pilihan`, `pilihan2`, `id_user`, `nama_user`, `cek_read`, `read_admin`, `bintang_admin`, `read_dosen`, `bintang_dosen`, `periode`) VALUES
 (1, 10, 10, 'Cara penyampaian sangat enak dan mudah dimengerti', 1, 10, 10, 10, 'Kiki Agustin', 1, 1, 1, 0, 0, '2020/2021'),
 (2, 5, 10, 'Bisa di tingkatkan kembali cara penyampaian materi nya', 3, 5, 10, 10, 'Kiki Agustin', 0, 0, 0, 0, 0, '2019/2020'),
-(4, 10, 10, 'Cara menyampaikan bisa lebih diperbaiki lagi, supaya anak -anak lebih mengerti', 1, 10, 10, 12, 'Jajang Jaelani', 0, 0, 0, 0, 0, '2020/2021');
+(4, 10, 10, 'Cara menyampaikan bisa lebih diperbaiki lagi, supaya anak -anak lebih mengerti', 1, 10, 10, 12, 'Jajang Jaelani', 0, 0, 0, 0, 0, '2020/2021'),
+(5, 8, 10, 'Cara penyampaian materi bisa ditingkatkan kembail', 1, 8, 10, 4, 'Kintan', 0, 0, 0, 0, 0, '2020/2021');
 
 -- --------------------------------------------------------
 
@@ -114,16 +117,17 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `date_created` int(11) NOT NULL,
   `is_active` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL
+  `role_id` int(11) NOT NULL,
+  `id_dosen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `date_created`, `is_active`, `role_id`) VALUES
-(4, 'Kintan', 'admin@admin.com', 'default.jpg', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 1612837278, 1, 1),
-(12, 'Kiki Agustin', 'onlinekiki008@gmail.com', 'default.jpg', '$2y$10$AjAXgisLCngF.k1ZhYUySeB2DCfAV4mSDkJZ6I7jQ1D2u7r2S.1fq', 1613019135, 1, 2);
+INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `date_created`, `is_active`, `role_id`, `id_dosen`) VALUES
+(4, 'Kintan', 'admin@admin.com', 'default.jpg', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 1612837278, 1, 1, 0),
+(12, 'Kiki Agustin', 'onlinekiki008@gmail.com', 'default.jpg', '$2y$10$AjAXgisLCngF.k1ZhYUySeB2DCfAV4mSDkJZ6I7jQ1D2u7r2S.1fq', 1613019135, 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -187,13 +191,13 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT for table `daftar_dosen`
 --
 ALTER TABLE `daftar_dosen`
-  MODIFY `id_daftar_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_daftar_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `hasil_penilaian`
 --
 ALTER TABLE `hasil_penilaian`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `periode`

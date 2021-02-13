@@ -54,7 +54,7 @@
                 <div class="container bg-light rounded">
                     <div class="row box-nilai-n">
                         <div class="col-sm-12 col-md-4 p-3 justify-content-center ">
-                            <img src="<?= base_url("assets/user/img/user/"); ?><?= $user['image']; ?>" class="img-fluid rounded-circle border border-5" alt="Dosen">
+                            <img loading="lazy" src="<?= base_url("assets/user/img/user/"); ?><?= $user['image']; ?>" class="img-fluid rounded-circle border border-5" alt="Dosen">
                         </div>
                         <div class="col-sm-12 col-md-8">
                             <p>

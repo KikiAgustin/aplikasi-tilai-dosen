@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-12 col-md-3 ">
-                            <img src="<?= base_url('assets/user/img/dosen/') . $edit_dosen['image']; ?>" class="img-thumbnail" alt="<?= $edit_dosen['nama']; ?>">
+                            <img loading="lazy" src="<?= base_url('assets/user/img/dosen/') . $edit_dosen['image']; ?>" class="img-thumbnail" alt="<?= $edit_dosen['nama']; ?>">
                         </div>
                         <div class="col-sm-12 col-md-9 ">
                             <label for="foto" class="font-weight-bold">Foto Dosen</label>

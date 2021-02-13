@@ -44,7 +44,7 @@
                         Kembali Ke Halaman <span class="fw-bold"><a class="text-decoration-none" href="<?= base_url('AuthUser'); ?>">Login</a></span>
                     </p>
                     <p class="text-end  ">
-                        <img class="img-fluid gambar-lupa-password" src="<?= base_url('assets/user/img/'); ?>lupa_password.png  " alt="">
+                        <img loading="lazy" class="img-fluid gambar-lupa-password" src="<?= base_url('assets/user/img/'); ?>lupa-password.png  " alt="">
                     </p>
                 </div>
 

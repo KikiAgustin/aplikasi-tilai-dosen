@@ -34,7 +34,7 @@
 
                                     <tr>
                                         <td><?= $i; ?></td>
-                                        <td><img src="<?= base_url('assets/user/img/dosen/') . $dd['image']; ?>" class="img-thumbnail" width="100" height="100" alt="<?= $dd['nama']; ?>"></td>
+                                        <td><img loading="lazy" src="<?= base_url('assets/user/img/dosen/') . $dd['image']; ?>" class="img-thumbnail" width="100" height="100" alt="<?= $dd['nama']; ?>"></td>
                                         <td><?= $dd['nama']; ?></td>
                                         <td><?= $dd['mengajar']; ?></td>
                                         <td><?= $dd['quotes']; ?></td>

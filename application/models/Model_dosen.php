@@ -57,6 +57,24 @@ class Model_dosen extends CI_Model
         $this->db->insert('daftar_dosen', $data);
     }
 
+    public function getIdTerakhir()
+    {
+        $this->db->order_by('id_daftar_dosen', 'DESC');
+        return  $this->db->get('daftar_dosen', 1)->result_array();
+    }
+
+    public function tambahAkunDosen($idTerakhir)
+    {
+        var_dump($idTerakhir);
+        die;
+        $namaDosen = htmlspecialchars($this->input->post('nama'), true);
+        $email = htmlspecialchars($this->input->post('email'), true);
+        $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+
+        var_dump($namaDosen);
+        die;
+    }
+
     public function getIdDosen($id_dosen)
     {
         return $this->db->get_where('daftar_dosen', ['id_daftar_dosen' => $id_dosen])->row_array();

@@ -25,7 +25,7 @@
                         <div class="card mb-3">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img class="img-thumbnail" src="<?= base_url('assets/user/img/dosen/') . $dosen_detail['image']; ?>" alt="<?= $dosen_detail['nama']; ?>">
+                                    <img loading="lazy" class="img-thumbnail" src="<?= base_url('assets/user/img/dosen/') . $dosen_detail['image']; ?>" alt="<?= $dosen_detail['nama']; ?>">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">

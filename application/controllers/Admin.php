@@ -96,6 +96,9 @@ class Admin extends CI_Controller
     $this->form_validation->set_rules('nama', 'Nama Dosen', 'required|trim');
     $this->form_validation->set_rules('prodi', 'Dosen Dari Prodi', 'required|trim');
     $this->form_validation->set_rules('quotes', 'Quotes', 'required|trim');
+    $this->form_validation->set_rules('email', 'email', 'required|trim|is_unique[user.email]');
+    $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[5]|matches[password1]');
+    $this->form_validation->set_rules('password1', 'Konformasi Password', 'required|trim|matches[password]');
 
     if ($this->form_validation->run() == false) {
       $this->load->view('templates/header', $data);
@@ -105,7 +108,10 @@ class Admin extends CI_Controller
       $this->load->view('templates/footer');
     } else {
       $this->load->model('Model_dosen');
+      $getIdTerakhir = $this->Model_dosen->getIdTerakhir();
+      $idTerakhir = $getIdTerakhir['id_daftar_dosen'];
       $this->Model_dosen->tambahDataDosen();
+      $this->Model_dosen->tambahAkunDosen($idTerakhir);
       $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Dosen Berhasil ditambah</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">

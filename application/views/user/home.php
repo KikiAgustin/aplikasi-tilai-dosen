@@ -2,7 +2,7 @@
     <nav id="navbar-home" class="navbar navbar-expand-lg navbar-light fixed-top ">
         <div class="container ">
             <a class="navbar-brand text-white" href="#home">
-                <img src="<?= base_url("assets/user/"); ?>img/logo.png" alt="logo">
+                <img loading="lazy" src="<?= base_url("assets/user/"); ?>img/logo.png" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -16,7 +16,7 @@
                 <a class="nav-link text-white  " aria-current="page" href="#contact">Contact</a>
                 <?php if ($this->session->userdata('email')) : ?>
                     <div class="dropdown">
-                        <a class="nav-link text-dark fw-bold    " role="button" id="profile" data-bs-toggle="dropdown" aria-expanded="false" aria-current="page" href="#"> <?= $nama_user; ?> &nbsp; <img src="<?= base_url('assets/user/img/user/') . $image;  ?>" class="img-fluid rounded-circle " width="40px" height="40px" alt="<?= $nama_user; ?>"> </a>
+                        <a class="nav-link text-dark fw-bold    " role="button" id="profile" data-bs-toggle="dropdown" aria-expanded="false" aria-current="page" href="#"> <?= $nama_user; ?> &nbsp; <img loading="lazy" src="<?= base_url('assets/user/img/user/') . $image;  ?>" class="img-fluid rounded-circle " width="40px" height="40px" alt="<?= $nama_user; ?>"> </a>
 
                         <ul class="dropdown-menu mt-2 " aria-labelledby="profile">
                             <li><a class="dropdown-item" href="<?= base_url('User/profile'); ?>"><i class="bi bi-person-fill"></i> </i> Profile</a></li>
@@ -41,7 +41,7 @@
         <div class="container home">
             <div class="row">
                 <div class="col-sm-12 col-md-6 ">
-                    <img src="<?= base_url("assets/user/"); ?>img/Saly-6.png" class="img-fluid img-about " alt="">
+                    <img loading="lazy" src="<?= base_url("assets/user/"); ?>img/home-1.png" class="img-fluid img-about " alt="">
                 </div>
                 <div class="col-sm-12 col-md-6 tex-home  ">
                     <span>
@@ -77,7 +77,7 @@
                     </p>
                 </div>
                 <div class="col-sm-12 col-md-6 about-isi ">
-                    <img src="<?= base_url("assets/user/"); ?>img/Saly-16.png" class="img-fluid " alt="">
+                    <img loading="lazy" src="<?= base_url("assets/user/"); ?>img/home-2.png" class="img-fluid " alt="">
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
                         <div class="card mb-3" style="max-width: 540px;">
                             <div class="row g-0 ">
                                 <div class="col-md-4 p-3 ">
-                                    <img src="<?= base_url("assets/user/img/dosen/") . $df["image"]; ?>" class="img-fluid rounded-circle border border-4 " alt="<?= $df["nama"]; ?>">
+                                    <img loading="lazy" src="<?= base_url("assets/user/img/dosen/") . $df["image"]; ?>" class="img-fluid rounded-circle border border-4 " alt="<?= $df["nama"]; ?>">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">

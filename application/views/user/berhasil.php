@@ -34,7 +34,7 @@
             <div class="container bg-light rounded">
                 <div class="row box-nilai-n">
                     <div class="col-sm-12 text-center">
-                        <img class="img-berhasil" src="<?= base_url("assets/user/"); ?>img/Saly-22.png" class="img-fluid" alt="Berhasil">
+                        <img loading="lazy" class="img-berhasil" src="<?= base_url("assets/user/"); ?>img/berhasil.png" class="img-fluid" alt="Berhasil">
                     </div>
                 </div>
                 <div class="row">

@@ -16,3 +16,27 @@ password database : mysql : ki@juara1
 https://pastebin.com/KWnNqUAQ
 
 http://www.newbienote.com/2016/09/tutorial-import-database-mysql-dari.html
+
+
+Untuk Mengakses halaman admin, bisa kunjungi 
+http://149.129.180.250:84/Auth
+
+Untuk username dan password admin
+username : admin@admin.com
+password : admin123
+
+
+Untuk Mengakses halaman dosen bisa kunjungi
+http://149.129.180.250:84/Dosen
+
+untuk username dan password Dosen
+username : kikiagustin@gmail.com
+password : kikiagustin123456789
+
+Untuk halaman user bisa kunjungi
+http://149.129.180.250:84
+
+untuk username dan password
+username : kikiagustin62@gmail.com
+password : 123456789
+atau bisa mendaftar akun di aplikasi
