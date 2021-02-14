@@ -3,18 +3,18 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data User</h1>
+        <h1 class="h3 mb-0 text-gray-800">Data Periode Tahun Ajaran</h1>
     </div>
 
     <!-- Content Row -->
     <div class="row">
         <div class="col-12">
 
-            <a class="btn btn-primary mb-3" href="" data-toggle="modal" data-target="#exampleModal">Tambah Periode</a>
+            <a class="btn btn-primary mb-3" href="" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-plus"></i> Tambah Periode</a>
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Data User</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Data Periode</h6>
                     <small class="text-danger ">Note: Untuk periode yang aktif, hanya boleh ada satu</small>
                 </div>
                 <?= $this->session->flashdata('message'); ?>
@@ -105,12 +105,30 @@
                         <label for="periode">Periode Tahun</label>
                         <div class="row">
                             <div class="col-sm-6">
-                                <label for="periode">Dari</label>
-                                <input required class="form-control" type="date" name="tanggal_awal" id="periode1" placeholder="Tanggal Awal">
+
+                                <?php
+                                $tgl_awal = date('Y') - 5;
+                                $tgl_akhir = date('Y') + 5;
+                                ?>
+
+                                <div class="form-group">
+                                    <label for="tanggal_awal">Tanggal Awal</label>
+                                    <select class="form-control" name="tanggal_awal" id="tanggal_awal">
+                                        <?php for ($i = $tgl_awal; $i <= $tgl_akhir; $i++) : ?>
+                                            <option><?= $i; ?></option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-sm-6">
-                                <label for="periode">Sampai</label>
-                                <input required class="form-control" type="date" name="tanggal_akhir" id="periode2" placeholder="Tanggal Akhir">
+                                <div class="form-group">
+                                    <label for="tanggal_akhir">Tanggal Akhir</label>
+                                    <select class="form-control" name="tanggal_akhir" id="tanggal_akhir">
+                                        <?php for ($i = $tgl_awal; $i <= $tgl_akhir; $i++) : ?>
+                                            <option><?= $i; ?></option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 

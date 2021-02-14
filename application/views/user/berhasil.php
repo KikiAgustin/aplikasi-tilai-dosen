@@ -23,7 +23,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>Aplikasi Review Dosen | Login</title>
+    <title>Aplikasi penilaian Dosen | Login</title>
 </head>
 
 <body class="halaman-utama">
@@ -40,9 +40,9 @@
                 <div class="row">
                     <div class="col-sm-12 text-center">
                         <span class="text-berhasil">
-                            Terimakasih sudah memberikan review kepada dosen ini
+                            Terimakasih sudah memberikan nilai dan saran kepada dosen ini
                             <br>
-                            semoga review dari temen-temen semua bisa memberikan dampak positif
+                            semoga penilaian dari temen-temen semua bisa memberikan dampak positif
                             <br>
                             dan menjadikan proses pembelajaran lebih baik
                         </span>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="row mt-4 pb-4">
                     <div class="col-sm-12 text-center">
-                        <a onclick="animasiBerhasil()" class="btn btn-primary">Review Dosen Lain</a>
+                        <a onclick="animasiBerhasil()" class="btn btn-primary">Nilai Dosen Lain</a>
                     </div>
                 </div>
             </div>

@@ -105,12 +105,12 @@
                                         <p class="card-text">
                                             <?= $df["quotes"]; ?>
                                         </p>
-                                        <?php $getUser = $this->db->get_where('hasil_penilaian', ['periode' => $tahun, 'id_daftar_dosen' => $df['id_daftar_dosen'], 'id_user' => $id_user])->row_array(); ?>
+                                        <?php $getUser = $this->db->get_where('hasil_penilaian', ['semester' => $semester, 'periode' => $tahun, 'id_daftar_dosen' => $df['id_daftar_dosen'], 'id_user' => $id_user])->row_array(); ?>
 
                                         <?php if ($getUser) : ?>
-                                            <button style="cursor:none;" class="btn btn-success"> Sudah Direview</button>
+                                            <button style="cursor:none;" class="btn btn-success"> Sudah Dinilai</button>
                                         <?php else : ?>
-                                            <a href="<?= base_url('User/riviewDosen/') . $df["id_daftar_dosen"]; ?>" class="btn btn-primary"> Riview Sekarang</a>
+                                            <a href="<?= base_url('User/riviewDosen/') . $df["id_daftar_dosen"]; ?>" class="btn btn-primary"> Nilai Sekarang</a>
                                         <?php endif; ?>
                                         </p>
                                     </div>

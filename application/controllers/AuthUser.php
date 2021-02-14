@@ -21,7 +21,7 @@ class AuthUser extends CI_Controller
         if ($this->form_validation->run() == false) {
 
             $data = [
-                'judul' => "Aplikasi Review Dosen | Login"
+                'judul' => "Aplikasi Penilaian Dosen | Login"
             ];
 
             $this->load->view('template_user/header', $data);
@@ -50,7 +50,7 @@ class AuthUser extends CI_Controller
                         'email' => $user['email']
                     ];
                     $this->session->set_userdata($data);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show mt-3 text-center" role="alert"><strong>Login </strong> berhasil silahkan mereview dosen yang ada di mata kuliah kamu <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show mt-3 text-center" role="alert"><strong>Login </strong> berhasil silahkan Menilai dosen yang ada di mata kuliah kamu <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
                     redirect('User/daftarDosen');
                 } else {
                     $this->session->set_flashdata('auth_user', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> Password salah<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
@@ -92,7 +92,7 @@ class AuthUser extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data = [
-                'judul' => "Aplikasi Review Dosen | Registrasi"
+                'judul' => "Aplikasi Penilaian Dosen | Registrasi"
             ];
 
             $this->load->view('template_user/header', $data);
@@ -223,7 +223,7 @@ class AuthUser extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data = [
-                'judul' => "Aplikasi Review Dosen | Lupa Password"
+                'judul' => "Aplikasi Penilaian Dosen | Lupa Password"
             ];
 
             $this->load->view('template_user/header', $data);
@@ -321,7 +321,7 @@ class AuthUser extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data = [
-                'judul' => "Aplikasi Review Dosen | Ganti Password"
+                'judul' => "Aplikasi Penilaian Dosen | Ganti Password"
             ];
 
             $this->load->view('template_user/header', $data);

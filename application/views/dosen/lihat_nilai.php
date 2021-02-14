@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Detail Dosen</h1>
+        <h1 class="h3 mb-0 text-gray-800">Detail penilaian</h1>
     </div>
 
     <!-- Content Row -->
@@ -32,9 +32,7 @@
                                         <h5 class="card-title"><?= $dosen_detail['nama']; ?></h5>
                                         <p class="card-text">Dosen dari Prodi - <?= $dosen_detail['mengajar']; ?></p>
                                         <p class="card-text"> <?= $dosen_detail['quotes']; ?></p>
-                                        <hr>
-                                        <p class="font-weight-bold"><a href="" data-toggle="modal" data-target="#lihatKategori">Lihat Berdasarkan Periode</a></p>
-                                        <hr>
+
                                         <h5 class="card-title">Hasil Penilaian</h5>
                                         <div class="row">
                                             <div class="col-sm-12">
@@ -357,62 +355,6 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                 <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal kategori -->
-
-<!-- Modal -->
-<div class="modal fade" id="lihatKategori" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Periode Pembelajaran</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="card shadow ">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Saran Dari Mahasiswa</h6>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Semester</th>
-                                                <th>Periode</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php $i = 1; ?>
-                                            <?php foreach ($tampil_periode as $periode) :  ?>
-                                                <tr>
-                                                    <td><?= $i++; ?></td>
-                                                    <td><?= $periode['semester']; ?></td>
-                                                    <td><?= $periode['periode']; ?></td>
-                                                    <td><a href="<?= base_url('Hasilpenilaian/lihatPeriode?periode=') . $periode['id_periode'] . '&dosen=' . $dosen_detail['id_daftar_dosen']; ?>"><span class="badge badge-primary">Lihat Hasil</span></a></td>
-                                                </tr>
-                                            <?php endforeach;  ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
             </div>
         </div>
     </div>

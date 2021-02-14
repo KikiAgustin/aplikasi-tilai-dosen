@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Detail Dosen</h1>
+        <h1 class="h3 mb-0 text-gray-800">Detail Periode</h1>
     </div>
 
     <!-- Content Row -->
@@ -17,7 +17,7 @@
             </script>
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Hasil Penilaian</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Hasil Penilaian Pada Semester <?= $getPeriode['semester']; ?> Tahun Ajaran <?= $getPeriode['periode']; ?> </h6>
                 </div>
                 <?= $this->session->flashdata('message'); ?>
                 <div class="card-body">
@@ -32,8 +32,6 @@
                                         <h5 class="card-title"><?= $dosen_detail['nama']; ?></h5>
                                         <p class="card-text">Dosen dari Prodi - <?= $dosen_detail['mengajar']; ?></p>
                                         <p class="card-text"> <?= $dosen_detail['quotes']; ?></p>
-                                        <hr>
-                                        <p class="font-weight-bold"><a href="" data-toggle="modal" data-target="#lihatKategori">Lihat Berdasarkan Periode</a></p>
                                         <hr>
                                         <h5 class="card-title">Hasil Penilaian</h5>
                                         <div class="row">
@@ -276,7 +274,7 @@
                                                         </div>
                                                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                                                             <div class="card-body">
-                                                                <a href="<?= base_url('HasilPenilaian/saran/') . $dosen_detail['id_daftar_dosen'];  ?>">Lihat Saran</a>
+                                                                <a href="<?= base_url('Dosen/saranDetail/') . $dosen_detail['id_daftar_dosen'] . '/' . $getPeriode['id_periode'];  ?>">Lihat Saran</a>
                                                             </div>
                                                         </div>
                                                     </div>

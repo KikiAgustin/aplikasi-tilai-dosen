@@ -15,7 +15,7 @@ $(document).ready(function () {
 
 
     $("#btn_rating").click(function () {
-        let base_url = "http://149.129.180.250:84/";
+        let base_url = "http://localhost/aplikasi_penilaian/";
         let url = base_url + "User/hasilRiviewDosen/?callback=?";
         let rating1 = $("#hasilRatingPertama").val();
         let rating2 = $("#hasilRatingKedua").val();
@@ -24,6 +24,7 @@ $(document).ready(function () {
         let id_user = $("#id_user").val();
         let nama_user = $("#nama_user").val();
         let periode = $("#periode").val();
+        let semester = $("#semester").val();
         var tampilNama = $("input:checked" + "#tampilNama").val();
 
 
@@ -58,7 +59,7 @@ $(document).ready(function () {
                 }
             })
         } else {
-            let dataString = "rating1=" + rating1 + "&rating2=" + rating2 + "&saran=" + saran + "&id_dosen=" + id_dosen + "&id_user=" + id_user + "&nama_user=" + nama_user + "&cek_read=" + tampilNama + "&periode=" + periode;
+            let dataString = "rating1=" + rating1 + "&rating2=" + rating2 + "&saran=" + saran + "&id_dosen=" + id_dosen + "&id_user=" + id_user + "&nama_user=" + nama_user + "&cek_read=" + tampilNama + "&periode=" + periode + "&semester=" + semester;
 
             if ($.trim(rating1).length > 0) {
                 $.ajax({

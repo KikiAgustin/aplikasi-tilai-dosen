@@ -22,7 +22,7 @@
                                     <img loading="lazy" src="<?= base_url('assets/user/img/dosen/') . $dd['image']; ?>" class="card-img-top" alt="<?= $dd['nama']; ?>">
                                     <div class="card-body">
                                         <h5 class="card-title"><?= $dd['nama']; ?></h5>
-                                        <a href="<?= base_url('HasilPenilaian/detail/') . $dd['id_daftar_dosen']; ?>" class="btn btn-primary">Lihat Review</a>
+                                        <a href="<?= base_url('HasilPenilaian/detail/') . $dd['id_daftar_dosen']; ?>" class="btn btn-primary">Lihat Penilaian</a>
                                     </div>
                                 </div>
                             </div>

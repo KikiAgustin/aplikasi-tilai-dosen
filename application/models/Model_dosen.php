@@ -435,4 +435,22 @@ class Model_dosen extends CI_Model
         $this->db->order_by('id_periode', 'DESC');
         return $this->db->get('periode')->result_array();
     }
+
+    public function tampilperiode()
+    {
+        $this->db->where('status', 2);
+        return $this->db->get('periode')->result_array();
+    }
+
+    public function getHasilPeriode($idPeriode, $idDosen)
+    {
+        $periode =  $this->db->get_where('periode', ['id_periode' => $idPeriode])->row_array();
+        $semester = $periode['semester'];
+        $getPeriode = $periode['periode'];
+
+        $this->db->where('periode', $getPeriode);
+        $this->db->where('semester', $semester);
+        $this->db->where('id_daftar_dosen', $idDosen);
+        return $this->db->get('hasil_penilaian')->result_array();
+    }
 }

@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 
-    <img src="<?= base_url('assets/user/img/dosen/') . $dosen['image']; ?>" width="130px" height="130px" class="img-fluid rounded-circle mx-auto my-3 " alt="">
+    <img src="<?= base_url('assets/user/img/dosen/') . $dosen['image']; ?>" width="130px" height="130px" class="img-fluid rounded-circle mx-auto my-3 border border-light " alt="">
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
@@ -18,21 +18,21 @@
     <hr class="sidebar-divider">
 
     <li class="nav-item active">
-        <a class="nav-link" href="<?= base_url('Admin/periode'); ?>">
+        <a class="nav-link" href="<?= base_url('Dosen/periode'); ?>">
             <i class="fas fa-fw fa-indent"></i>
-            <span>Periode</span></a>
+            <span>Penilaian Tiap Periode</span></a>
     </li>
 
 
     <li class="nav-item active">
-        <a class="nav-link" href="<?= base_url('Admin/user'); ?>">
+        <a class="nav-link" href="<?= base_url('Dosen/lihatNilai'); ?>">
             <i class="fas fa-fw fa-poll-h"></i>
-            <span>Lihat Nilai</span></a>
+            <span>Lihat Nilai Keseluruhan</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="<?= base_url('Admin/user'); ?>">
+        <a class="nav-link" href="<?= base_url('Dosen/lihatSaran'); ?>">
             <i class="fas fa-fw fa-user-plus"></i>
-            <span>Lihat Saran</span></a>
+            <span>Lihat Saran Keseluruhan</span></a>
     </li>
 
     <!-- Divider -->

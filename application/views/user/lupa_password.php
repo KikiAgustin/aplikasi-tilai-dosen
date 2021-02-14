@@ -19,7 +19,7 @@
     <!-- My style -->
     <link rel="stylesheet" href="<?= base_url("assets/user/"); ?>css/style.css">
 
-    <title>Aplikasi Review Dosen | Login</title>
+    <title>Aplikasi Penilaian Dosen | Login</title>
 </head>
 
 <body class="halaman-utama">

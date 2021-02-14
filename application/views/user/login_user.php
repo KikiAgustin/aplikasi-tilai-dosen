@@ -19,7 +19,7 @@
     <!-- My style -->
     <link rel="stylesheet" href="<?= base_url("assets/user/"); ?>css/style.css">
 
-    <title>Aplikasi Review Dosen | Login</title>
+    <title>Aplikasi penilaian Dosen | Login</title>
 </head>
 
 <body class="halaman-utama">
@@ -38,7 +38,7 @@
                     <p class="judul-login">
                         Silahkan Login
                         <br>
-                        Untuk Mulai Mereview
+                        Untuk Mulai Menilai
                     </p>
 
                     <p class="isi-sub-login">

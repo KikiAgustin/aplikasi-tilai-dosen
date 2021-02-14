@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2021 at 03:11 PM
+-- Generation Time: Feb 13, 2021 at 08:48 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -41,11 +41,11 @@ CREATE TABLE `daftar_dosen` (
 --
 
 INSERT INTO `daftar_dosen` (`id_daftar_dosen`, `nama`, `email`, `mengajar`, `image`, `quotes`) VALUES
-(1, 'Kiki Agustin A.md, S.kom', 'kikiagustin@gmail.com', 'Teknik Informatika', 'dosen-1.png', 'Belajar menghadapi hal kecil, sebelum menghadapii hal besar'),
-(2, 'Mega Kusmayati S.ag', 'mega@gmail.com', 'Keagamaan', 'dosen-2.png', 'Membiasakan mandiri sejak diusia dini, tuk bekal besar nanti'),
-(3, 'David Abdul Ajiz S.kom', 'davidabdul@gmail.com', 'Teknik Informatika', 'dosen-3.png', 'Kerja keras dahulu, lalu nikmati hasilnya kemuadian hari'),
-(4, 'Ismayanti S.pd', 'ismayanti@gmail.com', 'Komputerarisasi Akuntansi', 'dosen-4.png', 'Belajar ikhtiar dan berdoa untuk kesuksesan'),
-(5, 'Dea Hasanatus A.md.ak', 'deahasanah@gmail.com', 'Komputerarisasi Akuntansi', 'kikiagustin.jpg', 'Belajar dari sebuah kesalahan akan menjadikan diri kita lebih dewasa');
+(1, 'Kiki Agustin', 'kikiagustin@gmail.com', 'Teknik Informatika', 'dosen-1.png', 'Belajar menghadapi hal kecil, sebelum menghadapii hal besar'),
+(2, 'Mega Kusmayati', 'mega@gmail.com', 'Keagamaan', 'dosen-2.png', 'Membiasakan mandiri sejak diusia dini, tuk bekal besar nanti'),
+(3, 'David Abdul Ajiz', 'davidabdul@gmail.com', 'Teknik Informatika', 'dosen-3.png', 'Kerja keras dahulu, lalu nikmati hasilnya kemuadian hari'),
+(4, 'Ismayanti', 'ismayanti@gmail.com', 'Komputerarisasi Akuntansi', 'dosen-4.png', 'Belajar ikhtiar dan berdoa untuk kesuksesan'),
+(5, 'Dea Hasanatus', 'deahasanah@gmail.com', 'Komputerarisasi Akuntansi', 'kikiagustin.jpg', 'Belajar dari sebuah kesalahan akan menjadikan diri kita lebih dewasa');
 
 -- --------------------------------------------------------
 
@@ -68,7 +68,6 @@ CREATE TABLE `hasil_penilaian` (
   `bintang_admin` int(11) NOT NULL,
   `read_dosen` int(11) NOT NULL,
   `bintang_dosen` int(11) NOT NULL,
-  `semester` varchar(50) NOT NULL,
   `periode` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -76,9 +75,8 @@ CREATE TABLE `hasil_penilaian` (
 -- Dumping data for table `hasil_penilaian`
 --
 
-INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`, `pilihan`, `pilihan2`, `id_user`, `nama_user`, `cek_read`, `read_admin`, `bintang_admin`, `read_dosen`, `bintang_dosen`, `semester`, `periode`) VALUES
-(1, 4, 10, 'Penyampaian materi semoga bisa ditingkatkan lagi, supaya anak-anak bisa lebih mengerti tentang materi yang di sampaiakan', 1, 4, 10, 18, 'Jajang Maulana', 1, 1, 1, 1, 1, 'Ganjil', '2021/2022'),
-(2, 9, 6, 'Coba penyampaian materinya diperbaiki lagi', 4, 9, 6, 18, 'Jajang Maulana', 1, 0, 0, 0, 0, 'Genap', '2021/2022');
+INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`, `pilihan`, `pilihan2`, `id_user`, `nama_user`, `cek_read`, `read_admin`, `bintang_admin`, `read_dosen`, `bintang_dosen`, `periode`) VALUES
+(1, 9, 8, 'Ketika penyampaian materi, alangkah lebih baik langsung di praktekan, karena mahasiswa suka bingung yang dijelaskan itu fungsinya buat apa', 1, 9, 8, 18, 'Jajang Maulana', 1, 1, 1, 0, 0, '2020/2021');
 
 -- --------------------------------------------------------
 
@@ -89,7 +87,8 @@ INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `i
 CREATE TABLE `periode` (
   `id_periode` int(11) NOT NULL,
   `semester` varchar(50) NOT NULL,
-  `tanggal` varchar(30) NOT NULL,
+  `tanggal1` varchar(30) NOT NULL,
+  `tanggal2` varchar(30) NOT NULL,
   `periode` varchar(55) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -98,9 +97,8 @@ CREATE TABLE `periode` (
 -- Dumping data for table `periode`
 --
 
-INSERT INTO `periode` (`id_periode`, `semester`, `tanggal`, `periode`, `status`) VALUES
-(1, 'Ganjil', '1613299468', '2021/2022', 2),
-(2, 'Genap', '1613300278', '2021/2022', 1);
+INSERT INTO `periode` (`id_periode`, `semester`, `tanggal1`, `tanggal2`, `periode`, `status`) VALUES
+(1, 'Genap', '13-01-2020', '13-02-2021', '2020/2021', 1);
 
 -- --------------------------------------------------------
 
@@ -130,7 +128,7 @@ INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `date_created`, 
 (15, 'David Abdul Ajiz', 'davidabdul@gmail.com', 'kikiagustin1.jpg', '$2y$10$bVxGBuq5kWjgBKZYCcDNKe.WX062Hx9Vm5YmlPu2FYkkIodbQYVde', 1613190600, 1, 3),
 (16, 'Ismayanti', 'ismayanti@gmail.com', 'kikiagustin1.jpg', '$2y$10$W.XdSqGtvwkT7sSuQPNLd.Ssr5nMEGV2242tUa3lS62F5MHAF2mFG', 1613190782, 1, 3),
 (17, 'Dea Hasanatus', 'deahasanah@gmail.com', 'default.png', '$2y$10$Zto/Kd157JL6Mu1g.OwUROeINweadk/aT1aJRDrva27baCEKs3Lcu', 1613191094, 1, 3),
-(18, 'Jajang Maulana', 'onlinekiki008@gmail.com', 'default.png', '$2y$10$uayspgjuu.O6IPe7J8cwLuhVeePNto2yqp56dFUk2rz/pIuZFeXtO', 1613191912, 1, 2);
+(18, 'Jajang Maulana', 'onlinekiki008@gmail.com', 'default.png', '$2y$10$NQ/w7eBozu6V11tih.27lOD9O5hamjdletqHxp/s7sMBLC1mk2/Fy', 1613191912, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -144,13 +142,6 @@ CREATE TABLE `user_token` (
   `token` varchar(125) NOT NULL,
   `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user_token`
---
-
-INSERT INTO `user_token` (`id_token`, `email`, `token`, `date_created`) VALUES
-(2, 'onlinekiki008@gmail.com', 'eUPiHz+NZo/9p6giI5wJbZR2c62Ztv6aMUX00cPhApk=', 1613290383);
 
 --
 -- Indexes for dumped tables
@@ -200,13 +191,13 @@ ALTER TABLE `daftar_dosen`
 -- AUTO_INCREMENT for table `hasil_penilaian`
 --
 ALTER TABLE `hasil_penilaian`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `periode`
 --
 ALTER TABLE `periode`
-  MODIFY `id_periode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_periode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -218,7 +209,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

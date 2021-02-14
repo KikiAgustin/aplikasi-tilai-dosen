@@ -7,7 +7,7 @@ class User extends CI_Controller
     public function index()
     {
         $data = [
-            'judul' => "Aplikasi Review Dosen"
+            'judul' => "Aplikasi Penilaian Dosen"
         ];
 
         $this->load->view('template_user/header', $data);
@@ -28,7 +28,7 @@ class User extends CI_Controller
         $periode = $this->db->get_where('periode', ['status' => 1])->row_array();
 
         $data = [
-            'judul'         => "Aplikasi Review Dosen | Home",
+            'judul'         => "Aplikasi Penilaian Dosen | Home",
             'daftar_dosen'  => $daftarDosen,
             'nama_user'     => $nama,
             'id_user'       => $id_user,
@@ -53,7 +53,7 @@ class User extends CI_Controller
         $periode = $this->db->get_where('periode', ['status' => 1])->row_array();
 
         $data = [
-            'judul' => "Aplikasi Review Dosen | Daftar Dosen",
+            'judul' => "Aplikasi Penilaian Dosen | Daftar Dosen",
             'daftar_dosen'  => $daftarDosen,
             'id_user'       => $id_user,
             'periode'       => $periode,
@@ -71,9 +71,10 @@ class User extends CI_Controller
         $periode = $this->db->get_where('periode', ['status' => 1])->row_array();
         $statusPeriode = $periode['status'];
         $tahun         = $periode['periode'];
+        $semester      = $periode['semester'];
 
         if (!$this->session->userdata('email')) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk mulai mereview silahkan login terlebih dahulu <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk mulai menilai silahkan login terlebih dahulu <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
             redirect('AuthUser');
         } else if ($statusPeriode) {
             $riviewDosen = $this->db->get_where('daftar_dosen', ['id_daftar_dosen' => $id_daftar_dosen])->row_array();
@@ -84,16 +85,17 @@ class User extends CI_Controller
             $nama = $user['name'];
 
             $data = [
-                'judul' => "Aplikasi Review Dosen | Riview Dosen",
+                'judul' => "Aplikasi Penilaian Dosen | Riview Dosen",
                 'riviewDosen' => $riviewDosen,
                 'id_user'     => $idUser,
                 'nama_user'   => $nama,
-                'tahun'       => $tahun
+                'tahun'       => $tahun,
+                'semester'    => $semester
             ];
 
             $this->load->view('user/riview_dosen', $data);
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk sekarang tidak ada periode yang harus di review <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk sekarang tidak ada periode yang harus dinilai <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
             redirect('User/daftarDosen');
         }
     }
@@ -109,6 +111,7 @@ class User extends CI_Controller
         $nama_user = $_POST['nama_user'];
         $cek_read = $_POST['cek_read'];
         $periode = $_POST['periode'];
+        $semester = $_POST['semester'];
 
         if ($rating1 == null) {
             redirect('User/home');
@@ -124,7 +127,8 @@ class User extends CI_Controller
             'id_user' => $id_user,
             'nama_user' => $nama_user,
             'cek_read' => $cek_read,
-            'periode'  => $periode
+            'periode'  => $periode,
+            'semester'  => $semester
         ];
 
         $this->db->insert('hasil_penilaian', $data);
@@ -134,11 +138,11 @@ class User extends CI_Controller
     public function berhasil()
     {
         if (!$this->session->userdata('email')) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk mulai mereview silahkan login terlebih dahulu <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk mulai Menilai silahkan login terlebih dahulu <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
             redirect('AuthUser');
         } else if ($this->session->userdata('save_berhasil')) {
             $data = [
-                'judul' => "Aplikasi Review Dosen | Berhasil"
+                'judul' => "Aplikasi Penilaian Dosen | Berhasil"
             ];
 
             $this->load->view('template_user/header', $data);
@@ -182,7 +186,7 @@ class User extends CI_Controller
     public function profile()
     {
         if (!$this->session->userdata('email')) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk mulai mereview silahkan login terlebih dahulu <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> untuk mulai Menilai silahkan login terlebih dahulu <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
             redirect('Authuser');
         }
 
@@ -190,7 +194,7 @@ class User extends CI_Controller
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
         $data = [
-            'judul' => "Aplikasi Review Dosen | Profile",
+            'judul' => "Aplikasi Penilaian Dosen | Profile",
             'user'  => $user
 
         ];

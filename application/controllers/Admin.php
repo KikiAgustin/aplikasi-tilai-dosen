@@ -293,18 +293,14 @@ class Admin extends CI_Controller
   public function tambahPeriode()
   {
     $semester = $this->input->post('semester');
-    $tanggal_awal = date('d-m-Y', strtotime($this->input->post('tanggal_awal')));
-    $tanggal_akhir = date('d-m-Y', strtotime($this->input->post('tanggal_akhir')));
+    $tanggal_awal = htmlspecialchars($this->input->post('tanggal_awal'));
+    $tanggal_akhir = htmlspecialchars($this->input->post('tanggal_akhir'));
 
-    $tanggal1 = date('Y', strtotime($tanggal_awal));
-    $tanggal2 = date('Y', strtotime($tanggal_akhir));
-
-    $periode = $tanggal1 . "/" . $tanggal2;
+    $periode = $tanggal_awal . "/" . $tanggal_akhir;
 
     $data = [
       'semester' => $semester,
-      'tanggal1' => $tanggal_awal,
-      'tanggal2' => $tanggal_akhir,
+      'tanggal' => time(),
       'periode' => $periode
     ];
 

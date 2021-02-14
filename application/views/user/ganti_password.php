@@ -19,7 +19,7 @@
     <!-- My style -->
     <link rel="stylesheet" href="<?= base_url("assets/user/"); ?>css/style.css">
 
-    <title>Aplikasi Review Dosen | Login</title>
+    <title>Aplikasi Penilaian Dosen | Login</title>
 </head>
 
 <body class="halaman-utama">
@@ -46,7 +46,7 @@
                         <span class="fw-bold">Password</span> ini ke orang lain
                     </p>
                     <p class="text-end  ">
-                        <img loading="lazy" class="img-fluid gambar-lupa-password" src="<?= base_url('assets/user/img/'); ?>lupa_password.png  " alt="">
+                        <img loading="lazy" class="img-fluid gambar-lupa-password" src="<?= base_url('assets/user/img/'); ?>lupa-password.png  " alt="">
                     </p>
                 </div>
 

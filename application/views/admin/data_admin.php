@@ -3,14 +3,14 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data User</h1>
+        <h1 class="h3 mb-0 text-gray-800">Data Admin</h1>
     </div>
 
     <!-- Content Row -->
     <div class="row">
         <div class="col-12">
 
-            <a class="btn btn-primary mb-3" href="<?= base_url('Admin/tambahDataUser'); ?>">Tambah Data Admin</a>
+            <a class="btn btn-primary mb-3" href="<?= base_url('Admin/tambahDataUser'); ?>"><i class="fas fa-plus"></i> Tambah Data Admin</a>
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -62,4 +62,5 @@
         </div>
 
     </div>
-    <!-- /.container-fluid -->
+</div>
+<!-- /.container-fluid -->

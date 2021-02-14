@@ -42,13 +42,6 @@
     </div>
 </div>
 
-<script>
-    $("#datepickerperiode1").datepicker({
-        format: "yyyy",
-        viewMode: "years",
-        minViewMode: "years"
-    });
-</script>
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
@@ -66,6 +59,7 @@
 
 <!-- Page level custom scripts -->
 <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
+
 
 
 </body>

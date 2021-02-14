@@ -43,7 +43,7 @@
                     <a style="text-decoration: none;" class="text-white" href="<?= base_url('User/daftarDosen'); ?>">Daftar Dosen </a>
                 </li>
 
-                <li class="breadcrumb-item text-white " aria-current="page">Riview</li>
+                <li class="breadcrumb-item text-white " aria-current="page">Menilai</li>
             </ol>
         </div>
     </nav>
@@ -171,7 +171,7 @@
 
                             <!-- <a id="btn_rating"  onclick="animasiNilai()" class="btn btn-primary  mt-4 mb-4"> -->
                             <a id="btn_rating" type="submit" class="btn btn-primary  mt-4 mb-4">
-                                Review
+                                Nilai
                                 Sekarang</a>
                         </div>
                     </div>
@@ -186,6 +186,7 @@
     <input style="display: none;" type="text" id="id_user" value="<?= $id_user; ?>">
     <input style="display: none;" type="text" id="nama_user" value="<?= $nama_user; ?>">
     <input style="display: none;" type="text" id="periode" value="<?= $tahun; ?>">
+    <input style="display: none;" type="text" id="semester" value="<?= $semester; ?>">
 
 
 
