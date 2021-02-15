@@ -149,91 +149,160 @@ class AuthUser extends CI_Controller
         ];
 
         $email = htmlspecialchars($_POST['email'], true);
+        $nama_lengkap = htmlspecialchars($_POST['nama_lengkap'], true);
 
         $this->email->initialize($config);
 
-        // $templateEmail = '<html>
-        //                 <head>
-        //                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        //                 <title>Smart Life Business School</title>
-        //                 <style type="text/css">
-        //                     a {color: #4A72AF;}
-        //                     body, #header h1, #header h2, p {margin: 0; padding: 0; font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: #3f4042; line-height:22px;}
-        //                     #main {border: 1px solid #cfcece;}
-        //                     img {display: block;}
-        //                     #top-message p, #bottom-message p {color: #3f4042; font-size: 14px; font-family: Arial, Helvetica, sans-serif; }
-        //                     #header h1 {color: #ffffff !important; font-family: Arial, sans-serif; font-size: 24px; margin-bottom: 0!important; padding-bottom: 0; }
-        //                     #header h2 {color: #ffffff !important; font-family: Arial, Helvetica, sans-serif; font-size: 24px; margin-bottom: 0 !important; padding-bottom: 0; }
-        //                     #header p {color: #ffffff !important; font-family: Arial, sans-serif; font-size: 14px;  }
-        //                     h1, h2, h3, h4, h5, h6 {margin: 0 0 0.8em 0;}
-        //                     h3 {font-size: 28px; color: #444444 !important; font-family: Arial, Helvetica, sans-serif; }
-        //                     h4 {font-size: 22px; color: #4A72AF !important; font-family: Arial, Helvetica, sans-serif; }
-        //                     h5 {font-size: 18px; color: #444444 !important; font-family: Arial, Helvetica, sans-serif; }
-        //                     p {font-size: 14px; color: #555555 !important; font-family: Arial, sans-serif; }
-        //                 .style1 {color: #FFFFFF;	font-weight: bold; }
-        //                 .notif{ font-size:14px; line-height:24px; }
-        //                 </style>
-        //                 </head>
-
-        //                 <body>
-        //                 <table width="100%" cellpadding="0" cellspacing="0" bgcolor="e4e4e4"><tr><td><!-- top message -->
-        //                 <br />
-        //                     <table id="main" width="600" align="center" cellpadding="0" cellspacing="15" bgcolor="ffffff">
-        //                         <tr>
-        //                             <td colspan="2">
-        //                                 <table id="header" cellpadding="0" cellspacing="0" align="center">
-        //                                     <tr>
-        //                                         <td width="570"><h1><img src="' . base_url() . '/assets/user/img/images/' . $namaGambar . '" width="570" height="309" alt=""></h1></td>
-        //                                     </tr>
-        //                                 </table><!-- header -->			</td>
-        //                         </tr><!-- header -->
-
-        //                         <tr>
-        //                             <td colspan="2"></td>
-        //                         </tr>
-        //                         <tr>
-        //                             <td colspan="2"><!-- content 1 --><table width="100%" border="0" cellspacing="8" cellpadding="8">
-        //                             <tr>
-        //                                 <td width="77%" valign="top" class="notif" >
-        //                                 <p style="font-size:14px; font-family:arial; line-height:24px;">' . $judul . '</p></td>
-        //                                 <p style="font-size:14px; font-family:arial; line-height:24px;">Silahkan Klik Link Dibawah Ini Untuk ' . $aksi . ' </p></td>
-        //                             </tr>
-
-        //                             <p style="text-align:center; margin-top:20px;" >
-        //                             <span class="style1"><a href="' . $tujuan . '" style="color:#ffffff; text-decoration:none;">' . $namaTujuan . '</a></span>
-        //                             </p>
-
-        //                             </table></td>
-        //                         </tr><!-- content 1 -->                      
-        //                     </table>
-        //                     <!-- main -->
-        //                 </td></tr></table><!-- wrapper -->
-        //                 </body>
-        //                 </html>';
-
 
         if ($type == 'verify') {
-            // $namaGambar = "template_email.png";
-            // $judul = "Aktivasi Akun";
-            // $aksi = "Aktivasi Akun";
-            // $tujuan = base_url('AuthUser/verify?email=') . $email . '&token=' . urlencode($token);
-            // $namaTujuan = "Aktivasi Sekarang";
+            $templateEmail = '<html>
+                        <head>
+                        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                        <title>Smart Life Business School</title>
+                        <style type="text/css">
+                            a {color: #4A72AF;}
+                            body, #header h1, #header h2, p {margin: 0; padding: 0; font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: #3f4042; line-height:22px;}
+                            #main {border: 1px solid #cfcece;}
+                            img {display: block;}
+                            #top-message p, #bottom-message p {color: #3f4042; font-size: 14px; font-family: Arial, Helvetica, sans-serif; }
+                            #header h1 {color: #ffffff !important; font-family: Arial, sans-serif; font-size: 24px; margin-bottom: 0!important; padding-bottom: 0; }
+                            #header h2 {color: #ffffff !important; font-family: Arial, Helvetica, sans-serif; font-size: 24px; margin-bottom: 0 !important; padding-bottom: 0; }
+                            #header p {color: #ffffff !important; font-family: Arial, sans-serif; font-size: 14px;  }
+                            h1, h2, h3, h4, h5, h6 {margin: 0 0 0.8em 0;}
+                            h3 {font-size: 28px; color: #444444 !important; font-family: Arial, Helvetica, sans-serif; }
+                            h4 {font-size: 22px; color: #4A72AF !important; font-family: Arial, Helvetica, sans-serif; }
+                            h5 {font-size: 18px; color: #444444 !important; font-family: Arial, Helvetica, sans-serif; }
+                            p {font-size: 14px; color: #555555 !important; font-family: Arial, sans-serif; }
+                        .style1 {color: #FFFFFF;	font-weight: bold; }
+                        .notif{ font-size:14px; line-height:24px; }
+                        </style>
+                        </head>
+
+                        <body>
+                        <table width="100%" cellpadding="0" cellspacing="0" bgcolor="e4e4e4"><tr><td><!-- top message -->
+                        <br />
+                            <table id="main" width="600" align="center" cellpadding="0" cellspacing="15" bgcolor="ffffff">
+                                <tr>
+                                    <td colspan="2">
+                                        <table id="header" cellpadding="0" cellspacing="0" align="center">
+                                            <tr>
+                                                <td width="570"><h1><img src="http://149.129.180.250:84/assets/user/img/template_email.png" width="570" height="309" alt=""></h1></td>
+                                            </tr>
+                                        </table><!-- header -->			</td>
+                                </tr><!-- header -->
+
+                                <tr>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><!-- content 1 --><table width="100%" border="0" cellspacing="8" cellpadding="8">
+                                    <tr>
+                                        <td width="77%" valign="top" class="notif" >
+                                            <p style="font-size:14px; font-family:arial; line-height:24px;">
+                                            <b>Aktivasi Akun</b>
+                                            <br>
+                                            Hai ' . $nama_lengkap . 'Selamat Akun Anda Sudah Terdaftar
+                                            <br>
+                                            Silahkan Klik Tombol Dibawah Ini Untuk Aktivasi Akun
+                                            <br>
+                                            <br>
+                                            <a href="' . base_url() . 'AuthUser/verify?email=' . $email . '&token=' . urlencode($token) . ' " >Aktivasi Akun</a>
+                                            <br>
+                                            <br>
+                                            <span style="color:red;" >Apabila tombol tidak berfungsi silahkan klik link dibawah ini</span>
+                                            <br>
+                                            <br>
+                                            ' . base_url() . 'AuthUser/verify?email=' . $email . '&token=' . urlencode($token)  . '
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    </table></td>
+                                </tr><!-- content 1 -->                      
+                            </table>
+                            <!-- main -->
+                        </td></tr></table><!-- wrapper -->
+                        </body>
+                        </html>';
+
             $this->email->from('davidabdul306@gmail.com', 'Kiki Agustin');
             $this->email->to($email);
             $this->email->subject('Verifikasi Akun');
-            $this->email->message('Klik link untuk verifikasi akun : <a href="' . base_url() . 'AuthUser/verify?email=' . $email . '&token=' . urlencode($token) . ' " >Verifikasi Sekarang</a> ');
-            // $this->email->message($templateEmail);
+            // $this->email->message('Klik link untuk verifikasi akun : <a href="' . base_url() . 'AuthUser/verify?email=' . $email . '&token=' . urlencode($token) . ' " >Verifikasi Sekarang</a> ');
+            $this->email->message($templateEmail);
         } else if ($type == 'forgot') {
-            // $namaGambar = "template_password.png";
-            // $judul = "Ganti Password";
-            // $aksi = "Ganti Password";
-            // $tujuan = base_url('AuthUser/resetPassword?email=') . $email . '&token=' . urlencode($token);
-            // $namaTujuan = "Aktivasi Sekarang";
+            $templateEmail = '<html>
+                        <head>
+                        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                        <title>Smart Life Business School</title>
+                        <style type="text/css">
+                            a {color: #4A72AF;}
+                            body, #header h1, #header h2, p {margin: 0; padding: 0; font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: #3f4042; line-height:22px;}
+                            #main {border: 1px solid #cfcece;}
+                            img {display: block;}
+                            #top-message p, #bottom-message p {color: #3f4042; font-size: 14px; font-family: Arial, Helvetica, sans-serif; }
+                            #header h1 {color: #ffffff !important; font-family: Arial, sans-serif; font-size: 24px; margin-bottom: 0!important; padding-bottom: 0; }
+                            #header h2 {color: #ffffff !important; font-family: Arial, Helvetica, sans-serif; font-size: 24px; margin-bottom: 0 !important; padding-bottom: 0; }
+                            #header p {color: #ffffff !important; font-family: Arial, sans-serif; font-size: 14px;  }
+                            h1, h2, h3, h4, h5, h6 {margin: 0 0 0.8em 0;}
+                            h3 {font-size: 28px; color: #444444 !important; font-family: Arial, Helvetica, sans-serif; }
+                            h4 {font-size: 22px; color: #4A72AF !important; font-family: Arial, Helvetica, sans-serif; }
+                            h5 {font-size: 18px; color: #444444 !important; font-family: Arial, Helvetica, sans-serif; }
+                            p {font-size: 14px; color: #555555 !important; font-family: Arial, sans-serif; }
+                        .style1 {color: #FFFFFF;	font-weight: bold; }
+                        .notif{ font-size:14px; line-height:24px; }
+                        </style>
+                        </head>
+
+                        <body>
+                        <table width="100%" cellpadding="0" cellspacing="0" bgcolor="e4e4e4"><tr><td><!-- top message -->
+                        <br />
+                            <table id="main" width="600" align="center" cellpadding="0" cellspacing="15" bgcolor="ffffff">
+                                <tr>
+                                    <td colspan="2">
+                                        <table id="header" cellpadding="0" cellspacing="0" align="center">
+                                            <tr>
+                                                <td width="570"><h1><img src="http://149.129.180.250:84/assets/user/img/template_password.png" width="570" height="309" alt=""></h1></td>
+                                            </tr>
+                                        </table><!-- header -->			</td>
+                                </tr><!-- header -->
+
+                                <tr>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><!-- content 1 --><table width="100%" border="0" cellspacing="8" cellpadding="8">
+                                    <tr>
+                                        <td width="77%" valign="top" class="notif" >
+                                        <p style="font-size:14px; font-family:arial; line-height:24px;">
+                                        <b>Ganti Password</b>
+                                            <br>
+                                            Silahkan Klik Tombol Dibawah Ini Untuk Mengganti Password
+                                            <br>
+                                            <br>
+                                            <a href="' . base_url() . 'AuthUser/resetPassword?email=' . $email . '&token=' . urlencode($token) . ' " >Ganti Password</a>
+                                            <br>
+                                            <br>
+                                            <span style="color:red;" >Apabila tombol tidak berfungsi silahkan klik link dibawah ini</span>
+                                            <br>
+                                            <br>
+                                            ' . base_url() . 'AuthUser/resetPassword?email=' . $email . '&token=' . urlencode($token)  . '
+                                        </p>
+                                        </td>
+                                    </tr>
+
+                                    </table></td>
+                                </tr><!-- content 1 -->                      
+                            </table>
+                            <!-- main -->
+                        </td></tr></table><!-- wrapper -->
+                        </body>
+                        </html>';
+
             $this->email->from('davidabdul306@gmail.com', 'Kiki Agustin');
             $this->email->to($email);
             $this->email->subject('Verifikasi Akun');
-            $this->email->message('Klik link untuk reset password : <a href="' . base_url() . 'AuthUser/resetPassword?email=' . $email . '&token=' . urlencode($token) . ' " >Reset Password</a> ');
-            // $this->email->message($templateEmail);
+            // $this->email->message('Klik link untuk reset password : <a href="' . base_url() . 'AuthUser/resetPassword?email=' . $email . '&token=' . urlencode($token) . ' " >Reset Password</a> ');
+            $this->email->message($templateEmail);
         }
 
 
