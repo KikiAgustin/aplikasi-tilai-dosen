@@ -152,17 +152,88 @@ class AuthUser extends CI_Controller
 
         $this->email->initialize($config);
 
+        $templateEmail = '<html>
+                        <head>
+                        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                        <title>Smart Life Business School</title>
+                        <style type="text/css">
+                            a {color: #4A72AF;}
+                            body, #header h1, #header h2, p {margin: 0; padding: 0; font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: #3f4042; line-height:22px;}
+                            #main {border: 1px solid #cfcece;}
+                            img {display: block;}
+                            #top-message p, #bottom-message p {color: #3f4042; font-size: 14px; font-family: Arial, Helvetica, sans-serif; }
+                            #header h1 {color: #ffffff !important; font-family: Arial, sans-serif; font-size: 24px; margin-bottom: 0!important; padding-bottom: 0; }
+                            #header h2 {color: #ffffff !important; font-family: Arial, Helvetica, sans-serif; font-size: 24px; margin-bottom: 0 !important; padding-bottom: 0; }
+                            #header p {color: #ffffff !important; font-family: Arial, sans-serif; font-size: 14px;  }
+                            h1, h2, h3, h4, h5, h6 {margin: 0 0 0.8em 0;}
+                            h3 {font-size: 28px; color: #444444 !important; font-family: Arial, Helvetica, sans-serif; }
+                            h4 {font-size: 22px; color: #4A72AF !important; font-family: Arial, Helvetica, sans-serif; }
+                            h5 {font-size: 18px; color: #444444 !important; font-family: Arial, Helvetica, sans-serif; }
+                            p {font-size: 14px; color: #555555 !important; font-family: Arial, sans-serif; }
+                        .style1 {color: #FFFFFF;	font-weight: bold; }
+                        .notif{ font-size:14px; line-height:24px; }
+                        </style>
+                        </head>
+
+                        <body>
+                        <table width="100%" cellpadding="0" cellspacing="0" bgcolor="e4e4e4"><tr><td><!-- top message -->
+                        <br />
+                            <table id="main" width="600" align="center" cellpadding="0" cellspacing="15" bgcolor="ffffff">
+                                <tr>
+                                    <td colspan="2">
+                                        <table id="header" cellpadding="0" cellspacing="0" align="center">
+                                            <tr>
+                                                <td width="570"><h1><img src="' . base_url() . '/assets/user/img/images/' . $namaGambar . '" width="570" height="309" alt=""></h1></td>
+                                            </tr>
+                                        </table><!-- header -->			</td>
+                                </tr><!-- header -->
+                                
+                                <tr>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><!-- content 1 --><table width="100%" border="0" cellspacing="8" cellpadding="8">
+                                    <tr>
+                                        <td width="77%" valign="top" class="notif" >
+                                        <p style="font-size:14px; font-family:arial; line-height:24px;">' . $judul . '</p></td>
+                                        <p style="font-size:14px; font-family:arial; line-height:24px;">Silahkan Klik Link Dibawah Ini Untuk ' . $aksi . ' </p></td>
+                                    </tr>
+
+                                    <p style="text-align:center; margin-top:20px;" >
+                                    <span class="style1"><a href="' . $tujuan . '" style="color:#ffffff; text-decoration:none;">' . $namaTujuan . '</a></span>
+                                    </p>
+                                    
+                                    </table></td>
+                                </tr><!-- content 1 -->                      
+                            </table>
+                            <!-- main -->
+                        </td></tr></table><!-- wrapper -->
+                        </body>
+                        </html>';
+
+
         if ($type == 'verify') {
+            $namaGambar = "template_email.png";
+            $judul = "Aktivasi Akun";
+            $aksi = "Aktivasi Akun";
+            $tujuan = base_url('AuthUser/verify?email=') . $email . '&token=' . urlencode($token);
+            $namaTujuan = "Aktivasi Sekarang";
             $this->email->from('davidabdul306@gmail.com', 'Kiki Agustin');
             $this->email->to($email);
             $this->email->subject('Verifikasi Akun');
             // $this->email->message('Klik link untuk verifikasi akun : <a href="' . base_url() . 'AuthUser/verify?email=' . $email . '&token=' . urlencode($token) . ' " >Verifikasi Sekarang</a> ');
-            $this->email->message('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"><title>Aktivasi Akun</title></head><body><div class="container"><div class="row"><div class="col-sm-12"><div class="card mb-3"><img src="' . base_url() . 'assets/user/img/email.png" class="card-img-top" alt="..."><div class="card-body text-center"><h5 class="card-title">Aktivasi Akun</h5><p class="card-text">Selamat pendaftaran anda telah berhasil, silahkan klik tombol dibawah iniuntuk mengaktifkan akun</p><a href="' . base_url() . 'AuthUser/verify?email=' . $email . '&token=' . urlencode($token) . ' " class="btn btn-primary">Aktivasi Sekarang</a></div></div></div></div></div><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script> </body></html>');
+            $this->email->message($templateEmail);
         } else if ($type == 'forgot') {
+            $namaGambar = "template_password.png";
+            $judul = "Ganti Password";
+            $aksi = "Ganti Password";
+            $tujuan = base_url('AuthUser/resetPassword?email=') . $email . '&token=' . urlencode($token);
+            $namaTujuan = "Aktivasi Sekarang";
             $this->email->from('davidabdul306@gmail.com', 'Kiki Agustin');
             $this->email->to($email);
             $this->email->subject('Verifikasi Akun');
-            $this->email->message('Klik link untuk reset password : <a href="' . base_url() . 'AuthUser/resetPassword?email=' . $email . '&token=' . urlencode($token) . ' " >Reset Password</a> ');
+            // $this->email->message('Klik link untuk reset password : <a href="' . base_url() . 'AuthUser/resetPassword?email=' . $email . '&token=' . urlencode($token) . ' " >Reset Password</a> ');
+            $this->email->message($templateEmail);
         }
 
 
