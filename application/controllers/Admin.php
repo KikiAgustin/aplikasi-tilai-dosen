@@ -298,6 +298,19 @@ class Admin extends CI_Controller
 
     $periode = $tanggal_awal . "/" . $tanggal_akhir;
 
+    $cekPeriode = $this->db->get_where('periode', ['semester' => $semester, 'periode' => $periode])->row_array();
+
+    if ($cekPeriode) {
+
+      $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Maaf untuk semester ' . $semester . ' dan tahun ajaran ' . $periode . ' sudah ada, mungkin anda salah memasukan </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+      redirect('Admin/periode');
+    }
+
     $data = [
       'semester' => $semester,
       'tanggal' => time(),
