@@ -400,7 +400,7 @@
                                                     <td><?= $i++; ?></td>
                                                     <td><?= $periode['semester']; ?></td>
                                                     <td><?= $periode['periode']; ?></td>
-                                                    <td><a href="<?= base_url('Hasilpenilaian/lihatPeriode/') . $periode['id_periode'] . '/' . $dosen_detail['id_daftar_dosen']; ?>"><span class="badge badge-primary">Lihat Hasil</span></a></td>
+                                                    <td><a href="<?= base_url('HasilPenilaian/lihatPeriode/') . $periode['id_periode'] . '/' . $dosen_detail['id_daftar_dosen']; ?>"><span class="badge badge-primary">Lihat Hasil</span></a></td>
                                                 </tr>
                                             <?php endforeach;  ?>
                                         </tbody>
