@@ -201,7 +201,7 @@ class AuthUser extends CI_Controller
                                             <p style="font-size:14px; font-family:arial; line-height:24px;">
                                             <b>Aktivasi Akun</b>
                                             <br>
-                                            Hai ' . $nama_lengkap . 'Selamat Akun Anda Sudah Terdaftar
+                                            Hai ' . $nama_lengkap . ' Selamat Akun Anda Sudah Terdaftar
                                             <br>
                                             Silahkan Klik Tombol Dibawah Ini Untuk Aktivasi Akun
                                             <br>
@@ -300,7 +300,7 @@ class AuthUser extends CI_Controller
 
             $this->email->from('davidabdul306@gmail.com', 'Kiki Agustin');
             $this->email->to($email);
-            $this->email->subject('Verifikasi Akun');
+            $this->email->subject('Ganti Password');
             // $this->email->message('Klik link untuk reset password : <a href="' . base_url() . 'AuthUser/resetPassword?email=' . $email . '&token=' . urlencode($token) . ' " >Reset Password</a> ');
             $this->email->message($templateEmail);
         }
