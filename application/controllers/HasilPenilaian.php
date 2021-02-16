@@ -209,12 +209,12 @@ class HasilPenilaian extends CI_Controller
 
     // Lihat periode
 
-    public function lihatPeriode()
+    public function lihatPeriode($idPeriode, $idDosen)
     {
 
         $getUser = $this->Model_user->getUser();
-        $idPeriode = $this->input->get('periode');
-        $idDosen = $this->input->get('dosen');
+        // $idPeriode = $this->input->get('periode');
+        // $idDosen = $this->input->get('dosen');
         $getPeriode = $this->db->get_where('periode', ['id_periode' => $idPeriode])->row_array();
         $dosen_detail = $this->db->get_where('daftar_dosen', ['id_daftar_dosen' => $idDosen])->row_array();
         $nama_dosen = $dosen_detail['nama'];
@@ -316,7 +316,7 @@ class HasilPenilaian extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Maaf untuk periode ini ' . $nama_dosen . ' belum ada yang memberikan penilaian  </strong>
+                <strong>Maaf untuk periode ini ' . $nama_dosen . ' Tidak ada yang memberikan penilaian  </strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
