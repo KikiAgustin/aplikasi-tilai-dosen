@@ -69,62 +69,44 @@
         </section>
     </form> -->
 
-    <section style="margin-top: 100px; ">
-        <div class="container ">
-            <div class="card mx-auto" style="width: 18rem;">
-                <?= $this->session->userdata('message'); ?>
-                <div class="row pt-3">
-                    <div class="col-sm-12">
-                        <p class="text-center  ">
-                            <img loading="lazy" width="150px" height="150px" src="<?= base_url("assets/user/img/user/"); ?><?= $user['image']; ?>" class="img-fluid rounded-circle border border-5" alt="User">
-                            <br>
-                            <a class="btn btn-primary mt-3" href="<?= base_url('User/editProfile'); ?>">Edit Profile</a>
-
-                        </p>
-                    </div>
-                </div>
-                <div class="row mt-3 ">
-                    <div class="col-sm-12">
-                        <p class="text-center ">
-                            <span class="nama-dosen"><?= $user['name']; ?></span>
-                            <br>
-                            <span>Bergabung Pada : <?= date('d F Y', $user['date_created']); ?></span>
-                        </p>
-                        <hr>
-                    </div>
-                </div>
-                <div class="row mt-1 ">
-                    <div class="col-sm-12">
-                        <p class="text-center ">
-                            <a class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal" href="">Logout</a>
-                            |||
-                            <a class="text-decoration-none" href="<?= base_url('AuthUser/lupaPassword'); ?>">Ganti Password</a>
-                        </p>
+    <form action="<?= base_url('User/saveEditProfile'); ?>" method="POST" enctype="multipart/form-data">
+        <section style="margin-top: 100px; ">
+            <div class="container ">
+                <div class="card mx-auto" style="width: 18rem;">
+                    <?= $this->session->userdata('message'); ?>
+                    <div class="row pt-3">
+                        <div class="col-sm-12">
+                            <p class="text-center  ">
+                                <img loading="lazy" width="150px" height="150px" src="<?= base_url("assets/user/img/user/"); ?><?= $user['image']; ?>" class="img-fluid rounded-circle border border-5" alt="User">
+                                <br>
+                                <input type="hidden" name="foto_lawas" value="<?= $user['image']; ?>">
+                                <div class="continer">
+                                    <div class="row p-3">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                                                <input required type="text" name="nama_lengkap" class="form-control" value="<?= $user['name']; ?>">
+                                            </div>
+                                            <div class="">
+                                                <label for="formFileSm" class="form-label">Pilih Foto</label>
+                                                <input name="foto" class="form-control form-control-sm" id="formFileSm" type="file">
+                                                <?= form_error('foto', '<small class="text-danger pl-3">', '</small>'); ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <button type="submit" class="btn btn-primary mt-3" href="">Edit Profile</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </form>
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Keluar Aplikasi</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Anda yakin mau keluar dari aplikasi
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <a href="<?= base_url('AuthUser/logout'); ?>" type="button" class="btn btn-primary">Keluar</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 

@@ -201,4 +201,67 @@ class User extends CI_Controller
 
         $this->load->view('user/profile', $data);
     }
+
+    public function editProfile()
+    {
+
+        $email = $this->session->userdata('email');
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+        $data = [
+            'judul' => "Aplikasi Penilaian Dosen | Edit Profile",
+            'user'  => $user
+
+        ];
+
+        $this->load->view('user/edit_profile', $data);
+    }
+
+    public function saveEditProfile()
+    {
+
+        $foto_lawas = $this->input->post('foto_lawas');
+        $gambar = $_FILES['foto']['name'];
+        $nama_lengkap = $this->input->post('nama_lengkap');
+
+        if ($gambar) {
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']     = '3000';
+            $config['upload_path'] = './assets/user/img/user/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) {
+
+                if ($gambar != 'default.png') {
+                    unlink(FCPATH . 'assets/user/img/user/' . $foto_lawas);
+                }
+                $foto_baru = $this->upload->data('file_name');
+            } else {
+                $error =  $this->upload->display_errors();
+                $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>' . $error . '</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>');
+                redirect('User/editProfile');
+            }
+        }
+
+        if (empty($foto_baru)) $foto_baru = $foto_lawas;
+
+        $email = $this->session->userdata('email');
+
+        $this->db->set('name', $nama_lengkap);
+        $this->db->set('image', $foto_baru);
+        $this->db->where('email', $email);
+        $this->db->update('user');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            Foto Berhasil diedit
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
+        redirect('User/profile');
+    }
 }

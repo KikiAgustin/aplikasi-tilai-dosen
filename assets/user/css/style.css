@@ -446,6 +446,12 @@
     margin-top: 0%;
 }
 
+.box-nilai {
+    width: 270px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Halaman Login */
 
 .gambar-login {
