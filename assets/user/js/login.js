@@ -12,7 +12,7 @@ $(document).ready(function () {
 
     $("#btn_register").click(function () {
 
-        let base_url = "http://149.129.180.250:84/";
+        let base_url = "http://localhost/aplikasi_penilaian/";
         let url = base_url + "AuthUser/saveRegistrasi";
 
         let nama_lengkap = $("#nama_lengkap").val();

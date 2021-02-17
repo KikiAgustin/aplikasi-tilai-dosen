@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="d-grid gap-2 mt-5">
-                                <button type="submit" class="btn btn-primary form-email  btn-login ">Registrasi</button>
+                                <button id="btn-registrasi" type="submit" class="btn btn-primary form-email  btn-login ">Registrasi</button>
                             </div>
                         </div>
                     </form>

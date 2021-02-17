@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2021 at 09:49 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Feb 17, 2021 at 02:23 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,7 +44,7 @@ INSERT INTO `daftar_dosen` (`id_daftar_dosen`, `nama`, `email`, `mengajar`, `ima
 (1, 'Kiki Agustin A.md, S.kom', 'kikiagustin@gmail.com', 'Teknik Informatika', 'dosen-1.png', 'Belajar menghadapi hal kecil, sebelum menghadapii hal besar'),
 (2, 'Mega Kusmayati S.ag', 'mega@gmail.com', 'Keagamaan', 'dosen-2.png', 'Membiasakan mandiri sejak diusia dini, tuk bekal besar nanti'),
 (3, 'David Abdul Ajiz S.kom', 'davidabdul@gmail.com', 'Teknik Informatika', 'dosen-3.png', 'Kerja keras dahulu, lalu nikmati hasilnya kemuadian hari'),
-(4, 'Ismayanti S.pd', 'ismayanti@gmail.com', 'Seni Budaya', 'dosen-4.png', 'Belajar ikhtiar dan berdoa untuk kesuksesan'),
+(4, 'Ismayanti S.pd', 'ismayanti@gmail.com', 'Komputerarisasi Akuntansi', 'dosen-4.png', 'Belajar ikhtiar dan berdoa untuk kesuksesan'),
 (5, 'Dea Hasanatus A.md.ak', 'deahasanah@gmail.com', 'Komputerarisasi Akuntansi', 'kikiagustin.jpg', 'Belajar dari sebuah kesalahan akan menjadikan diri kita lebih dewasa');
 
 -- --------------------------------------------------------
@@ -72,6 +72,14 @@ CREATE TABLE `hasil_penilaian` (
   `periode` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `hasil_penilaian`
+--
+
+INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`, `pilihan`, `pilihan2`, `id_user`, `nama_user`, `cek_read`, `read_admin`, `bintang_admin`, `read_dosen`, `bintang_dosen`, `semester`, `periode`) VALUES
+(1, 4, 10, 'Penyampaian materi semoga bisa ditingkatkan lagi, supaya anak-anak bisa lebih mengerti tentang materi yang di sampaiakan', 1, 4, 10, 18, 'Jajang Maulana', 1, 1, 1, 1, 1, 'Ganjil', '2021/2022'),
+(2, 9, 6, 'Coba penyampaian materinya diperbaiki lagi', 4, 9, 6, 18, 'Jajang Maulana', 1, 0, 0, 0, 0, 'Genap', '2021/2022');
+
 -- --------------------------------------------------------
 
 --
@@ -91,7 +99,8 @@ CREATE TABLE `periode` (
 --
 
 INSERT INTO `periode` (`id_periode`, `semester`, `tanggal`, `periode`, `status`) VALUES
-(1, 'Ganjil', '1613538037', '2021/2022', 1);
+(1, 'Ganjil', '1613299468', '2021/2022', 2),
+(2, 'Genap', '1613300278', '2021/2022', 1);
 
 -- --------------------------------------------------------
 
@@ -115,13 +124,15 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `date_created`, `is_active`, `role_id`) VALUES
-(1, 'Kiki Agustin', 'admin@admin.com', 'default.jpg', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 1612837278, 1, 1),
-(2, 'Kiki Agustin A.md, S.kom', 'kikiagustin@gmail.com', 'dosen-11.png', '$2y$10$MJh.MA2iahOU/awss9RXg.kPTI5S7hSlwdIXcTkxC4DrpBs/VoI2.', 1613537749, 1, 3),
-(3, 'Mega Kusmayati S.ag', 'mega@gmail.com', 'default.png', '$2y$10$pOWgOiqnxJcasuBY0oGI0eHfOpaX94AWXEVjjbPySCD6CvszuTsZ2', 1613537813, 1, 3),
-(4, 'David Abdul Ajiz S.kom', 'davidabdul@gmail.com', 'dosen-31.png', '$2y$10$v83SklyyJaJZlszZco/CzOu27t5cePEiGVfBpw5ryIzw5aSuN2flC', 1613537875, 1, 3),
-(5, 'Ismayanti S.pd', 'ismayanti@gmail.com', 'dosen-41.png', '$2y$10$33gn6K7trQW.CME70jeZ3Od9kWjBuWbg2MNBrQh1i/dI7EYb6dBY.', 1613537935, 1, 3),
-(6, 'Dea Hasanatus A.md.ak', 'deahasanah@gmail.com', 'kikiagustin1.jpg', '$2y$10$GmMlguPe/F1zd0sUM3IbAuTy2IOv/oh5AOnvDoJ4bidHngQIIIBe6', 1613537989, 1, 3),
-(7, 'Widian Permana', 'onlinekiki008@gmail.com', 'default.png', '$2y$10$YO9QKc7Rue8noy5Ci5XI7egI4osKXy2.ue2VZonzK/vY/fJE7qLsy', 1613538128, 1, 2);
+(4, 'Kiki Agustin', 'admin@admin.com', 'default.jpg', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 1612837278, 1, 1),
+(13, 'Kiki Agustin', 'kikiagustin@gmail.com', 'default.png', '$2y$10$Q0nb1jh.SmcU1Tgf8rtaTeY48Jge4kxBIgx8fBNcSX13mtdw7XzTu', 1613190303, 1, 3),
+(14, 'Mega Kusmayati', 'mega@gmail.com', 'default.png', '$2y$10$HKPfH08XbDjNRWb2f4iIwuhkmsc03Bl3vJBhKgI1baq2cvtGpR.B.', 1613190438, 1, 3),
+(15, 'David Abdul Ajiz', 'davidabdul@gmail.com', 'kikiagustin1.jpg', '$2y$10$bVxGBuq5kWjgBKZYCcDNKe.WX062Hx9Vm5YmlPu2FYkkIodbQYVde', 1613190600, 1, 3),
+(16, 'Ismayanti', 'ismayanti@gmail.com', 'kikiagustin1.jpg', '$2y$10$W.XdSqGtvwkT7sSuQPNLd.Ssr5nMEGV2242tUa3lS62F5MHAF2mFG', 1613190782, 1, 3),
+(17, 'Dea Hasanatus', 'deahasanah@gmail.com', 'default.png', '$2y$10$Zto/Kd157JL6Mu1g.OwUROeINweadk/aT1aJRDrva27baCEKs3Lcu', 1613191094, 1, 3),
+(18, 'Jajang Maulana', 'onlinekiki008@gmail.com', 'default.png', '$2y$10$uayspgjuu.O6IPe7J8cwLuhVeePNto2yqp56dFUk2rz/pIuZFeXtO', 1613191912, 1, 2),
+(20, 'Awan Suwanda', 'asuwanda087@gmail.com', 'default.png', '$2y$10$3NVqVbnSu3gcCftjQWhYves4WnosITsAtdEAeCFKErUqhHiXLS50.', 1613398867, 1, 2),
+(21, 'Herbalin Aja', 'herbarstore@gmail.com', 'default.png', '$2y$10$bC443m1BIAnbsNaZ4rS45OMwFScu4oOLsxX4Qe8lCQqehQD8Hu79e', 1613399118, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -141,7 +152,8 @@ CREATE TABLE `user_token` (
 --
 
 INSERT INTO `user_token` (`id_token`, `email`, `token`, `date_created`) VALUES
-(2, 'onlinekiki008@gmail.com', 'X6m8jGo9iLCSNwkxSfGYlqoBDHTxi/CZbYdCtBVE9mw=', 1613542442);
+(2, 'onlinekiki008@gmail.com', 'eUPiHz+NZo/9p6giI5wJbZR2c62Ztv6aMUX00cPhApk=', 1613290383),
+(6, 'herbarstore@gmail.com', 'cCIhuDh1cvgp7Ywr42OqPbBuHIesyCvwSpyhkenlDQU=', 1613400392);
 
 --
 -- Indexes for dumped tables
@@ -191,25 +203,25 @@ ALTER TABLE `daftar_dosen`
 -- AUTO_INCREMENT for table `hasil_penilaian`
 --
 ALTER TABLE `hasil_penilaian`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `periode`
 --
 ALTER TABLE `periode`
-  MODIFY `id_periode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_periode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

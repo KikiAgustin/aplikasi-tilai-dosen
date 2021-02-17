@@ -259,7 +259,7 @@ class User extends CI_Controller
         $this->db->update('user');
 
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            Foto Berhasil diedit
+            Profil Berhasil diedit
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>');
         redirect('User/profile');

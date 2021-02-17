@@ -1,4 +1,4 @@
-const base_url = "http://149.129.180.250:84/";
+const base_url = "http://localhost/aplikasi_penilaian/";
 
 function textIntro() {
     $("#judul-awal span").velocity("transition.slideLeftIn", {
@@ -168,6 +168,25 @@ function animasiBerhasil() {
     });
 }
 
+function loading() {
+    $('#btn-registrasi').click(function () {
+        $("#btn-registrasi").append("<div class='spinner-border text-light' role='status'>  <span class='visually-hidden'>Loading...</span>  </div>");
+    });
+
+    $('#btn-lupa-password').click(function () {
+        $("#btn-lupa-password").append("<div class='spinner-border text-light' role='status'>  <span class='visually-hidden'>Loading...</span>  </div>");
+    });
+
+    $('#btn-login-user').click(function () {
+        $("#btn-login-user").append("<div class='spinner-border text-light' role='status'>  <span class='visually-hidden'>Loading...</span>  </div>");
+    });
+
+    $('#btn-reset-password').click(function () {
+        $("#btn-reset-password").append("<div class='spinner-border text-light' role='status'>  <span class='visually-hidden'>Loading...</span>  </div>");
+    });
+
+}
+
 
 
 
@@ -178,6 +197,7 @@ $(document).ready(function () {
     scrollElement();
     navbarRating();
     halamanBerhasil();
+    loading();
 
 });
 

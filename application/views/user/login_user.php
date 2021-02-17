@@ -69,7 +69,7 @@
                                 <p class="text-end  "><small class="text-muted "><a class="text-decoration-none" href="<?= base_url('AuthUser/lupaPassword'); ?>">Lupa Password</a></small></p>
                             </div>
                             <div class="d-grid gap-2 mt-5 ">
-                                <button type="submit" class="btn btn-primary form-email  btn-login ">Login</button>
+                                <button id="btn-login-user" type="submit" class="btn btn-primary form-email  btn-login ">Login</button>
                             </div>
                         </div>
                     </form>

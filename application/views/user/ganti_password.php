@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="d-grid gap-2 mt-4">
-                                <button type="submit" class="btn btn-primary form-email  btn-login ">Ganti Password</button>
+                                <button id="btn-reset-password" type="submit" class="btn btn-primary form-email  btn-login ">Ganti Password</button>
                             </div>
                         </div>
                     </form>
