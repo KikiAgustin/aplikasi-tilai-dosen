@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2021 at 02:23 AM
+-- Generation Time: Feb 14, 2021 at 03:11 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `daftar_dosen` (
   `id_daftar_dosen` int(11) NOT NULL,
-  `nama` varchar(120) NOT NULL,
+  `nama` varchar(70) NOT NULL,
   `email` varchar(120) NOT NULL,
   `mengajar` varchar(60) NOT NULL,
   `image` varchar(125) NOT NULL,
@@ -110,8 +110,8 @@ INSERT INTO `periode` (`id_periode`, `semester`, `tanggal`, `periode`, `status`)
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `name` varchar(120) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `image` varchar(120) NOT NULL,
   `password` varchar(100) NOT NULL,
   `date_created` int(11) NOT NULL,
@@ -130,9 +130,7 @@ INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `date_created`, 
 (15, 'David Abdul Ajiz', 'davidabdul@gmail.com', 'kikiagustin1.jpg', '$2y$10$bVxGBuq5kWjgBKZYCcDNKe.WX062Hx9Vm5YmlPu2FYkkIodbQYVde', 1613190600, 1, 3),
 (16, 'Ismayanti', 'ismayanti@gmail.com', 'kikiagustin1.jpg', '$2y$10$W.XdSqGtvwkT7sSuQPNLd.Ssr5nMEGV2242tUa3lS62F5MHAF2mFG', 1613190782, 1, 3),
 (17, 'Dea Hasanatus', 'deahasanah@gmail.com', 'default.png', '$2y$10$Zto/Kd157JL6Mu1g.OwUROeINweadk/aT1aJRDrva27baCEKs3Lcu', 1613191094, 1, 3),
-(18, 'Jajang Maulana', 'onlinekiki008@gmail.com', 'default.png', '$2y$10$uayspgjuu.O6IPe7J8cwLuhVeePNto2yqp56dFUk2rz/pIuZFeXtO', 1613191912, 1, 2),
-(20, 'Awan Suwanda', 'asuwanda087@gmail.com', 'default.png', '$2y$10$3NVqVbnSu3gcCftjQWhYves4WnosITsAtdEAeCFKErUqhHiXLS50.', 1613398867, 1, 2),
-(21, 'Herbalin Aja', 'herbarstore@gmail.com', 'default.png', '$2y$10$bC443m1BIAnbsNaZ4rS45OMwFScu4oOLsxX4Qe8lCQqehQD8Hu79e', 1613399118, 1, 2);
+(18, 'Jajang Maulana', 'onlinekiki008@gmail.com', 'default.png', '$2y$10$uayspgjuu.O6IPe7J8cwLuhVeePNto2yqp56dFUk2rz/pIuZFeXtO', 1613191912, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -152,8 +150,7 @@ CREATE TABLE `user_token` (
 --
 
 INSERT INTO `user_token` (`id_token`, `email`, `token`, `date_created`) VALUES
-(2, 'onlinekiki008@gmail.com', 'eUPiHz+NZo/9p6giI5wJbZR2c62Ztv6aMUX00cPhApk=', 1613290383),
-(6, 'herbarstore@gmail.com', 'cCIhuDh1cvgp7Ywr42OqPbBuHIesyCvwSpyhkenlDQU=', 1613400392);
+(2, 'onlinekiki008@gmail.com', 'eUPiHz+NZo/9p6giI5wJbZR2c62Ztv6aMUX00cPhApk=', 1613290383);
 
 --
 -- Indexes for dumped tables
@@ -215,13 +212,13 @@ ALTER TABLE `periode`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
