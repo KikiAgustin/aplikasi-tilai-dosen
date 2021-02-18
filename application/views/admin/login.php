@@ -16,11 +16,11 @@
                                     <h1 class="h4 text-gray-900 mb-4">
                                         Selamat Datang di Halaman Login Admin
                                     </h1>
-                                    <p>Silahkan Masukan Username dan Password</p>
+                                    <p>Silahkan Masukan Email dan Password</p>
                                 </div>
                                 <form action="<?= base_url('Auth/index'); ?>" method="POST" class="user">
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address..." value="<?= set_value('email'); ?>" required>
+                                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" aria-describedby="emailHelp" placeholder="Masukan Email" value="<?= set_value('email'); ?>" required>
                                         <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">

@@ -20,4 +20,4 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body style="background: linear-gradient(to right, #8F9C9C, #ffffff); " class="">
