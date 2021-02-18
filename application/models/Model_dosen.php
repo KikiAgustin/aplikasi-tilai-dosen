@@ -76,31 +76,7 @@ class Model_dosen extends CI_Model
         $namaDosen = htmlspecialchars($this->input->post('nama'), true);
         $email = htmlspecialchars($this->input->post('email'), true);
         $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
-
-        $gambar = $_FILES['foto']['name'];
-
-        if ($gambar) {
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size']     = '3000';
-            $config['upload_path'] = './assets/user/img/user/';
-
-            $this->load->library('upload', $config);
-
-            if ($this->upload->do_upload('foto')) {
-                $foto_baru = $this->upload->data('file_name');
-            } else {
-                $error =  $this->upload->display_errors();
-                $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>' . $error . '</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-                </div>');
-                redirect('Admin/tambahDosen');
-            }
-        }
-
-        if (empty($foto_baru)) $foto_baru = "default.png";
+        $foto_baru = "default.png";
 
         $data = [
             'name'          => $namaDosen,

@@ -221,8 +221,8 @@ class User extends CI_Controller
     {
 
         $foto_lawas = $this->input->post('foto_lawas');
-        $gambar = $_FILES['foto']['name'];
         $nama_lengkap = $this->input->post('nama_lengkap');
+        $gambar = $_FILES['foto']['name'];
 
         if ($gambar) {
             $config['allowed_types'] = 'gif|jpg|png';
@@ -233,7 +233,7 @@ class User extends CI_Controller
 
             if ($this->upload->do_upload('foto')) {
 
-                if ($gambar != 'default.png') {
+                if ($foto_lawas != 'default.png') {
                     unlink(FCPATH . 'assets/user/img/user/' . $foto_lawas);
                 }
                 $foto_baru = $this->upload->data('file_name');

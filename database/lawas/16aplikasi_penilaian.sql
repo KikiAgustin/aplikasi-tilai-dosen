@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2021 at 10:09 AM
+-- Generation Time: Feb 17, 2021 at 09:49 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -20,49 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `aplikasi_penilaian`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `balasan`
---
-
-CREATE TABLE `balasan` (
-  `id_balasan` int(11) NOT NULL,
-  `id_diskusi` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `balasan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `balasan`
---
-
-INSERT INTO `balasan` (`id_balasan`, `id_diskusi`, `id_user`, `balasan`) VALUES
-(1, 1, 7, 'Ada tambahan, bagi yang belum membereskan administrasi dimohon untuk segera membereskannya'),
-(2, 1, 2, 'Mari kita berdoa semoga pandemi ini segera berakhir, supaya kita bisa belajar kembali dengan normal');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `balasan_postingan`
---
-
-CREATE TABLE `balasan_postingan` (
-  `id_balasan_diskusi` int(11) NOT NULL,
-  `id_diskusi` int(11) NOT NULL,
-  `id_balasan` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `balasan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `balasan_postingan`
---
-
-INSERT INTO `balasan_postingan` (`id_balasan_diskusi`, `id_diskusi`, `id_balasan`, `id_user`, `balasan`) VALUES
-(1, 1, 2, 3, 'amin, semoga pandemi ini segera berakhir'),
-(2, 1, 2, 7, 'Amiin Pak, udah kangen ngampus ni');
 
 -- --------------------------------------------------------
 
@@ -89,27 +46,6 @@ INSERT INTO `daftar_dosen` (`id_daftar_dosen`, `nama`, `email`, `mengajar`, `ima
 (3, 'David Abdul Ajiz S.kom', 'davidabdul@gmail.com', 'Teknik Informatika', 'dosen-3.png', 'Kerja keras dahulu, lalu nikmati hasilnya kemuadian hari'),
 (4, 'Ismayanti S.pd', 'ismayanti@gmail.com', 'Seni Budaya', 'dosen-4.png', 'Belajar ikhtiar dan berdoa untuk kesuksesan'),
 (5, 'Dea Hasanatus A.md.ak', 'deahasanah@gmail.com', 'Komputerarisasi Akuntansi', 'kikiagustin.jpg', 'Belajar dari sebuah kesalahan akan menjadikan diri kita lebih dewasa');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `diskusi`
---
-
-CREATE TABLE `diskusi` (
-  `id_diskusi` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `diskusi` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `diskusi`
---
-
-INSERT INTO `diskusi` (`id_diskusi`, `id_user`, `diskusi`) VALUES
-(1, 7, 'Pemberitahuan untuk semuanya, untuk semester depan pembelajaran masih akan dilaksanakan secara daring.\r\n\r\nTerimakasih semoga membantu'),
-(2, 2, 'Halo anak-anak gimana kabarnya?'),
-(3, 3, 'Assalamualaikum, gimana kabarnya anak-anak? Semoga pada sehat ya');
 
 -- --------------------------------------------------------
 
@@ -179,13 +115,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `date_created`, `is_active`, `role_id`) VALUES
-(1, 'Kiki Agustin', 'admin@admin.com', 'default.png', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 1612837278, 1, 1),
-(2, 'Kiki Agustin A.md, S.kom', 'kikiagustin@gmail.com', 'dosen-1.png', '$2y$10$MJh.MA2iahOU/awss9RXg.kPTI5S7hSlwdIXcTkxC4DrpBs/VoI2.', 1613537749, 1, 3),
+(1, 'Kiki Agustin', 'admin@admin.com', 'default.jpg', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 1612837278, 1, 1),
+(2, 'Kiki Agustin A.md, S.kom', 'kikiagustin@gmail.com', 'dosen-11.png', '$2y$10$MJh.MA2iahOU/awss9RXg.kPTI5S7hSlwdIXcTkxC4DrpBs/VoI2.', 1613537749, 1, 3),
 (3, 'Mega Kusmayati S.ag', 'mega@gmail.com', 'default.png', '$2y$10$pOWgOiqnxJcasuBY0oGI0eHfOpaX94AWXEVjjbPySCD6CvszuTsZ2', 1613537813, 1, 3),
-(4, 'David Abdul Ajiz S.kom', 'davidabdul@gmail.com', 'default.png', '$2y$10$v83SklyyJaJZlszZco/CzOu27t5cePEiGVfBpw5ryIzw5aSuN2flC', 1613537875, 1, 3),
-(5, 'Ismayanti S.pd', 'ismayanti@gmail.com', 'default.png', '$2y$10$33gn6K7trQW.CME70jeZ3Od9kWjBuWbg2MNBrQh1i/dI7EYb6dBY.', 1613537935, 1, 3),
-(6, 'Dea Hasanatus A.md.ak', 'deahasanah@gmail.com', 'default.png', '$2y$10$GmMlguPe/F1zd0sUM3IbAuTy2IOv/oh5AOnvDoJ4bidHngQIIIBe6', 1613537989, 1, 3),
-(7, 'Widian Permana', 'onlinekiki008@gmail.com', 'kikiagustin.jpg', '$2y$10$YO9QKc7Rue8noy5Ci5XI7egI4osKXy2.ue2VZonzK/vY/fJE7qLsy', 1613538128, 1, 2);
+(4, 'David Abdul Ajiz S.kom', 'davidabdul@gmail.com', 'dosen-31.png', '$2y$10$v83SklyyJaJZlszZco/CzOu27t5cePEiGVfBpw5ryIzw5aSuN2flC', 1613537875, 1, 3),
+(5, 'Ismayanti S.pd', 'ismayanti@gmail.com', 'dosen-41.png', '$2y$10$33gn6K7trQW.CME70jeZ3Od9kWjBuWbg2MNBrQh1i/dI7EYb6dBY.', 1613537935, 1, 3),
+(6, 'Dea Hasanatus A.md.ak', 'deahasanah@gmail.com', 'kikiagustin1.jpg', '$2y$10$GmMlguPe/F1zd0sUM3IbAuTy2IOv/oh5AOnvDoJ4bidHngQIIIBe6', 1613537989, 1, 3),
+(7, 'Widian Permana', 'onlinekiki008@gmail.com', 'default.png', '$2y$10$YO9QKc7Rue8noy5Ci5XI7egI4osKXy2.ue2VZonzK/vY/fJE7qLsy', 1613538128, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -212,28 +148,10 @@ INSERT INTO `user_token` (`id_token`, `email`, `token`, `date_created`) VALUES
 --
 
 --
--- Indexes for table `balasan`
---
-ALTER TABLE `balasan`
-  ADD PRIMARY KEY (`id_balasan`);
-
---
--- Indexes for table `balasan_postingan`
---
-ALTER TABLE `balasan_postingan`
-  ADD PRIMARY KEY (`id_balasan_diskusi`);
-
---
 -- Indexes for table `daftar_dosen`
 --
 ALTER TABLE `daftar_dosen`
   ADD PRIMARY KEY (`id_daftar_dosen`);
-
---
--- Indexes for table `diskusi`
---
-ALTER TABLE `diskusi`
-  ADD PRIMARY KEY (`id_diskusi`);
 
 --
 -- Indexes for table `hasil_penilaian`
@@ -264,28 +182,10 @@ ALTER TABLE `user_token`
 --
 
 --
--- AUTO_INCREMENT for table `balasan`
---
-ALTER TABLE `balasan`
-  MODIFY `id_balasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `balasan_postingan`
---
-ALTER TABLE `balasan_postingan`
-  MODIFY `id_balasan_diskusi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `daftar_dosen`
 --
 ALTER TABLE `daftar_dosen`
   MODIFY `id_daftar_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `diskusi`
---
-ALTER TABLE `diskusi`
-  MODIFY `id_diskusi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `hasil_penilaian`

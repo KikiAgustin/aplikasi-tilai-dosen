@@ -90,6 +90,7 @@
                                             <div class="">
                                                 <label for="formFileSm" class="form-label">Pilih Foto</label>
                                                 <input name="foto" class="form-control form-control-sm" id="formFileSm" type="file">
+                                                <small class="text-danger">Ukuran Foto maksimal 3 Mb</small>
                                                 <?= form_error('foto', '<small class="text-danger pl-3">', '</small>'); ?>
                                             </div>
                                         </div>
