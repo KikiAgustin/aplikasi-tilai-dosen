@@ -240,10 +240,8 @@ class User extends CI_Controller
             } else {
                 $error =  $this->upload->display_errors();
                 $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>' . $error . '</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+                ' . $error . '
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>');
                 redirect('User/editProfile');
             }

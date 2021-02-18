@@ -1,8 +1,8 @@
 <!-- Sidebar -->
-<ul style="background-color: #7b86ed;" class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul style="background-color: #7b86ed;" class="navbar-nav sidebar sidebar-dark accordion px-2 " id="accordionSidebar">
 
 
-    <img src="<?= base_url('assets/user/img/dosen/') . $dosen['image']; ?>" width="130px" height="130px" class="img-fluid rounded-circle mx-auto my-3 border border-light " alt="">
+    <img src="<?= base_url('assets/user/img/dosen/') . $dosen['image']; ?>" width="130px" height="130px" class="img-fluid rounded-circle mx-auto my-3 border border-light  " alt="">
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
