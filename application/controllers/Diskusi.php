@@ -23,14 +23,16 @@ class Diskusi extends CI_Controller
 
             $user = $this->Model_diskusi->getUser();
             $diskusi = $this->Model_diskusi->hasilDiskusi();
+            $informasi = $this->Model_diskusi->informasiPenting();
             $data = [
                 'judul'     => "Aplikasi Penilaian Dosen | Diskusi",
                 'diskusi'   => $diskusi,
-                'user'      => $user
+                'user'      => $user,
+                'informasi' => $informasi
             ];
 
             $this->load->view('template_user/header', $data);
-            $this->load->view('user/diskusi');
+            $this->load->view('user/diskusi/diskusi');
             $this->load->view('template_user/footer');
         } else {
             $this->Model_diskusi->tambahDiskusi();
@@ -57,11 +59,11 @@ class Diskusi extends CI_Controller
             ];
 
             $this->load->view('template_user/header', $data);
-            $this->load->view('user/balasan');
+            $this->load->view('user/diskusi/balasan');
             $this->load->view('template_user/footer');
         } else {
             $this->Model_diskusi->tambahBalasan($id_diskusi);
-            $this->session->set_flashdata('message', '<div style="margin-top: 66px;" class="alert alert-success alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Komentar</strong> berhasil ditambahkan <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+            $this->session->set_flashdata('message', '<div  class="alert alert-success alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Komentar</strong> berhasil ditambahkan <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
             redirect('Diskusi/balasan/' . $id_diskusi . ' ');
         }
     }
@@ -84,12 +86,37 @@ class Diskusi extends CI_Controller
             ];
 
             $this->load->view('template_user/header', $data);
-            $this->load->view('user/balasan_postingan');
+            $this->load->view('user/diskusi/balasan_postingan');
             $this->load->view('template_user/footer');
         } else {
             $this->Model_diskusi->tambahBalasanDiskusi($id_diskusi, $id_balasan);
-            $this->session->set_flashdata('message', '<div style="margin-top: 66px;" class="alert alert-success alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Komentar</strong> berhasil ditambahkan <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+            $this->session->set_flashdata('message', '<div  class="alert alert-success alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Komentar</strong> berhasil ditambahkan <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
             redirect('Diskusi/balasanPostingan/' . $id_diskusi . '/' . $id_balasan . '');
         }
+    }
+
+
+    public function postingan()
+    {
+        $postingan = $this->Model_diskusi->postingan();
+
+        $data = [
+            'judul'     => "Aplikasi Penilaian Dosen | Diskusi",
+            'postingan'  => $postingan
+        ];
+
+        $this->load->view('template_user/header', $data);
+        $this->load->view('user/diskusi/postingan');
+        $this->load->view('template_user/footer');
+    }
+
+    public function hapusPostingan($id_diskusi)
+    {
+        $this->db->delete('diskusi', ['id_diskusi' => $id_diskusi]);
+        $this->db->delete('balasan', ['id_diskusi' => $id_diskusi]);
+        $this->db->delete('balasan_postingan', ['id_diskusi' => $id_diskusi]);
+
+        $this->session->set_flashdata('message', '<div style="margin-top: 300px;"  class="alert alert-success alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Postingan</strong> berhasil dihapus <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+        redirect('Diskusi/postingan');
     }
 }

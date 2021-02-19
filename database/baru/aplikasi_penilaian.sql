@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2021 at 10:09 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Feb 19, 2021 at 02:15 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -34,14 +35,6 @@ CREATE TABLE `balasan` (
   `balasan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `balasan`
---
-
-INSERT INTO `balasan` (`id_balasan`, `id_diskusi`, `id_user`, `balasan`) VALUES
-(1, 1, 7, 'Ada tambahan, bagi yang belum membereskan administrasi dimohon untuk segera membereskannya'),
-(2, 1, 2, 'Mari kita berdoa semoga pandemi ini segera berakhir, supaya kita bisa belajar kembali dengan normal');
-
 -- --------------------------------------------------------
 
 --
@@ -55,14 +48,6 @@ CREATE TABLE `balasan_postingan` (
   `id_user` int(11) NOT NULL,
   `balasan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `balasan_postingan`
---
-
-INSERT INTO `balasan_postingan` (`id_balasan_diskusi`, `id_diskusi`, `id_balasan`, `id_user`, `balasan`) VALUES
-(1, 1, 2, 3, 'amin, semoga pandemi ini segera berakhir'),
-(2, 1, 2, 7, 'Amiin Pak, udah kangen ngampus ni');
 
 -- --------------------------------------------------------
 
@@ -99,17 +84,22 @@ INSERT INTO `daftar_dosen` (`id_daftar_dosen`, `nama`, `email`, `mengajar`, `ima
 CREATE TABLE `diskusi` (
   `id_diskusi` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `diskusi` text NOT NULL
+  `judul` varchar(90) NOT NULL,
+  `image` varchar(80) NOT NULL,
+  `diskusi` text NOT NULL,
+  `tanggal` varchar(50) NOT NULL,
+  `penting` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `diskusi`
 --
 
-INSERT INTO `diskusi` (`id_diskusi`, `id_user`, `diskusi`) VALUES
-(1, 7, 'Pemberitahuan untuk semuanya, untuk semester depan pembelajaran masih akan dilaksanakan secara daring.\r\n\r\nTerimakasih semoga membantu'),
-(2, 2, 'Halo anak-anak gimana kabarnya?'),
-(3, 3, 'Assalamualaikum, gimana kabarnya anak-anak? Semoga pada sehat ya');
+INSERT INTO `diskusi` (`id_diskusi`, `id_user`, `judul`, `image`, `diskusi`, `tanggal`, `penting`) VALUES
+(2, 2, '', '', 'Halo anak-anak gimana kabarnya?', '1612837278', 0),
+(3, 3, '', '', 'Assalamualaikum, gimana kabarnya anak-anak? Semoga pada sehat ya', '1612837278', 0),
+(8, 3, 'Menanyakan kabar', '', 'Assalamualaikum, gimana kabarnya anak-anak? Semoga pada sehat ya', '1612837278', 1),
+(9, 1, 'Penambahan Waktu Submission', 'template_email1.png', 'Dear&amp;nbsp;Teman-teman&amp;nbsp;peserta&amp;nbsp;re-cloud&lt;br /&gt;\r\n&lt;br /&gt;\r\nada&amp;nbsp;kabar&amp;nbsp;baik,&amp;nbsp;bahwa&amp;nbsp;batas&amp;nbsp;akhir&amp;nbsp;submission&amp;nbsp;re-cloud&amp;nbsp;challange&amp;nbsp;indonesia&amp;nbsp;akab&amp;nbsp;di&amp;nbsp;penpanjang&amp;nbsp;sampai&amp;nbsp;tanggal&amp;nbsp;21&amp;nbsp;februari&amp;nbsp;2021&lt;br /&gt;\r\n&lt;br /&gt;\r\nmanfaatkan sebaik mungkin ya', '1613696767', 1);
 
 -- --------------------------------------------------------
 
@@ -267,13 +257,13 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT for table `balasan`
 --
 ALTER TABLE `balasan`
-  MODIFY `id_balasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_balasan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `balasan_postingan`
 --
 ALTER TABLE `balasan_postingan`
-  MODIFY `id_balasan_diskusi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_balasan_diskusi` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `daftar_dosen`
@@ -285,7 +275,7 @@ ALTER TABLE `daftar_dosen`
 -- AUTO_INCREMENT for table `diskusi`
 --
 ALTER TABLE `diskusi`
-  MODIFY `id_diskusi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_diskusi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `hasil_penilaian`

@@ -70,4 +70,58 @@ class Model_user extends CI_Model
 
         return $this->db->get_where('user', ['email' => $user])->row_array();
     }
+
+    // Informasi
+
+    public function informasi()
+    {
+        $this->db->order_by('id_diskusi', 'DESC');
+        return $this->db->get_where('diskusi', ['penting' => 1])->result_array();
+    }
+
+    public function tambahInformasi()
+    {
+        $email = $this->session->userdata('email_admin');
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        $id_user = $user['id'];
+
+        $judul = htmlspecialchars($this->input->post('judul'), true);
+        $isi = htmlspecialchars($this->input->post('isi'), true);
+
+        $gambar = $_FILES['foto']['name'];
+
+        if ($gambar) {
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']     = '3000';
+            $config['upload_path'] = './assets/img/informasi/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) {
+                $foto_baru = $this->upload->data('file_name');
+            } else {
+                $error =  $this->upload->display_errors();
+                $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>' . $error . '</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>');
+                redirect('Admin/tambahInformasi');
+            }
+        }
+
+        if (empty($foto_baru)) $foto_baru = "";
+
+        $data = [
+            'id_user' => $id_user,
+            'judul'   => $judul,
+            'image'   => $foto_baru,
+            'diskusi' => $isi,
+            'tanggal' => time(),
+            'penting' => 1
+        ];
+
+        $this->db->insert('diskusi', $data);
+    }
 }

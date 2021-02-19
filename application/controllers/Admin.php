@@ -326,4 +326,50 @@ class Admin extends CI_Controller
           </div>');
     redirect('Admin/periode');
   }
+
+  public function informasi()
+  {
+    $informasi = $this->Model_user->informasi();
+    $data = [
+      'judul' => "Informasi",
+      'getUser' => $this->Model_user->getUser(),
+      'informasi' => $informasi
+    ];
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar');
+    $this->load->view('templates/topbar');
+    $this->load->view('admin/informasi');
+    $this->load->view('templates/footer');
+  }
+
+  public function tambahInformasi()
+  {
+
+    $this->form_validation->set_rules('judul', 'Judul', 'required|trim');
+    $this->form_validation->set_rules('isi', 'Isi Informasi', 'required');
+
+    if ($this->form_validation->run() == false) {
+
+      $data = [
+        'judul' => "Tambah Informasi",
+        'getUser' => $this->Model_user->getUser(),
+      ];
+
+      $this->load->view('templates/header', $data);
+      $this->load->view('templates/sidebar');
+      $this->load->view('templates/topbar');
+      $this->load->view('admin/tambah_informasi');
+      $this->load->view('templates/footer');
+    } else {
+      $this->Model_user->tambahInformasi();
+      $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Informasi Berhasil ditambahkan </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+      redirect('Admin/informasi');
+    }
+  }
 }

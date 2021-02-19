@@ -32,6 +32,11 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item active">
+        <a class="nav-link" href="<?= base_url('Admin/informasi'); ?>">
+            <i class="fas fa-fw fa-info"></i>
+            <span>Informasi</span></a>
+    </li>
+    <li class="nav-item active">
         <a class="nav-link" href="<?= base_url('Admin/periode'); ?>">
             <i class="fas fa-fw fa-indent"></i>
             <span>Periode</span></a>

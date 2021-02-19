@@ -3,17 +3,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Model_diskusi extends CI_Model
 {
+    public function informasiPenting()
+    {
+        $this->db->order_by('id_diskusi', 'DESC');
+        return $this->db->get_where('diskusi', ['penting' => 1])->result_array();
+    }
+
     public function tambahDiskusi()
     {
         $email = $this->session->userdata('email');
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
         $id_user = $user['id'];
         $diskusi = htmlspecialchars($this->input->post('tulis_diskusi', true));
+        $tanggal = date('Y-m-d h-i-s');
 
         $data = [
 
             'id_user'   => $id_user,
-            'diskusi'   => $diskusi
+            'diskusi'   => $diskusi,
+            'tanggal'   => $tanggal
         ];
 
         $this->db->insert('diskusi', $data);
@@ -99,5 +107,17 @@ class Model_diskusi extends CI_Model
     public function cekPembalas($id_balasan)
     {
         return $this->db->get_where('user', ['id' => $id_balasan])->row_array();
+    }
+
+    // Profil postingan
+
+    public function postingan()
+    {
+        $email = $this->session->userdata('email');
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        $id_user = $user['id'];
+
+        $this->db->order_by('id_diskusi', 'DESC');
+        return $this->db->get_where('diskusi', ['id_user' => $id_user])->result_array();
     }
 }

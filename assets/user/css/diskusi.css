@@ -2,3 +2,11 @@
 
     width: 200px;
 } */
+
+@media (max-width: 360px) {
+
+    .judul-balas {
+        font-size: 17px;
+    }
+
+ }

@@ -48,27 +48,6 @@
         </div>
     </nav>
 
-    <!-- <form action="" method="POST">
-        <section id="halaman-rating" class="halaman-nilai hapus-rating ">
-            <div class="box-nilai mb-4">
-                <div class="container bg-light rounded">
-                    <div class="row box-nilai-n">
-                        <div class="col-sm-12 col-md-4 p-3 justify-content-center ">
-                            <img loading="lazy" src="<?= base_url("assets/user/img/user/"); ?><?= $user['image']; ?>" class="img-fluid rounded-circle border border-5" alt="Dosen">
-                        </div>
-                        <div class="col-sm-12 col-md-8">
-                            <p>
-                                <span class="nama-dosen"><?= $user['name']; ?></span>
-                                <br>
-                                <span>Bergabung Pada : <?= date('d F Y', $user['date_created']); ?></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </form> -->
-
     <section style="margin-top: 100px; ">
         <div class="container ">
             <div class="card mx-auto" style="width: 18rem;">
@@ -79,13 +58,16 @@
                             <img loading="lazy" width="150px" height="150px" src="<?= base_url("assets/user/img/user/"); ?><?= $user['image']; ?>" class="img-fluid rounded-circle border border-5" alt="User">
                             <br>
                             <a class="btn btn-primary mt-3" href="<?= base_url('User/editProfile'); ?>">Edit Profile</a>
-
+                        </p>
+                        <p class="text-center">
+                            <a class="text-decoration-none mt-5 " href="<?= base_url('Diskusi/postingan'); ?>">Lihat Postingan Saya</a>
                         </p>
                     </div>
                 </div>
-                <div class="row mt-3 ">
+                <div class="row  ">
                     <div class="col-sm-12">
                         <p class="text-center ">
+                            <br>
                             <span class="nama-dosen"><?= $user['name']; ?></span>
                             <br>
                             <span>Bergabung Pada : <?= date('d F Y', $user['date_created']); ?></span>
