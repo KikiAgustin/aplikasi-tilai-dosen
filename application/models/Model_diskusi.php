@@ -6,7 +6,7 @@ class Model_diskusi extends CI_Model
     public function informasiPenting()
     {
         $this->db->order_by('id_diskusi', 'DESC');
-        return $this->db->get_where('diskusi', ['penting' => 1])->result_array();
+        return $this->db->get_where('diskusi', ['user' => 0, 'penting' => 1])->result_array();
     }
 
     public function tambahDiskusi()
@@ -30,6 +30,8 @@ class Model_diskusi extends CI_Model
     public function hasilDiskusi()
     {
         $this->db->order_by('id_diskusi', 'DESC');
+        $this->db->where('penting', 0);
+        $this->db->where('user', 1);
         return $this->db->get('diskusi')->result_array();
     }
 
@@ -115,6 +117,15 @@ class Model_diskusi extends CI_Model
     {
         $email = $this->session->userdata('email');
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        $id_user = $user['id'];
+
+        $this->db->order_by('id_diskusi', 'DESC');
+        return $this->db->get_where('diskusi', ['id_user' => $id_user])->result_array();
+    }
+
+    public function lihatPostingan($id_profile)
+    {
+        $user = $this->db->get_where('user', ['id' => $id_profile])->row_array();
         $id_user = $user['id'];
 
         $this->db->order_by('id_diskusi', 'DESC');

@@ -119,4 +119,82 @@ class Diskusi extends CI_Controller
         $this->session->set_flashdata('message', '<div style="margin-top: 300px;"  class="alert alert-success alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Postingan</strong> berhasil dihapus <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
         redirect('Diskusi/postingan');
     }
+
+    public function cekProfile($id_profile)
+    {
+        $user = $this->db->get_where('user', ['id' => $id_profile])->row_array();
+
+        $data = [
+            'judul' => "Aplikasi Penilaian Dosen | Profile",
+            'user'  => $user
+
+        ];
+
+        $this->load->view('user/diskusi/profile', $data);
+    }
+
+    public function lihatPostingan($id_profile)
+    {
+        $postingan = $this->Model_diskusi->lihatPostingan($id_profile);
+
+        $data = [
+            'judul'     => "Aplikasi Penilaian Dosen | Lihat Postingan",
+            'postingan'  => $postingan
+        ];
+
+        $this->load->view('template_user/header', $data);
+        $this->load->view('user/diskusi/lihat_postingan');
+        $this->load->view('template_user/footer');
+    }
+
+    public function likePostingan($id_postingan, $id_user)
+    {
+        $email = $this->session->userdata('email');
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+        $like = $this->db->get_where('like_postingan', ['id_postingan' => $id_postingan, 'id_user' => $id_user, 'from_like' => $user['id']])->row_array();
+        $status = $like['status'];
+        $id_like    = $like['id_like_postingan'];
+
+        if (!$like) {
+            $data = [
+                'id_postingan' => $id_postingan,
+                'id_user'      => $id_user,
+                'from_like'    => $user['id'],
+                'status'       => 1,
+                'tanggal'      => time()
+            ];
+
+            $this->db->insert('like_postingan', $data);
+            redirect('Diskusi');
+        } else {
+            if ($status == 1) {
+                $this->db->set('status', 0);
+                $this->db->where('id_like_postingan', $id_like);
+                $this->db->update('like_postingan');
+                redirect('Diskusi');
+            } else {
+                $this->db->set('status', 1);
+                $this->db->where('id_like_postingan', $id_like);
+                $this->db->update('like_postingan');
+                redirect('Diskusi');
+            }
+        }
+    }
+
+    public function lihatLike($id_diskusi)
+    {
+        $like = $this->db->get_where('like_postingan', ['id_postingan' => $id_diskusi])->result_array();
+        $pemosting = $this->Model_diskusi->pembalas($id_diskusi);
+        $data = [
+            'judul'     => "Aplikasi Penilaian Dosen | Like Postingan",
+            'like'      => $like,
+            'pemosting' => $pemosting
+
+        ];
+
+        $this->load->view('template_user/header', $data);
+        $this->load->view('user/diskusi/lihat_like');
+        $this->load->view('template_user/footer');
+    }
 }

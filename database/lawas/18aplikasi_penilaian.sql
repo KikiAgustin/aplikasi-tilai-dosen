@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2021 at 09:58 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Feb 19, 2021 at 02:15 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -33,13 +34,6 @@ CREATE TABLE `balasan` (
   `id_user` int(11) NOT NULL,
   `balasan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `balasan`
---
-
-INSERT INTO `balasan` (`id_balasan`, `id_diskusi`, `id_user`, `balasan`) VALUES
-(1, 3, 7, 'Alhamdulillah baik bu');
 
 -- --------------------------------------------------------
 
@@ -94,7 +88,6 @@ CREATE TABLE `diskusi` (
   `image` varchar(80) NOT NULL,
   `diskusi` text NOT NULL,
   `tanggal` varchar(50) NOT NULL,
-  `user` int(11) NOT NULL,
   `penting` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -102,11 +95,11 @@ CREATE TABLE `diskusi` (
 -- Dumping data for table `diskusi`
 --
 
-INSERT INTO `diskusi` (`id_diskusi`, `id_user`, `judul`, `image`, `diskusi`, `tanggal`, `user`, `penting`) VALUES
-(2, 2, '', '', 'Halo anak-anak gimana kabarnya?', '1612837278', 1, 0),
-(3, 3, '', '', 'Assalamualaikum, gimana kabarnya anak-anak? Semoga pada sehat ya', '1612837278', 1, 0),
-(10, 1, 'Penambahan Waktu Submission', 'template_email1.png', '<p><strong>Dear teman-teman</strong></p>\r\n\r\n<p>ada informasi menarik ni buat teman-teman peserta re-cloud challange indonesia</p>\r\n\r\n<p>informasinya sebumission terakhi diundur jadi tanggal 21 februari 2021,</p>\r\n\r\n<p>manfaatkan kesempatan ini sebaik mungkin ya..</p>\r\n', '1613696767', 0, 1),
-(16, 1, 'coba', 'gambar.jpg', '<p>coba informasi </p>\r\n\r\n<p> </p>\r\n\r\n<p><strong>di edit terus</strong></p>\r\n', '1613702702', 0, 2);
+INSERT INTO `diskusi` (`id_diskusi`, `id_user`, `judul`, `image`, `diskusi`, `tanggal`, `penting`) VALUES
+(2, 2, '', '', 'Halo anak-anak gimana kabarnya?', '1612837278', 0),
+(3, 3, '', '', 'Assalamualaikum, gimana kabarnya anak-anak? Semoga pada sehat ya', '1612837278', 0),
+(8, 3, 'Menanyakan kabar', '', 'Assalamualaikum, gimana kabarnya anak-anak? Semoga pada sehat ya', '1612837278', 1),
+(9, 1, 'Penambahan Waktu Submission', 'template_email1.png', 'Dear&amp;nbsp;Teman-teman&amp;nbsp;peserta&amp;nbsp;re-cloud&lt;br /&gt;\r\n&lt;br /&gt;\r\nada&amp;nbsp;kabar&amp;nbsp;baik,&amp;nbsp;bahwa&amp;nbsp;batas&amp;nbsp;akhir&amp;nbsp;submission&amp;nbsp;re-cloud&amp;nbsp;challange&amp;nbsp;indonesia&amp;nbsp;akab&amp;nbsp;di&amp;nbsp;penpanjang&amp;nbsp;sampai&amp;nbsp;tanggal&amp;nbsp;21&amp;nbsp;februari&amp;nbsp;2021&lt;br /&gt;\r\n&lt;br /&gt;\r\nmanfaatkan sebaik mungkin ya', '1613696767', 1);
 
 -- --------------------------------------------------------
 
@@ -132,31 +125,6 @@ CREATE TABLE `hasil_penilaian` (
   `semester` varchar(50) NOT NULL,
   `periode` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `like_postingan`
---
-
-CREATE TABLE `like_postingan` (
-  `id_like_postingan` int(11) NOT NULL,
-  `id_postingan` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `from_like` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
-  `tanggal` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `like_postingan`
---
-
-INSERT INTO `like_postingan` (`id_like_postingan`, `id_postingan`, `id_user`, `from_like`, `status`, `tanggal`) VALUES
-(1, 3, 3, 7, 1, '1613717976'),
-(2, 2, 2, 7, 1, '1613718974'),
-(3, 3, 3, 2, 1, '1613719020'),
-(4, 3, 3, 1, 1, '1613721730');
 
 -- --------------------------------------------------------
 
@@ -264,12 +232,6 @@ ALTER TABLE `hasil_penilaian`
   ADD PRIMARY KEY (`id_penilaian`);
 
 --
--- Indexes for table `like_postingan`
---
-ALTER TABLE `like_postingan`
-  ADD PRIMARY KEY (`id_like_postingan`);
-
---
 -- Indexes for table `periode`
 --
 ALTER TABLE `periode`
@@ -295,7 +257,7 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT for table `balasan`
 --
 ALTER TABLE `balasan`
-  MODIFY `id_balasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_balasan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `balasan_postingan`
@@ -313,19 +275,13 @@ ALTER TABLE `daftar_dosen`
 -- AUTO_INCREMENT for table `diskusi`
 --
 ALTER TABLE `diskusi`
-  MODIFY `id_diskusi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_diskusi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `hasil_penilaian`
 --
 ALTER TABLE `hasil_penilaian`
   MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `like_postingan`
---
-ALTER TABLE `like_postingan`
-  MODIFY `id_like_postingan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `periode`

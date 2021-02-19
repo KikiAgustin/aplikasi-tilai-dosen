@@ -372,4 +372,76 @@ class Admin extends CI_Controller
       redirect('Admin/informasi');
     }
   }
+
+  public function hapusInformasi($id_diskusi)
+  {
+
+    $this->db->delete('diskusi', ['id_diskusi' => $id_diskusi]);
+    $this->db->delete('balasan', ['id_diskusi' => $id_diskusi]);
+    $this->db->delete('balasan_postingan', ['id_diskusi' => $id_diskusi]);
+
+    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Informasi Berhasil ditambahkan </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+    redirect('Admin/informasi');
+  }
+
+  public function editInformasi($id_diskusi)
+  {
+
+    $this->form_validation->set_rules('judul', 'Judul', 'required|trim');
+    $this->form_validation->set_rules('isi', 'Isi Informasi', 'required');
+
+    if ($this->form_validation->run() == false) {
+
+      $data = [
+        'judul'     => "Edit Informasi",
+        'getUser'   => $this->Model_user->getUser(),
+        'informasi' => $this->db->get_where('diskusi', ['id_diskusi' => $id_diskusi])->row_array()
+      ];
+
+      $this->load->view('templates/header', $data);
+      $this->load->view('templates/sidebar');
+      $this->load->view('templates/topbar');
+      $this->load->view('admin/edit_informasi');
+      $this->load->view('templates/footer');
+    } else {
+      $this->Model_user->editInformasi($id_diskusi);
+      $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Informasi Berhasil diedit </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+      redirect('Admin/informasi');
+    }
+  }
+
+
+  public function selesaikanInformasi($id_diskusi)
+  {
+    $diskusi = $this->db->get_where('diskusi', ['id_diskusi' => $id_diskusi])->row_array();
+    $status = $diskusi['penting'];
+
+    if ($status == 1) {
+      $this->db->set('penting', 2);
+      $this->db->where('id_diskusi', $id_diskusi);
+      $this->db->update('diskusi');
+    } else {
+      $this->db->set('penting', 1);
+      $this->db->where('id_diskusi', $id_diskusi);
+      $this->db->update('diskusi');
+    }
+
+    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Informasi Berhasil diselesaikan </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+    redirect('Admin/informasi');
+  }
 }

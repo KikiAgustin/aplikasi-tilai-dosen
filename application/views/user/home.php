@@ -14,10 +14,10 @@
                 <a class="nav-link text-white  " aria-current="page" href="#about">About</a>
                 <a class="nav-link text-white  " aria-current="page" href="#daftar-dosen">Daftar Dosen</a>
                 <a class="nav-link text-white  " aria-current="page" href="#contact">Contact</a>
+                <a class="nav-link text-white  " aria-current="page" href="<?= base_url('Diskusi'); ?>">Diskusi</a>
                 <?php if ($this->session->userdata('email')) : ?>
                     <div class="dropdown">
                         <a class="nav-link text-dark    " role="button" id="profile" data-bs-toggle="dropdown" aria-expanded="false" aria-current="page" href="#"> <?= $nama_user; ?> &nbsp; <img loading="lazy" src="<?= base_url('assets/user/img/user/') . $image;  ?>" class="img-fluid rounded-circle " width="40px" height="40px" alt="<?= $nama_user; ?>"> </a>
-
                         <ul class="dropdown-menu mt-2 " aria-labelledby="profile">
                             <li><a class="dropdown-item" href="<?= base_url('User/profile'); ?>"><i class="bi bi-person-fill"></i> </i> Profile</a></li>
                             <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#keluarAplikasi"><i class="bi bi-box-arrow-left"></i> Logout</a></li>

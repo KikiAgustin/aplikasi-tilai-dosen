@@ -76,7 +76,7 @@ class Model_user extends CI_Model
     public function informasi()
     {
         $this->db->order_by('id_diskusi', 'DESC');
-        return $this->db->get_where('diskusi', ['penting' => 1])->result_array();
+        return $this->db->get_where('diskusi', ['user' => 0])->result_array();
     }
 
     public function tambahInformasi()
@@ -86,7 +86,7 @@ class Model_user extends CI_Model
         $id_user = $user['id'];
 
         $judul = htmlspecialchars($this->input->post('judul'), true);
-        $isi = htmlspecialchars($this->input->post('isi'), true);
+        $isi   = $this->input->post('isi', true);
 
         $gambar = $_FILES['foto']['name'];
 
@@ -123,5 +123,49 @@ class Model_user extends CI_Model
         ];
 
         $this->db->insert('diskusi', $data);
+    }
+
+    public function editInformasi($id_diskusi)
+    {
+
+        $judul = htmlspecialchars($this->input->post('judul'), true);
+        $gambar_lama = htmlspecialchars($this->input->post('foto_lawas'), true);
+        $isi   = $this->input->post('isi', true);
+
+        $gambar = $_FILES['foto']['name'];
+
+        if ($gambar) {
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']     = '3000';
+            $config['upload_path'] = './assets/img/informasi/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) {
+
+                if ($gambar_lama != 'default.png') {
+                    unlink(FCPATH . 'assets/img/informasi/' . $gambar_lama);
+                }
+                $foto_baru = $this->upload->data('file_name');
+            } else {
+                $error =  $this->upload->display_errors();
+                $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>' . $error . '</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>');
+                redirect('Admin/editInformasi/' . $id_diskusi);
+            }
+        }
+
+        if (empty($foto_baru)) $foto_baru = $gambar_lama;
+
+
+        $this->db->set('image', $foto_baru);
+        $this->db->set('diskusi', $isi);
+        $this->db->set('judul', $judul);
+        $this->db->where('id_diskusi', $id_diskusi);
+        $this->db->update('diskusi');
     }
 }
