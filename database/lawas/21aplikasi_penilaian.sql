@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2021 at 10:01 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Feb 20, 2021 at 06:13 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -122,7 +121,7 @@ CREATE TABLE `diskusi` (
 --
 
 INSERT INTO `diskusi` (`id_diskusi`, `id_user`, `judul`, `image`, `diskusi`, `tanggal`, `user`, `penting`) VALUES
-(1, 1, 'Penambahan Waktu Submission', 'pengumuman.png', '<strong>Dear temen-temen Mahasiswa  yang mengikui Re-cloud Challange Indonesia</strong><br>\r\nAda Informasi menari nih, karena masih banyak antusias yang masuk untuk ikut challange ini maka dari itu, batas akhir submission jadi diperpanjang sampai tanggal 21 februari 2021.<br>\r\nManfaatkan kesempatan ini sebaik mungkin ya...<br>\r\nBuat yang belum submit yu segera submit, buat yang sudah diperbaiki lagi ya website nya', '1613763639', 0, 1),
+(1, 1, 'Penambahan Waktu Submission', 'template_email1.png', '<strong>Dear temen-temen Mahasiswa  yang mengikui Re-cloud Challange Indonesia</strong><br>\r\nAda Informasi menari nih, karena masih banyak antusias yang masuk untuk ikut challange ini maka dari itu, batas akhir submission jadi diperpanjang sampai tanggal 21 februari 2021.<br>\r\nManfaatkan kesempatan ini sebaik mungkin ya...<br>\r\nBuat yang belum submit yu segera submit, buat yang sudah diperbaiki lagi ya website nya', '1613763639', 0, 1),
 (2, 7, '', '', 'Hai teman-teman gimana nih, hasil pembelajaran pada semester kemarin?   apakah baik?                     ', '1613764931', 1, 0),
 (3, 3, '', '', 'Asalamualaikum anak-anak gimana kabarnya?  semoga baik yaa                      ', '1613797028', 1, 0);
 
@@ -150,13 +149,6 @@ CREATE TABLE `hasil_penilaian` (
   `semester` varchar(50) NOT NULL,
   `periode` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `hasil_penilaian`
---
-
-INSERT INTO `hasil_penilaian` (`id_penilaian`, `rating1`, `rating2`, `saran`, `id_daftar_dosen`, `pilihan`, `pilihan2`, `id_user`, `nama_user`, `cek_read`, `read_admin`, `bintang_admin`, `read_dosen`, `bintang_dosen`, `semester`, `periode`) VALUES
-(1, 8, 9, 'Cara mengajarnya sangat enak, dan mudah dipahami semoga bisa lebih ditingkatkan lagi', 1, 8, 9, 7, 'Widian Permana', 0, 0, 0, 0, 0, 'Ganjil', '2021/2022');
 
 -- --------------------------------------------------------
 
@@ -346,7 +338,7 @@ ALTER TABLE `diskusi`
 -- AUTO_INCREMENT for table `hasil_penilaian`
 --
 ALTER TABLE `hasil_penilaian`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `like_postingan`

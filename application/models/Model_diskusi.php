@@ -111,7 +111,11 @@ class Model_diskusi extends CI_Model
 
     public function cekPembalas($id_balasan)
     {
-        return $this->db->get_where('user', ['id' => $id_balasan])->row_array();
+
+        $balasan =  $this->db->get_where('balasan', ['id_balasan' => $id_balasan])->row_array();
+        $id_user = $balasan['id_user'];
+
+        return $this->db->get_where('user', ['id' => $id_user])->row_array();
     }
 
     // Profil postingan
