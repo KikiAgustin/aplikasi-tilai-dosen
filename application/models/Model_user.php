@@ -93,7 +93,7 @@ class Model_user extends CI_Model
         if ($gambar) {
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']     = '3000';
-            $config['upload_path'] = './assets/img/informasi/';
+            $config['upload_path'] = base_url() . 'assets/img/informasi/';
 
             $this->load->library('upload', $config);
 
@@ -137,7 +137,7 @@ class Model_user extends CI_Model
         if ($gambar) {
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']     = '3000';
-            $config['upload_path'] = './assets/img/informasi/';
+            $config['upload_path'] = base_url() . 'assets/img/informasi/';
 
             $this->load->library('upload', $config);
 
