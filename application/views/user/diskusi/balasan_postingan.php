@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<div style="margin-bottom: 120px;" class="card mb-2">
+<div class="card mb-2">
     <div class="card-header">
         <div class="row">
             <div class="col-sm-12 ">
@@ -20,7 +20,7 @@
             </script>
         </div>
     </div>
-    <div class="card-body">
+    <div style="margin-bottom: 140px;" class="card-body">
         <?php if ($balasan) : ?>
             <?php foreach ($balasan as $bl) : ?>
                 <?php
