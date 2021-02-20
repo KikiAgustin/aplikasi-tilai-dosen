@@ -55,4 +55,4 @@
         </div>
         <!-- Footer -->
     </section>
-    <footer class="text-center  text-white p-3 mb-0 ">Copyright&copy; Kiki Agustin 2021</footer>
+    <footer class="text-center  text-white p-3 mb-0 ">Copyright&copy; TilaiDosen 2021</footer>

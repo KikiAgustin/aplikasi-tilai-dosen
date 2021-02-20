@@ -58,6 +58,9 @@
             $jumlahLikeInformasi = $this->db->get_where('like_postingan', ['id_postingan' => $info['id_diskusi'], 'status' => 1])->num_rows();
             $jumlahKomenInformasi = $this->db->get_where('balasan', ['id_diskusi' => $info['id_diskusi']])->num_rows();
 
+            $jumlahBalasanKomenInformasi = $this->db->get_where('balasan_postingan', ['id_diskusi' => $info['id_diskusi']])->num_rows();
+            $hasilKomenInformasi = $jumlahKomenInformasi + $jumlahBalasanKomenInformasi;
+
 
             ?>
             <div class="card-body ">
@@ -75,7 +78,7 @@
                 <?php endif; ?>
                 <?php if ($jumlahKomenInformasi) : ?>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p class=" text-end pt-3 d-inline "><a class="text-decoration-none" href="<?= base_url('Diskusi/balasan/') . $info['id_diskusi']; ?>"><?= $jumlahKomenInformasi; ?> Komentar</a></p>
+                    <p class=" text-end pt-3 d-inline "><a class="text-decoration-none" href="<?= base_url('Diskusi/balasan/') . $info['id_diskusi']; ?>"><?= $hasilKomenInformasi; ?> Komentar</a></p>
                 <?php endif; ?>
                 <hr>
                 <a href="<?= base_url('Diskusi/likePostingan/') . $info['id_diskusi'] . '/' . $infoPengirim['id']; ?>" class="text-decoration-none ">
@@ -108,6 +111,9 @@
 
         $jumlahLike = $this->db->get_where('like_postingan', ['id_postingan' => $ds['id_diskusi'], 'status' => 1])->num_rows();
         $jumlahKomen = $this->db->get_where('balasan', ['id_diskusi' => $ds['id_diskusi']])->num_rows();
+        $jumlahBalasanKomen = $this->db->get_where('balasan_postingan', ['id_diskusi' => $ds['id_diskusi']])->num_rows();
+
+        $hasilKomen = $jumlahKomen + $jumlahBalasanKomen;
 
         $pilihan = $this->db->get_where('diskusi', ['id_diskusi' => $ds['id_diskusi'], 'id_user' => $user['id']])->row_array();
 
@@ -139,7 +145,7 @@
                 <?php endif; ?>
                 <?php if ($jumlahKomen) : ?>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p class=" text-end pt-3 d-inline "><a class="text-decoration-none" href="<?= base_url('Diskusi/balasan/') . $ds['id_diskusi']; ?>"><?= $jumlahKomen; ?> Komentar</a></p>
+                    <p class=" text-end pt-3 d-inline "><a class="text-decoration-none" href="<?= base_url('Diskusi/balasan/') . $ds['id_diskusi']; ?>"><?= $hasilKomen; ?> Komentar</a></p>
                 <?php endif; ?>
                 <hr>
                 <a href="<?= base_url('Diskusi/likePostingan/') . $ds['id_diskusi'] . '/' . $pengirim['id']; ?>" class="text-decoration-none ">

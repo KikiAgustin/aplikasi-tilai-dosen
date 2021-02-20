@@ -102,11 +102,13 @@ class Diskusi extends CI_Controller
 
     public function postingan()
     {
+        $user = $this->Model_diskusi->getUser();
         $postingan = $this->Model_diskusi->postingan();
 
         $data = [
             'judul'     => "Aplikasi Penilaian Dosen | Diskusi",
-            'postingan'  => $postingan
+            'postingan'  => $postingan,
+            'user'      => $user
         ];
 
         $this->load->view('template_user/header', $data);
@@ -174,7 +176,7 @@ class Diskusi extends CI_Controller
         }
     }
 
-    public function hapusBalasanPostingan($id_diskusi, $id_balasan)
+    public function hapusBalasanPostingan($id_balasan, $id_diskusi, $id_bds)
     {
 
         $user = $this->Model_diskusi->getUser();
@@ -185,11 +187,48 @@ class Diskusi extends CI_Controller
         if ($cekHapus) {
             $this->db->delete('balasan_postingan', ['id_balasan_diskusi' => $id_balasan]);
 
-            $this->session->set_flashdata('message', '<div style="margin-top: 300px;"  class="alert alert-success alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Postingan</strong> berhasil dihapus <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
-            redirect('Diskusi/balasanPostingan/' . $id_diskusi . '/' . $id_balasan);
+            $this->session->set_flashdata('message', '<div style="margin-top: 300px;"  class="alert alert-success alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Balasan</strong> berhasil dihapus <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+            redirect('Diskusi/balasanPostingan/' . $id_diskusi . '/' . $id_bds);
         } else {
             $this->session->set_flashdata('message', '<div style="margin-top: 300px;"  class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> Anda tidak punya hak menghapus balasan ini <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
-            redirect('Diskusi/balasanPostingan/' . $id_diskusi . '/' . $id_balasan);
+            redirect('Diskusi/balasanPostingan/' . $id_diskusi . '/' . $id_bds);
+        }
+    }
+
+    public function editDiskusiProfile($id_diskusi)
+    {
+
+        $user = $this->Model_diskusi->getUser();
+        $id_user = $user['id'];
+
+        $cekEdit = $this->db->get_where('diskusi', ['id_diskusi' => $id_diskusi, 'id_user' => $id_user])->row_array();
+
+        if ($cekEdit) {
+
+            $diskusi = $this->Model_diskusi->pilihanDiskusi($id_diskusi);
+
+            $this->form_validation->set_rules('edit_diskusi', 'Edit diskusi', 'required', [
+                'required'   => "Form ini tidak boleh kosong"
+            ]);
+
+            if ($this->form_validation->run() == false) {
+                $data = [
+                    'judul'     => "Aplikasi Penilaian Dosen | Edit Diskusi",
+                    'diskusi'   => $diskusi
+
+                ];
+
+                $this->load->view('template_user/header', $data);
+                $this->load->view('user/diskusi/edit_diskusi_profile');
+                $this->load->view('template_user/footer');
+            } else {
+                $this->Model_diskusi->editDiskusi($id_diskusi);
+                $this->session->set_flashdata('message', '<div style="margin-top: 300px;"  class="alert alert-success alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Diskusi</strong> Berhasil diedit <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+                redirect('Diskusi/postingan');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div style="margin-top: 300px;"  class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> Anda tidak punya hak mengedit diskusi ini <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+            redirect('Diskusi');
         }
     }
 
@@ -267,6 +306,43 @@ class Diskusi extends CI_Controller
         }
     }
 
+    public function editBalasanPostingan($id_balasan, $id_diskusi, $id_bds)
+    {
+
+        $user = $this->Model_diskusi->getUser();
+        $id_user = $user['id'];
+
+        $cekEdit = $this->db->get_where('balasan_postingan', ['id_balasan_diskusi' => $id_balasan, 'id_user' => $id_user])->row_array();
+
+        if ($cekEdit) {
+
+            $balasan = $this->Model_diskusi->pilihanBalasanPostingan($id_balasan);
+
+            $this->form_validation->set_rules('edit_balasan', 'Edit diskusi', 'required', [
+                'required'   => "Form ini tidak boleh kosong"
+            ]);
+
+            if ($this->form_validation->run() == false) {
+                $data = [
+                    'judul'     => "Aplikasi Penilaian Dosen | Edit Balasan",
+                    'balasan'   => $balasan
+
+                ];
+
+                $this->load->view('template_user/header', $data);
+                $this->load->view('user/diskusi/edit_balasan_postingan');
+                $this->load->view('template_user/footer');
+            } else {
+                $this->Model_diskusi->editBalasanPostingan($id_balasan);
+                $this->session->set_flashdata('message', '<div style="margin-top: 300px;"  class="alert alert-success alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Balasan</strong> Berhasil diedit <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+                redirect('Diskusi/balasanPostingan/' . $id_diskusi . '/' . $id_bds);
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div style="margin-top: 300px;"  class="alert alert-danger alert-dismissible fade show mt-3 text-center" role="alert"> <strong>Maaf</strong> Anda tidak punya hak mengedit balasan ini <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+            redirect('Diskusi/balasanPostingan/' . $id_diskusi . '/' . $id_bds);
+        }
+    }
+
     public function cekProfile($id_profile)
     {
         $user = $this->db->get_where('user', ['id' => $id_profile])->row_array();
@@ -282,11 +358,13 @@ class Diskusi extends CI_Controller
 
     public function lihatPostingan($id_profile)
     {
+        $user = $this->Model_diskusi->getUser();
         $postingan = $this->Model_diskusi->lihatPostingan($id_profile);
 
         $data = [
             'judul'     => "Aplikasi Penilaian Dosen | Lihat Postingan",
-            'postingan'  => $postingan
+            'postingan' => $postingan,
+            'user'      => $user
         ];
 
         $this->load->view('template_user/header', $data);
@@ -325,6 +403,76 @@ class Diskusi extends CI_Controller
                 $this->db->where('id_like_postingan', $id_like);
                 $this->db->update('like_postingan');
                 redirect('Diskusi');
+            }
+        }
+    }
+
+    public function likePostinganPF($id_postingan, $id_user)
+    {
+        $email = $this->session->userdata('email');
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+        $like = $this->db->get_where('like_postingan', ['id_postingan' => $id_postingan, 'id_user' => $id_user, 'from_like' => $user['id']])->row_array();
+        $status = $like['status'];
+        $id_like    = $like['id_like_postingan'];
+
+        if (!$like) {
+            $data = [
+                'id_postingan' => $id_postingan,
+                'id_user'      => $id_user,
+                'from_like'    => $user['id'],
+                'status'       => 1,
+                'tanggal'      => time()
+            ];
+
+            $this->db->insert('like_postingan', $data);
+            redirect('Diskusi/postingan');
+        } else {
+            if ($status == 1) {
+                $this->db->set('status', 0);
+                $this->db->where('id_like_postingan', $id_like);
+                $this->db->update('like_postingan');
+                redirect('Diskusi/postingan');
+            } else {
+                $this->db->set('status', 1);
+                $this->db->where('id_like_postingan', $id_like);
+                $this->db->update('like_postingan');
+                redirect('Diskusi/postingan');
+            }
+        }
+    }
+
+    public function likePostinganProfile($id_postingan, $id_user, $id_pf)
+    {
+        $email = $this->session->userdata('email');
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+        $like = $this->db->get_where('like_postingan', ['id_postingan' => $id_postingan, 'id_user' => $id_user, 'from_like' => $user['id']])->row_array();
+        $status = $like['status'];
+        $id_like    = $like['id_like_postingan'];
+
+        if (!$like) {
+            $data = [
+                'id_postingan' => $id_postingan,
+                'id_user'      => $id_user,
+                'from_like'    => $user['id'],
+                'status'       => 1,
+                'tanggal'      => time()
+            ];
+
+            $this->db->insert('like_postingan', $data);
+            redirect('Diskusi/lihatPostingan/' . $id_pf);
+        } else {
+            if ($status == 1) {
+                $this->db->set('status', 0);
+                $this->db->where('id_like_postingan', $id_like);
+                $this->db->update('like_postingan');
+                redirect('Diskusi/lihatPostingan/' . $id_pf);
+            } else {
+                $this->db->set('status', 1);
+                $this->db->where('id_like_postingan', $id_like);
+                $this->db->update('like_postingan');
+                redirect('Diskusi/lihatPostingan/' . $id_pf);
             }
         }
     }

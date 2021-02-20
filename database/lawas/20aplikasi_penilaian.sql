@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2021 at 06:13 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Feb 20, 2021 at 02:26 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -42,9 +43,7 @@ CREATE TABLE `balasan` (
 INSERT INTO `balasan` (`id_balasan`, `id_diskusi`, `id_user`, `balasan`, `tanggal`) VALUES
 (1, 1, 1, 'Baik min terimakasih informasinya', '1613763639'),
 (2, 1, 7, 'Makasih admin untuk informasinya', '1613763639'),
-(3, 1, 2, 'Alhamdulillah manfaatkan ya anak-anak kesempatan ini dengan baik', '1613763639'),
-(4, 2, 7, 'bismillah', '1613788495'),
-(5, 2, 3, 'semangat belajarnya ya anak-anak, mari berdoa semoga pandemi ini segera berakhir                        ', '1613796750');
+(3, 1, 2, 'Alhamdulillah manfaatkan ya anak-anak kesempatan ini dengan baik', '1613763639');
 
 -- --------------------------------------------------------
 
@@ -67,11 +66,7 @@ CREATE TABLE `balasan_postingan` (
 
 INSERT INTO `balasan_postingan` (`id_balasan_diskusi`, `id_diskusi`, `id_balasan`, `id_user`, `balasan`, `tanggal`) VALUES
 (2, 1, 1, 1, 'Baik Pak, laksanakan', '1613763639'),
-(3, 1, 1, 2, 'Baguus', '1613763639'),
-(7, 1, 1, 7, 'Mantap sekali pak', '1613786182'),
-(8, 1, 3, 7, 'Baik Pak', '1613794751'),
-(10, 2, 4, 7, 'mantap', '1613795794'),
-(11, 1, 3, 3, 'iya manfaatkan ya anak-anak', '1613796583');
+(3, 1, 1, 2, 'Baguus', '1613763639');
 
 -- --------------------------------------------------------
 
@@ -122,8 +117,7 @@ CREATE TABLE `diskusi` (
 
 INSERT INTO `diskusi` (`id_diskusi`, `id_user`, `judul`, `image`, `diskusi`, `tanggal`, `user`, `penting`) VALUES
 (1, 1, 'Penambahan Waktu Submission', 'template_email1.png', '<strong>Dear temen-temen Mahasiswa  yang mengikui Re-cloud Challange Indonesia</strong><br>\r\nAda Informasi menari nih, karena masih banyak antusias yang masuk untuk ikut challange ini maka dari itu, batas akhir submission jadi diperpanjang sampai tanggal 21 februari 2021.<br>\r\nManfaatkan kesempatan ini sebaik mungkin ya...<br>\r\nBuat yang belum submit yu segera submit, buat yang sudah diperbaiki lagi ya website nya', '1613763639', 0, 1),
-(2, 7, '', '', 'Hai teman-teman gimana nih, hasil pembelajaran pada semester kemarin?   apakah baik?                     ', '1613764931', 1, 0),
-(3, 3, '', '', 'Asalamualaikum anak-anak gimana kabarnya?  semoga baik yaa                      ', '1613797028', 1, 0);
+(2, 7, '', '', 'Hai teman-teman gimana nih, hasil pembelajaran pada semester kemarin?', '1613764931', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -173,9 +167,7 @@ INSERT INTO `like_postingan` (`id_like_postingan`, `id_postingan`, `id_user`, `f
 (1, 1, 1, 1, 1, '1613764158'),
 (2, 1, 1, 7, 1, '1613764837'),
 (3, 2, 7, 7, 1, '1613764951'),
-(4, 1, 1, 2, 1, '1613765293'),
-(5, 1, 1, 3, 1, '1613796559'),
-(6, 2, 7, 3, 1, '1613796721');
+(4, 1, 1, 2, 1, '1613765293');
 
 -- --------------------------------------------------------
 
@@ -314,13 +306,13 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT for table `balasan`
 --
 ALTER TABLE `balasan`
-  MODIFY `id_balasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_balasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `balasan_postingan`
 --
 ALTER TABLE `balasan_postingan`
-  MODIFY `id_balasan_diskusi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_balasan_diskusi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `daftar_dosen`
@@ -332,7 +324,7 @@ ALTER TABLE `daftar_dosen`
 -- AUTO_INCREMENT for table `diskusi`
 --
 ALTER TABLE `diskusi`
-  MODIFY `id_diskusi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_diskusi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hasil_penilaian`
@@ -344,7 +336,7 @@ ALTER TABLE `hasil_penilaian`
 -- AUTO_INCREMENT for table `like_postingan`
 --
 ALTER TABLE `like_postingan`
-  MODIFY `id_like_postingan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_like_postingan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `periode`

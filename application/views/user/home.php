@@ -158,7 +158,7 @@
         </div>
     </section>
     <!-- Footer -->
-    <footer id="footer" class="text-center footer text-white p-3 hapus-footer">Copyright&copy; Kiki Agustin 2021
+    <footer id="footer" class="text-center footer text-white p-3 hapus-footer">Copyright&copy; TilaiDosen 2021
     </footer>
 
     <!-- Modal Keluar aplikasi -->

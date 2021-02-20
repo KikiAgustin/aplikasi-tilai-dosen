@@ -39,8 +39,10 @@
                 ?>
                 <div class="row">
                     <div class="col-sm-12">
-                        <img width="50px" height="50px" class="img-fluid rounded-circle img-thumbnail " src="<?= base_url('assets/user/img/user/') . $userBalas['image']; ?>" alt="">
-                        <small class="text-muted  "><?= $userBalas['name']; ?>&nbsp; Pada <?= date('h:i d F Y', $bl['tanggal']); ?></small>
+                        <a class="text-decoration-none" href="<?= base_url('Diskusi/cekProfile/') . $id_user;  ?>">
+                            <img width="50px" height="50px" class="img-fluid rounded-circle img-thumbnail " src="<?= base_url('assets/user/img/user/') . $userBalas['image']; ?>" alt="">
+                            <small class="text-muted  "><?= $userBalas['name']; ?>&nbsp; Pada <?= date('h:i d F Y', $bl['tanggal']); ?></small>
+                        </a>
                     </div>
                     <div class="col-sm-12 mb-2">
                         <p class="card-text"><?= $bl['balasan']; ?></p>

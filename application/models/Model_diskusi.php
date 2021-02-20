@@ -147,6 +147,12 @@ class Model_diskusi extends CI_Model
         return $this->db->get_where('balasan', ['id_balasan' => $id_balasan])->row_array();
     }
 
+    public function pilihanBalasanPostingan($id_balasan)
+    {
+
+        return $this->db->get_where('balasan_postingan', ['id_balasan_diskusi' => $id_balasan])->row_array();
+    }
+
     public function editDiskusi($id_diskusi)
     {
 
@@ -165,5 +171,15 @@ class Model_diskusi extends CI_Model
         $this->db->set('balasan', $balasan);
         $this->db->where('id_balasan', $id_balasan);
         $this->db->update('balasan');
+    }
+
+    public function editBalasanPostingan($id_balasan)
+    {
+
+        $balasan = $this->input->post('edit_balasan');
+
+        $this->db->set('balasan', $balasan);
+        $this->db->where('id_balasan_diskusi', $id_balasan);
+        $this->db->update('balasan_postingan');
     }
 }
