@@ -227,7 +227,7 @@ class User extends CI_Controller
         if ($gambar) {
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']     = '3000';
-            $config['upload_path'] = base_url() . 'assets/user/img/user/';
+            $config['upload_path'] = 'http://149.129.180.250:84/assets/user/img/user/';
 
             $this->load->library('upload', $config);
 

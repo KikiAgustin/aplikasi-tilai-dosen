@@ -34,7 +34,7 @@ class Model_dosen extends CI_Model
         if ($gambar) {
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']     = '3000';
-            $config['upload_path'] = base_url() . 'assets/user/img/dosen/';
+            $config['upload_path'] = 'http://149.129.180.250:84/assets/user/img/dosen/';
 
             $this->load->library('upload', $config);
 
@@ -110,7 +110,7 @@ class Model_dosen extends CI_Model
         if ($gambar) {
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']     = '3000';
-            $config['upload_path'] = base_url() . 'assets/user/img/dosen/';
+            $config['upload_path'] = 'http://149.129.180.250:84/assets/user/img/dosen/';
 
             $this->load->library('upload', $config);
 
