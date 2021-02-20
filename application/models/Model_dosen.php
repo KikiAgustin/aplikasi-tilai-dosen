@@ -117,7 +117,8 @@ class Model_dosen extends CI_Model
             if ($this->upload->do_upload('foto')) {
 
                 if ($gambar_dosen != 'default.png') {
-                    unlink(FCPATH . 'assets/user/img/dosen/' . $gambar_dosen);
+                    // unlink(FCPATH . 'assets/user/img/dosen/' . $gambar_dosen);
+                    unlink('http://149.129.180.250:84/assets/user/img/dosen/' . $gambar_dosen);
                 }
                 $foto_baru = $this->upload->data('file_name');
             } else {

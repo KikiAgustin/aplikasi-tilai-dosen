@@ -234,7 +234,8 @@ class User extends CI_Controller
             if ($this->upload->do_upload('foto')) {
 
                 if ($foto_lawas != 'default.png') {
-                    unlink(FCPATH . 'assets/user/img/user/' . $foto_lawas);
+                    // unlink(FCPATH . 'assets/img/informasi/' . $gambar_lama);
+                    unlink('http://149.129.180.250:84/assets/user/img/user/' . $foto_lawas);
                 }
                 $foto_baru = $this->upload->data('file_name');
             } else {

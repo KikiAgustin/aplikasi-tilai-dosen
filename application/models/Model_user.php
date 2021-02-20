@@ -144,7 +144,8 @@ class Model_user extends CI_Model
             if ($this->upload->do_upload('foto')) {
 
                 if ($gambar_lama != 'default.png') {
-                    unlink(FCPATH . 'assets/img/informasi/' . $gambar_lama);
+                    // unlink(FCPATH . 'assets/img/informasi/' . $gambar_lama);
+                    unlink('http://149.129.180.250:84/assets/img/informasi/' . $gambar_lama);
                 }
                 $foto_baru = $this->upload->data('file_name');
             } else {
