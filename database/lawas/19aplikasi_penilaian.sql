@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2021 at 02:26 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Feb 19, 2021 at 09:58 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,18 +31,15 @@ CREATE TABLE `balasan` (
   `id_balasan` int(11) NOT NULL,
   `id_diskusi` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `balasan` text NOT NULL,
-  `tanggal` varchar(45) NOT NULL
+  `balasan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `balasan`
 --
 
-INSERT INTO `balasan` (`id_balasan`, `id_diskusi`, `id_user`, `balasan`, `tanggal`) VALUES
-(1, 1, 1, 'Baik min terimakasih informasinya', '1613763639'),
-(2, 1, 7, 'Makasih admin untuk informasinya', '1613763639'),
-(3, 1, 2, 'Alhamdulillah manfaatkan ya anak-anak kesempatan ini dengan baik', '1613763639');
+INSERT INTO `balasan` (`id_balasan`, `id_diskusi`, `id_user`, `balasan`) VALUES
+(1, 3, 7, 'Alhamdulillah baik bu');
 
 -- --------------------------------------------------------
 
@@ -56,17 +52,8 @@ CREATE TABLE `balasan_postingan` (
   `id_diskusi` int(11) NOT NULL,
   `id_balasan` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `balasan` text NOT NULL,
-  `tanggal` varchar(50) NOT NULL
+  `balasan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `balasan_postingan`
---
-
-INSERT INTO `balasan_postingan` (`id_balasan_diskusi`, `id_diskusi`, `id_balasan`, `id_user`, `balasan`, `tanggal`) VALUES
-(2, 1, 1, 1, 'Baik Pak, laksanakan', '1613763639'),
-(3, 1, 1, 2, 'Baguus', '1613763639');
 
 -- --------------------------------------------------------
 
@@ -116,8 +103,10 @@ CREATE TABLE `diskusi` (
 --
 
 INSERT INTO `diskusi` (`id_diskusi`, `id_user`, `judul`, `image`, `diskusi`, `tanggal`, `user`, `penting`) VALUES
-(1, 1, 'Penambahan Waktu Submission', 'template_email1.png', '<strong>Dear temen-temen Mahasiswa  yang mengikui Re-cloud Challange Indonesia</strong><br>\r\nAda Informasi menari nih, karena masih banyak antusias yang masuk untuk ikut challange ini maka dari itu, batas akhir submission jadi diperpanjang sampai tanggal 21 februari 2021.<br>\r\nManfaatkan kesempatan ini sebaik mungkin ya...<br>\r\nBuat yang belum submit yu segera submit, buat yang sudah diperbaiki lagi ya website nya', '1613763639', 0, 1),
-(2, 7, '', '', 'Hai teman-teman gimana nih, hasil pembelajaran pada semester kemarin?', '1613764931', 1, 0);
+(2, 2, '', '', 'Halo anak-anak gimana kabarnya?', '1612837278', 1, 0),
+(3, 3, '', '', 'Assalamualaikum, gimana kabarnya anak-anak? Semoga pada sehat ya', '1612837278', 1, 0),
+(10, 1, 'Penambahan Waktu Submission', 'template_email1.png', '<p><strong>Dear teman-teman</strong></p>\r\n\r\n<p>ada informasi menarik ni buat teman-teman peserta re-cloud challange indonesia</p>\r\n\r\n<p>informasinya sebumission terakhi diundur jadi tanggal 21 februari 2021,</p>\r\n\r\n<p>manfaatkan kesempatan ini sebaik mungkin ya..</p>\r\n', '1613696767', 0, 1),
+(16, 1, 'coba', 'gambar.jpg', '<p>coba informasi </p>\r\n\r\n<p> </p>\r\n\r\n<p><strong>di edit terus</strong></p>\r\n', '1613702702', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -164,10 +153,10 @@ CREATE TABLE `like_postingan` (
 --
 
 INSERT INTO `like_postingan` (`id_like_postingan`, `id_postingan`, `id_user`, `from_like`, `status`, `tanggal`) VALUES
-(1, 1, 1, 1, 1, '1613764158'),
-(2, 1, 1, 7, 1, '1613764837'),
-(3, 2, 7, 7, 1, '1613764951'),
-(4, 1, 1, 2, 1, '1613765293');
+(1, 3, 3, 7, 1, '1613717976'),
+(2, 2, 2, 7, 1, '1613718974'),
+(3, 3, 3, 2, 1, '1613719020'),
+(4, 3, 3, 1, 1, '1613721730');
 
 -- --------------------------------------------------------
 
@@ -212,7 +201,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `date_created`, `is_active`, `role_id`) VALUES
-(1, 'Admin', 'admin@admin.com', 'default.png', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 1612837278, 1, 1),
+(1, 'Kiki Agustin', 'admin@admin.com', 'default.png', '$2y$10$yqO2FeoaMw6ipq2sLvryJ.m5ErYcrh4G8jblo5JNR7uweDACfl63a', 1612837278, 1, 1),
 (2, 'Kiki Agustin A.md, S.kom', 'kikiagustin@gmail.com', 'dosen-1.png', '$2y$10$MJh.MA2iahOU/awss9RXg.kPTI5S7hSlwdIXcTkxC4DrpBs/VoI2.', 1613537749, 1, 3),
 (3, 'Mega Kusmayati S.ag', 'mega@gmail.com', 'default.png', '$2y$10$pOWgOiqnxJcasuBY0oGI0eHfOpaX94AWXEVjjbPySCD6CvszuTsZ2', 1613537813, 1, 3),
 (4, 'David Abdul Ajiz S.kom', 'davidabdul@gmail.com', 'default.png', '$2y$10$v83SklyyJaJZlszZco/CzOu27t5cePEiGVfBpw5ryIzw5aSuN2flC', 1613537875, 1, 3),
@@ -306,13 +295,13 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT for table `balasan`
 --
 ALTER TABLE `balasan`
-  MODIFY `id_balasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_balasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `balasan_postingan`
 --
 ALTER TABLE `balasan_postingan`
-  MODIFY `id_balasan_diskusi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_balasan_diskusi` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `daftar_dosen`
@@ -324,7 +313,7 @@ ALTER TABLE `daftar_dosen`
 -- AUTO_INCREMENT for table `diskusi`
 --
 ALTER TABLE `diskusi`
-  MODIFY `id_diskusi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_diskusi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `hasil_penilaian`

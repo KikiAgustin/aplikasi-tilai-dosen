@@ -15,13 +15,14 @@ class Model_diskusi extends CI_Model
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
         $id_user = $user['id'];
         $diskusi = htmlspecialchars($this->input->post('tulis_diskusi', true));
-        $tanggal = date('Y-m-d h-i-s');
+        $tanggal = time();
 
         $data = [
 
             'id_user'   => $id_user,
             'diskusi'   => $diskusi,
-            'tanggal'   => $tanggal
+            'tanggal'   => $tanggal,
+            'user'      => 1
         ];
 
         $this->db->insert('diskusi', $data);
@@ -46,7 +47,7 @@ class Model_diskusi extends CI_Model
     public function balasan($id_diskusi)
     {
 
-        $this->db->order_by('id_balasan', 'DESC');
+        $this->db->order_by('id_balasan', 'ASC');
         return $this->db->get_where('balasan', ['id_diskusi' => $id_diskusi])->result_array();
     }
 
@@ -71,7 +72,8 @@ class Model_diskusi extends CI_Model
         $data = [
             'id_diskusi' => $id_diskusi,
             'id_user'    => $id_user,
-            'balasan'    => $balasan
+            'balasan'    => $balasan,
+            'tanggal'    => time()
         ];
 
         $this->db->insert('balasan', $data);
@@ -100,7 +102,8 @@ class Model_diskusi extends CI_Model
             'id_diskusi'    => $id_diskusi,
             'id_balasan'    => $id_balasan,
             'id_user'       => $id_user,
-            'balasan'       => $balasan
+            'balasan'       => $balasan,
+            'tanggal'       => time()
         ];
 
         $this->db->insert('balasan_postingan', $data);
@@ -130,5 +133,37 @@ class Model_diskusi extends CI_Model
 
         $this->db->order_by('id_diskusi', 'DESC');
         return $this->db->get_where('diskusi', ['id_user' => $id_user])->result_array();
+    }
+
+    public function pilihanDiskusi($id_diskusi)
+    {
+
+        return $this->db->get_where('diskusi', ['id_diskusi' => $id_diskusi])->row_array();
+    }
+
+    public function pilihanBalasan($id_balasan)
+    {
+
+        return $this->db->get_where('balasan', ['id_balasan' => $id_balasan])->row_array();
+    }
+
+    public function editDiskusi($id_diskusi)
+    {
+
+        $diskusi = $this->input->post('edit_diskusi');
+
+        $this->db->set('diskusi', $diskusi);
+        $this->db->where('id_diskusi', $id_diskusi);
+        $this->db->update('diskusi');
+    }
+
+    public function editBalasan($id_balasan)
+    {
+
+        $balasan = $this->input->post('edit_balasan');
+
+        $this->db->set('balasan', $balasan);
+        $this->db->where('id_balasan', $id_balasan);
+        $this->db->update('balasan');
     }
 }

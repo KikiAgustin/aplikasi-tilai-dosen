@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<div class="card mb-2">
+<div style="margin-bottom: 120px;" class="card mb-2">
     <div class="card-header">
         <div class="row">
             <div class="col-sm-12 ">
@@ -26,17 +26,35 @@
                 <?php
 
                 $id_user = $bl['id_user'];
+                $balasanUser = $this->db->get_where('user', ['id' => $id_user])->row_array();
 
-                $user = $this->db->get_where('user', ['id' => $id_user])->row_array();
+                $id_bd = $bl['id_balasan_diskusi'];
+                $id_balasan = $bl['id_balasan'];
+
+                $cekBalasan = $this->db->get_where('balasan_postingan', ['id_balasan_diskusi' => $id_bd, 'id_user' => $user['id']])->row_array();
 
                 ?>
                 <div class="row">
                     <div class="col-sm-12">
-                        <img width="50px" height="50px" class="img-fluid rounded-circle img-thumbnail " src="<?= base_url('assets/user/img/user/') . $user['image']; ?>" alt="">
-                        <small class="text-muted  "><?= $user['name']; ?></small>
+                        <img width="50px" height="50px" class="img-fluid rounded-circle img-thumbnail " src="<?= base_url('assets/user/img/user/') . $balasanUser['image']; ?>" alt="">
+                        <small class="text-muted  "><?= $balasanUser['name']; ?>&nbsp; Pada <?= date('h:i d F Y', $bl['tanggal']); ?> </small>
                     </div>
                     <div class="col-sm-12 mb-2">
                         <p class="card-text"><?= $bl['balasan']; ?></p>
+
+                        <?php if ($cekBalasan) : ?>
+
+                            <hr>
+                            <a href="<?= base_url('Diskusi/editBalasan/') . $id_bd . '/' . $id_balasan; ?>" class=" text-decoration-none ">
+                                <i style="color: black;" class="bi bi-pencil-square"></i>
+                                Edit
+                            </a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a onclick="return confirm('Apakah anda yakin ingin menghapus balasan ini?')" href="<?= base_url('Diskusi/hapusBalasanPostingan/') . $id_bd . '/' . $id_balasan; ?>" class=" text-decoration-none ">
+                                <i style="color: black;" class="bi bi-trash-fill"></i>
+                                Hapus
+                            </a>
+                        <?php endif; ?>
                     </div>
                     <hr>
                 </div>
