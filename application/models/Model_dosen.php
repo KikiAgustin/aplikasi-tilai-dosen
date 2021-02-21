@@ -36,9 +36,10 @@ class Model_dosen extends CI_Model
         $gambar = $_FILES['foto']['name'];
 
         if ($gambar) {
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size']     = '3000';
-            $config['upload_path'] = './assets/user/img/dosen/';
+            $config['allowed_types']    = 'gif|jpg|png';
+            $config['max_size']         = '3000';
+            $config['upload_path']      = './assets/user/img/dosen/';
+            // $config['upload_path']      = realpath('assets');
 
             $this->load->library('upload', $config);
 
