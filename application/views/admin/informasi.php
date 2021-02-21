@@ -54,6 +54,7 @@
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="<?= base_url('Admin/detailInformasi/') . $info['id_diskusi']; ?>">Detail</a>
                                                     <a class="dropdown-item" href="<?= base_url('Admin/editInformasi/') . $info['id_diskusi']; ?>">Edit</a>
                                                     <a onclick="return confirm('Ubah Status Informasi ini')" class="dropdown-item" href="<?= base_url('Admin/selesaikanInformasi/') . $info['id_diskusi']; ?>">Ubah Status</a>
                                                     <a onclick="return confirm('Apakah anda yakin ingin menghapus data ini!!')" class="dropdown-item" href="<?= base_url('Admin/hapusInformasi/') . $info['id_diskusi']; ?>">Hapus</a>

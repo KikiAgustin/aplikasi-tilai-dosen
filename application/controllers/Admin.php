@@ -444,4 +444,20 @@ class Admin extends CI_Controller
           </div>');
     redirect('Admin/informasi');
   }
+
+  public function detailInformasi($id_diskusi)
+  {
+
+    $data = [
+      'judul'     => "Edit Informasi",
+      'getUser'   => $this->Model_user->getUser(),
+      'informasi' => $this->db->get_where('diskusi', ['id_diskusi' => $id_diskusi])->row_array()
+    ];
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar');
+    $this->load->view('templates/topbar');
+    $this->load->view('admin/detail_informasi');
+    $this->load->view('templates/footer');
+  }
 }

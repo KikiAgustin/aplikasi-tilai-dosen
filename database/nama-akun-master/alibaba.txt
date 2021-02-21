@@ -12,6 +12,11 @@ ssh root@149.129.180.250
 
 password database : mysql : ki@juara1
 
+Cara Mengatasi error path di linux
+
+sudo chown -R www-data lokasi_direktorynya
+sudo chmod -R 777 lokasi_direktorynya
+
 
 https://pastebin.com/KWnNqUAQ
 
