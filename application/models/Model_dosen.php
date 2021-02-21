@@ -19,6 +19,10 @@ class Model_dosen extends CI_Model
 
     public function hapusDosen($id_dosen)
     {
+        $dosen = $this->db->get_where('daftar_dosen', ['id_daftar_dosen' => $id_dosen])->row_array();
+        $email = $dosen['email'];
+
+        $this->db->delete('user', ['email' => $email]);
         return $this->db->delete('daftar_dosen', ['id_daftar_dosen' => $id_dosen]);
     }
 
@@ -34,7 +38,7 @@ class Model_dosen extends CI_Model
         if ($gambar) {
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']     = '3000';
-            $config['upload_path'] = '././assets/user/img/dosen/';
+            $config['upload_path'] = './assets/user/img/dosen/';
 
             $this->load->library('upload', $config);
 
@@ -110,15 +114,15 @@ class Model_dosen extends CI_Model
         if ($gambar) {
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']     = '3000';
-            $config['upload_path'] = '././assets/user/img/dosen/';
+            $config['upload_path'] = './assets/user/img/dosen/';
 
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload('foto')) {
 
                 if ($gambar_dosen != 'default.png') {
-                    // unlink(FCPATH . 'assets/user/img/dosen/' . $gambar_dosen);
-                    unlink('http://149.129.180.250:84/assets/user/img/dosen/' . $gambar_dosen);
+                    unlink(FCPATH . 'assets/user/img/dosen/' . $gambar_dosen);
+                    // unlink('http://149.129.180.250:84/assets/user/img/dosen/' . $gambar_dosen);
                 }
                 $foto_baru = $this->upload->data('file_name');
             } else {
